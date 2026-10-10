@@ -19,7 +19,7 @@
  let syncConfirmedAt=null,syncCheckedAt=null,syncVersion=null,syncUser=null,localStorageFailed=false;
  function status(s,bad=false){
   if(localStorageFailed){s='No se pudo guardar en este dispositivo. Exportá tus datos y revisá Ajustes.';bad=true;}
-  const uid=user?.id||null,prior=window.ft67SyncState;
+  const uid=user?.id||null;
   if(uid!==syncUser){syncUser=uid;syncConfirmedAt=null;syncCheckedAt=null;syncVersion=null;}
   if(s==='Sincronizado'){syncCheckedAt=Date.now();syncConfirmedAt=syncCheckedAt;syncVersion=version;}
   const mode=!uid||!ready?'loading':conflict?'conflict':s.startsWith('No se pudo guardar en este dispositivo')?'storage-error':navigator.onLine===false?'offline':bad?'pending':dirty?'saving':s==='Sincronizado'?'synced':'checking';
