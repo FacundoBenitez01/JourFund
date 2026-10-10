@@ -11,6 +11,6 @@ paGoalInput.oninput=()=>{const a=acc(),pa=ensurePA(a);pa.goalPct=Math.max(0,Numb
 paAddWithdrawal.onclick=()=>{if(acc().status!=='Funded')return;$('withdrawAmount').value='';$('withdrawDate').value=new Date().toISOString().slice(0,10);$('withdrawNote').value='';withdrawModal.classList.add('show');if(window.matchMedia('(min-width:701px)').matches)setTimeout(()=>$('withdrawAmount').focus(),30)};
 $('withdrawClose').onclick=() => withdrawModal.classList.remove('show');
 $('withdrawCancel').onclick=() => withdrawModal.classList.remove('show');
-$('withdrawForm').onsubmit=e=>{e.preventDefault();const a=acc(),pa=ensurePA(a),amount=Number($('withdrawAmount').value),date=$('withdrawDate').value,note=$('withdrawNote').value.trim();if(a.status!=='Funded'||amount<=0||!date)return;pa.withdrawals.push({id:'w_'+Date.now(),amount,date,note});save();withdrawModal.classList.remove('show');renderPA();achievement('💸','Retiro registrado','El retiro quedó guardado en '+a.firm+' · '+a.program+'.')};
+
 const oldRenderPA=renderPA;
 renderPA=()=>{oldRenderPA();if($('paGoalLive'))$('paGoalLive').textContent=Number(ensurePA(acc()).goalPct||0).toFixed(1)+'% · automático'};
