@@ -281,7 +281,142 @@ Completada|Completed|Concluída
 Límite diario|Daily limit|Limite diário
 Objetivo alcanzado|Target reached|Meta alcançada
 Cuenta quemada|Account breached|Conta violada
-Cuenta y sincronización · JourFund v98|Account and sync · JourFund v98|Conta e sincronização · JourFund v98`;
+Cuenta y sincronización · JourFund v98|Account and sync · JourFund v98|Conta e sincronização · JourFund v98
+Definir meta|Set goal|Definir meta
+Buenos días|Good morning|Bom dia
+Buenas tardes|Good afternoon|Boa tarde
+Buenas noches|Good evening|Boa noite
+Fase 1 · Challenge|Phase 1 · Challenge|Fase 1 · Challenge
+Fase 2 · Challenge|Phase 2 · Challenge|Fase 2 · Challenge
+Zona horaria de las sesiones|Session time zone|Fuso horário das sessões
+Cerrada|Closed|Fechada
+Abierta|Open|Aberta
+(+1 día)|(+1 day)|(+1 dia)
+Ahora|Now|Agora
+Ver horarios de referencia|View reference hours|Ver horários de referência
+No hay eventos para hoy según tus filtros.|No events today for your filters.|Não há eventos hoje com seus filtros.
++ Agregar par|+ Add pair|+ Adicionar par
+Oro / Dólar|Gold / US Dollar|Ouro / Dólar
+Plata / Dólar|Silver / US Dollar|Prata / Dólar
+Bitcoin / Dólar|Bitcoin / US Dollar|Bitcoin / Dólar
+Ethereum / Dólar|Ethereum / US Dollar|Ethereum / Dólar
+Euro / Dólar|Euro / US Dollar|Euro / Dólar
+Libra / Dólar|Pound / US Dollar|Libra / Dólar
+Dólar / Yen|US Dollar / Yen|Dólar / Iene
+Gráfico y cotizaciones por|Chart and quotes by|Gráfico e cotações por
+Día|Day|Dia
+Hora|Time|Hora
+Evento|Event|Evento
+Impacto|Impact|Impacto
+Impacto Alto|High impact|Impacto alto
+Impacto Medio|Medium impact|Impacto médio
+Impacto Bajo|Low impact|Impacto baixo
+Alto|High|Alto
+Medio|Medium|Médio
+Bajo|Low|Baixo
+Abrir Forex Factory ↗|Open Forex Factory ↗|Abrir Forex Factory ↗
+Actualizar|Refresh|Atualizar
+Detalle del retiro|Withdrawal details|Detalhe do saque
+Eliminar cuentas|Delete accounts|Excluir contas
+Eliminar definitivamente|Delete permanently|Excluir definitivamente
+Cuentas de este challenge|Accounts in this challenge|Contas deste challenge
+Limpiar selección|Clear selection|Limpar seleção
+Eliminar seleccionadas|Delete selected|Excluir selecionadas
+Agregar a tus mercados|Add to your markets|Adicionar aos seus mercados
+Buscar activo|Search asset|Buscar ativo
+Elegir activo|Choose asset|Escolher ativo
+Agregar favorito|Add favorite|Adicionar favorito
+Más secciones|More sections|Mais seções
+Configurar meta diaria|Set daily goal|Configurar meta diária
+Abrir Mi cuenta|Open My account|Abrir Minha conta
+Elegir cuenta activa|Choose active account|Escolher conta ativa
+Mercado|Market|Mercado
+Intervalo del gráfico|Chart interval|Intervalo do gráfico
+Volver a Inicio|Back to Home|Voltar ao Início
+Semana siguiente|Next week|Próxima semana
+Mes anterior|Previous month|Mês anterior
+Mes siguiente|Next month|Próximo mês
+Filtrar empresa|Filter firm|Filtrar empresa
+Filtrar fases|Filter phases|Filtrar fases
+Filtrar cuenta|Filter account|Filtrar conta
+Filtrar impacto|Filter impact|Filtrar impacto
+Filtrar moneda|Filter currency|Filtrar moeda
+Diario de trading|Trading journal|Diário de trading
+Individuales|Individual|Individuais
++ Crear grupo|+ Create group|+ Criar grupo
+Resultado neto de la etapa|Net result for the stage|Resultado líquido da etapa
+📅 Calendario de operaciones|📅 Trading calendar|📅 Calendário de operações
+Calendario de operaciones|Trading calendar|Calendário de operações
+Lun|Mon|Seg
+Mar|Tue|Ter
+Mié|Wed|Qua
+Jue|Thu|Qui
+Vie|Fri|Sex
+Sáb|Sat|Sáb
+Dom|Sun|Dom
+Operaciones de la etapa seleccionada|Trades in the selected stage|Operações da etapa selecionada
+Fecha ↓|Date ↓|Data ↓
+Fecha ↑|Date ↑|Data ↑
+Acciones|Actions|Ações
+Ver catálogo completo|View full catalog|Ver catálogo completo
++ Agregar|+ Add|+ Adicionar
+Grupo|Group|Grupo
+Programas y reglas de fondeo|Funding programs and rules|Programas e regras de financiamento
+Instantánea / Prime|Instant / Prime|Instantânea / Prime
+Agregar otra cuenta|Add another account|Adicionar outra conta
+Sin evaluación|No evaluation|Sem avaliação
+Configurar cuenta|Configure account|Configurar conta
+Ver programa oficial ↗|View official program ↗|Ver programa oficial ↗
+🟢 Activa|🟢 Active|🟢 Ativa
+Activa|Active|Ativa
+↻ Reiniciar cuenta|↻ Reset account|↻ Reiniciar conta
+Reiniciar cuenta|Reset account|Reiniciar conta
++ Registrar retiro|+ Record withdrawal|+ Registrar saque
+Balance actual|Current balance|Saldo atual
+P&L de operaciones|Trading P&L|P&L das operações
+Descontado del balance|Deducted from balance|Descontado do saldo
+Importe recibido registrado|Recorded amount received|Valor recebido registrado
+Revisión del ciclo|Cycle review|Revisão do ciclo
+Ver condiciones →|View conditions →|Ver condições →
+Cuenta seleccionada|Selected account|Conta selecionada
+Sin retiros en este período.|No withdrawals in this period.|Sem saques neste período.
+Reglas de retiro|Withdrawal rules|Regras de saque
+Total retirado|Total withdrawn|Total sacado
+Próximo retiro|Next withdrawal|Próximo saque
+Tu actividad, con una mirada más clara.|Your activity, seen more clearly.|Sua atividade, com uma visão mais clara.
+Semana actual|Current week|Semana atual
+Mes actual|Current month|Mês atual
+Solo operaciones|Trades only|Somente operações
+Ganancia media|Average win|Ganho médio
+Pérdida media|Average loss|Perda média
+Sin meta|No goal|Sem meta
+Definila abajo|Set it below|Defina abaixo
+Mínimo de la fase|Phase minimum|Mínimo da fase
+Guardar meta|Save goal|Salvar meta
+Objetivo Fase 1|Phase 1 target|Meta Fase 1
+Objetivo Fase 2|Phase 2 target|Meta Fase 2
+Pérdida máxima disponible|Max loss available|Perda máxima disponível
+Riesgo máximo|Max risk|Risco máximo
+Consultar contrato|Check contract|Consultar contrato
+Días operados|Days traded|Dias operados
+Tu mesa de trabajo|Your workbench|Sua mesa de trabalho
+Calculá antes de operar.|Calculate before you trade.|Calcule antes de operar.
+Cuenta de referencia|Reference account|Conta de referência
+Lotaje y riesgo|Lot size and risk|Lote e risco
+Valor del pip|Pip value|Valor do pip
+Calcular lotaje|Calculate lot size|Calcular lote
+Limpiar precios|Clear prices|Limpar preços
+Riesgo por operación|Risk per trade|Risco por operação
+Seguridad|Security|Segurança
+Protegé tu acceso y administrá tus sesiones.|Protect your access and manage your sessions.|Proteja seu acesso e gerencie suas sessões.
+Verificación en dos pasos desactivada|Two-step verification off|Verificação em duas etapas desativada
+Verificación en dos pasos activada|Two-step verification on|Verificação em duas etapas ativada
+Activar verificación en dos pasos|Turn on two-step verification|Ativar verificação em duas etapas
+Dispositivos con sesión abierta|Devices signed in|Dispositivos com sessão aberta
+Actualizar sesiones|Refresh sessions|Atualizar sessões
+Cerrar otras sesiones|Sign out other sessions|Encerrar outras sessões
+Cerrar todas las sesiones|Sign out all sessions|Encerrar todas as sessões
+Este dispositivo|This device|Este dispositivo`;
 const uppercase=new Map();
 for(const row of rows.split('\n')){const [es,en,pt]=row.split('|');dictionary.set(es,{es,en,'pt-BR':pt});uppercase.set(es.toUpperCase(),es);}
 let language='es',selected='es',editorUser=null,lastButton=null;
@@ -295,6 +430,17 @@ function translate(text){
  if(sync)return language==='en'?'Synced '+sync[1]+' '+({min:'min',h:'h',día:'day',días:'days'}[sync[2]])+' ago':'Sincronizado há '+sync[1]+' '+sync[2];
  const count=/^(\d+) (operación|operaciones|cuenta|cuentas|día|días)( registrada| registradas)?$/.exec(text);
  if(count){const noun=language==='en'?{operación:'trade',operaciones:'trades',cuenta:'account',cuentas:'accounts',día:'day',días:'days'}:{operación:'operação',operaciones:'operações',cuenta:'conta',cuentas:'contas',día:'dia',días:'dias'};return count[1]+' '+noun[count[2]]+(count[3]?(language==='en'?' recorded':Number(count[1])===1?' registrada':' registradas'):'');}
+ const en=language==='en',patterns=[
+  [/^(Abre|Cierra) en (.+)$/,m=>(en?(m[1]==='Abre'?'Opens in ':'Closes in '):(m[1]==='Abre'?'Abre em ':'Fecha em '))+m[2]],
+  [/^Diaria: (.+) · Máxima: (.+)$/,m=>(en?'Daily: ':'Diária: ')+m[1]+(en?' · Max: ':' · Máxima: ')+m[2]],
+  [/^(\d+) registradas?$/,m=>m[1]+(en?' recorded':Number(m[1])===1?' registrada':' registradas')],
+  [/^Faltan (.+) para el objetivo$/,m=>en?m[1]+' to go to target':'Faltam '+m[1]+' para a meta'],
+  [/^Última actividad: (.+)$/,m=>(en?'Last activity: ':'Última atividade: ')+m[1]],
+  [/^(\d+) (cuentas?) · Balance (.+)$/,m=>m[1]+(en?(m[2]==='cuenta'?' account':' accounts')+' · Balance ':(m[2]==='cuenta'?' conta':' contas')+' · Saldo ')+m[3]],
+  [/^Abrir notificaciones \((\d+) sin leer\)$/,m=>en?'Open notifications ('+m[1]+' unread)':'Abrir notificações ('+m[1]+' não lidas)'],
+  [/^Fin de semana Forex · Próxima apertura: (.+) · en (.+)$/,m=>en?'Forex weekend · Next open: '+m[1]+' · in '+m[2]:'Fim de semana Forex · Próxima abertura: '+m[1]+' · em '+m[2]],
+  [/^Actualizado (.+) · Horarios aproximados$/,m=>(en?'Updated ':'Atualizado ')+m[1]+(en?' · Approximate times':' · Horários aproximados')]];
+ for(const [re,fn] of patterns){const m=re.exec(text);if(m)return fn(m);}
  const upper=uppercase.get(text);if(upper)return dictionary.get(upper)[language].toUpperCase();
  return text;
 }
