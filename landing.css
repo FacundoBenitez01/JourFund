@@ -295,3 +295,19 @@
  .jf-curve-line{stroke-dashoffset:0}.jf-ring{stroke-dashoffset:79.2}.jf-strike{background-size:100% 2px}
  .jf-steps li::before{transform:scaleX(1)}
 }
+
+/* About us */
+.jf-about{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:center;}
+.jf-about-story>p:not(.jf-landing-kicker){margin:14px 0 0;color:#c5cad6;font-size:16px;line-height:1.6}
+.jf-about-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:24px 0 0}
+.jf-about-facts div{padding:12px;border:1px solid var(--border);border-radius:12px}
+.jf-about-facts dt{color:var(--muted);font-size:12px}.jf-about-facts dd{margin:4px 0 0;color:#f5f4fb;font-weight:600;font-size:14px;overflow-wrap:anywhere}
+.jf-about-team-title{margin:0 0 12px;color:var(--muted);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.jf-team{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.jf-person{display:flex;gap:16px;align-items:center;padding:18px;border:1px solid var(--border);border-radius:18px;background:var(--surface)}
+.jf-avatar{flex:0 0 56px;width:56px;height:56px;border-radius:16px;display:grid;place-items:center;font-weight:800;font-size:18px;color:#fff;background:linear-gradient(135deg,var(--accent,#8b5cf6),color-mix(in srgb,var(--accent,#8b5cf6) 45%,#1d1640))}
+.jf-person h3{margin:0;font-size:17px;color:#f5f4fb}
+.jf-person-role{margin:2px 0 0;color:var(--accent2,#a78bfa);font-size:13px;font-weight:600}
+.jf-person p:not(.jf-person-role){margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5}
+@media(max-width:899px){.jf-about{grid-template-columns:1fr;gap:24px}}
+
