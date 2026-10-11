@@ -767,7 +767,17 @@ Objetivo de ganancia alcanzado|Profit target reached|Meta de lucro alcançada
 Revisá los días mínimos y demás condiciones.|Check the minimum days and other conditions.|Verifique os dias mínimos e demais condições.
 Prepará la sesión de Nueva York|Get ready for the New York session|Prepare a sessão de Nova York
 Comienza en unos 15 minutos.|Starts in about 15 minutes.|Começa em uns 15 minutos.
-Ayer|Yesterday|Ontem`;
+Ayer|Yesterday|Ontem
+Nosotros|About us|Sobre nós
+Sobre nosotros|About us|Sobre nós
+Hecho por traders, para traders.|Built by traders, for traders.|Feito por traders, para traders.
+JourFund nació de nuestra propia inconformidad. Como traders de cuentas de fondeo buscábamos un diario de trading que se ajustara a lo que necesitábamos, y ninguna de las aplicaciones que probamos lo ofrecía. Así que decidimos crear la nuestra.|JourFund was born out of our own frustration. As funded traders we wanted a trading journal that fit what we needed, and none of the apps we tried offered it. So we decided to build our own.|O JourFund nasceu da nossa própria insatisfação. Como traders de contas de financiamento, buscávamos um diário de trading que se ajustasse ao que precisávamos, e nenhum dos aplicativos que testamos oferecia isso. Então decidimos criar o nosso.
+Queremos que cada trader fondeado pueda llevar sus registros al pie de la letra. Y vamos por más: a futuro, queremos que JourFund se convierta en nuestra propia firma de fondeo.|We want every funded trader to keep their records to the letter. And we're aiming higher: in the future, we want JourFund to become our own prop firm.|Queremos que todo trader financiado possa manter seus registros à risca. E queremos mais: no futuro, queremos que o JourFund se torne nossa própria empresa de financiamento.
+Desde|Since|Desde
+Septiembre de 2026|September 2026|Setembro de 2026
+Hecho en|Made in|Feito em
+Los creadores|The founders|Os criadores
+Cofundador · Propietario|Co-founder · Owner|Cofundador · Proprietário`;
 const uppercase=new Map();
 for(const row of rows.split('\n')){const [es,en,pt]=row.split('|');dictionary.set(es,{es,en,'pt-BR':pt});uppercase.set(es.toUpperCase(),es);}
 let language='es',selected='es',editorUser=null,lastButton=null;
