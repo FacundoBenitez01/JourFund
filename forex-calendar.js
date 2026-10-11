@@ -8,6 +8,9 @@ function day(d){return new Intl.DateTimeFormat('en-CA',{timeZone:zone,year:'nume
 function tomorrow(){const today=day(new Date()),d=new Date(today+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+1);return d.toISOString().slice(0,10);}
 function text(tag,value,cls){const el=document.createElement(tag);el.textContent=value;if(cls)el.className=cls;return el;}
 function paint(){if($('ftLocalClock'))$('ftLocalClock').textContent=zone+' · '+new Intl.DateTimeFormat((window.jfLocale?.()||'es-PY'),{timeZone:zone,hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'}).format(new Date());const output=$('ft89Events');output.replaceChildren();const age=Date.now()-Date.parse(feed.fetchedAt),usable=feed.source==='Forex Factory'&&feed.available===true&&Number.isFinite(age)&&age>=-60000&&age<30*60000&&Array.isArray(feed.events);
+// Weekend gap: the server fetched recently, but Forex Factory still serves the finished week (no events fall in between).
+const weekend=['Sat','Sun'].includes(new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short'}).format(new Date()));
+if(!usable&&weekend&&feed.source==='Forex Factory'&&Number.isFinite(age)&&age>=-60000&&age<30*60000){$('ft89Updated').textContent='Fin de semana: no hay eventos. La agenda de la próxima semana aparece apenas Forex Factory la publique.';return;}
 if(!usable){$('ft89Updated').textContent=navigator.onLine?'Calendario no disponible o desactualizado. Tocá Actualizar o abrí Forex Factory.':'Sin conexión. El calendario requiere Internet.';return;}
 $('ft89Updated').textContent='Actualizado '+new Intl.DateTimeFormat((window.jfLocale?.()||'es-PY'),{timeZone:zone,hour:'2-digit',minute:'2-digit'}).format(new Date(feed.fetchedAt))+' · '+zone+' · Horarios aproximados';
 const chosen=$('ft89Day').value,currency=$('ft89Currency').value,impact=$('ft89Impact').value,today=day(new Date()),next=tomorrow();
