@@ -22,3 +22,9 @@ if(/(error|type=|access_token|code=)/.test(location.hash+location.search))docume
 (()=>{const m=document.getElementById('ftAuthMsg');if(!m)return;new MutationObserver(()=>{const g=document.getElementById('ftCloudGate');if(m.classList.contains('err')&&g?.dataset.state==='login')g.classList.add('jf-auth-open');}).observe(m,{attributes:true,attributeFilter:['class'],childList:true});})();
 // Safety net: if landing.css never arrives, still show the access screen after 3 s.
 setTimeout(()=>{const g=document.getElementById('ftCloudGate');if(g&&getComputedStyle(g).visibility==='hidden')g.style.visibility='visible';},3000);
+// Legal links open the policy in the app's language.
+(()=>{const P={es:['privacidad','condiciones'],en:['privacy','terms'],'pt-BR':['privacidade','termos']};
+const fix=()=>{const l=document.documentElement.lang||'es';const k=P[l]?l:(l.startsWith('pt')?'pt-BR':l.startsWith('es')?'es':'en');
+document.querySelectorAll('a[href$="privacidad.html"],a[href$="privacy.html"],a[href$="privacidade.html"]').forEach(a=>a.setAttribute('href','./'+P[k][0]+'.html'));
+document.querySelectorAll('a[href$="condiciones.html"],a[href$="terms.html"],a[href$="termos.html"]').forEach(a=>a.setAttribute('href','./'+P[k][1]+'.html'));};
+fix();window.addEventListener('jfLanguageChanged',fix);})();
