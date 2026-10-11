@@ -27,8 +27,10 @@
   const script=document.createElement('script');script.src=url;script.async=true;script.textContent=JSON.stringify(config);script.onerror=()=>{clearTimeout(timers.get(hostId));status(statusId,'No se pudo cargar. Tocá Recargar o abrí el proveedor.');};container.append(script);
   timers.set(hostId,setTimeout(()=>status(statusId,'Está tardando en cargar. Tocá Recargar o abrí el proveedor.'),15000));
  }
+ // TradingView locale codes; the chart reloads only when the app language really changes.
+ let chartLocale=null;const tvLocale=()=>({en:'en','pt-BR':'br'})[window.JourFundI18n?.language]||'es';
  function chart(){document.getElementById('ftTradingViewLink').href='https://www.tradingview.com/chart/?symbol='+encodeURIComponent(symbol);
- embed('ftChartHost','ftChartStatus','https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js',{autosize:true,symbol,interval,timezone:'America/Asuncion',theme:'dark',style:'1',locale:'es',allow_symbol_change:true,hide_top_toolbar:false,hide_side_toolbar:true,hide_volume:true,calendar:false,details:false,save_image:false,backgroundColor:'#0f1420',gridColor:'rgba(151,163,188,0.08)',support_host:'https://www.tradingview.com'});}
+ embed('ftChartHost','ftChartStatus','https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js',{autosize:true,symbol,interval,timezone:'America/Asuncion',theme:'dark',style:'1',locale:chartLocale=tvLocale(),allow_symbol_change:true,hide_top_toolbar:false,hide_side_toolbar:true,hide_volume:true,calendar:false,details:false,save_image:false,backgroundColor:'#0f1420',gridColor:'rgba(151,163,188,0.08)',support_host:'https://www.tradingview.com'});}
  function calendar(){window.ft89RefreshCalendar?.();}
  market.querySelectorAll('[data-symbol]').forEach(b=>b.onclick=()=>{symbol=b.dataset.symbol;document.getElementById('ftMarketSelect').value=symbol;market.querySelectorAll('[data-symbol]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));chart();});
  market.querySelectorAll('[data-interval]').forEach(b=>b.onclick=()=>{interval=b.dataset.interval;market.querySelectorAll('[data-interval]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));chart();});
@@ -36,6 +38,7 @@
  function clock(){document.getElementById('ftLocalClock').textContent='Paraguay · '+new Intl.DateTimeFormat((window.jfLocale?.()||'es-PY'),{timeZone:'America/Asuncion',hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'}).format(new Date());}clock();setInterval(clock,60000);
  function init(){if(!initialized&&document.body.classList.contains('ft-ready')&&document.getElementById('ftPageHome').classList.contains('active')){initialized=true;chart();calendar();}}
  const readyObserver=new MutationObserver(init);readyObserver.observe(document.body,{attributes:true,attributeFilter:['class']});readyObserver.observe(document.getElementById('ftPageHome'),{attributes:true,attributeFilter:['class']});init();
+ window.addEventListener('jfLanguageChanged',()=>{if(initialized&&tvLocale()!==chartLocale)chart();});
  window.addEventListener('online',()=>{if(initialized){chart();calendar();}});
  window.addEventListener('offline',()=>{for(const [host,id] of [['ftChartHost','ftChartStatus'],['ftCalendarHost','ftCalendarStatus']]){clearTimeout(timers.get(host));status(id,'Sin conexión. El contenido de mercado requiere Internet.');}});
 })();
