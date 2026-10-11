@@ -18,6 +18,8 @@ The app is cached by the service worker (`sw.js`) and by the browser.
 - Every `.js`/`.css` you change: bump its `?v=` query where `index.html` loads it, and the same URL in the `SHELL` list in `sw.js`. Use the next release number (e.g. `?v=115`). Add `?v=` if the file had none.
 - Bump `const CACHE='fundedtrack-vNNN'` in `sw.js` to the same number.
 - Change only `index.html`? Still bump `CACHE`.
+- Since v129 the service worker serves scripts, styles, images and fonts **cache-first**: a changed file reaches phones only when `CACHE` changes. Never ship a `.js`/`.css`/image change without bumping `CACHE`. The page itself (`index.html`) stays network-first with a 3 s fallback.
+- A new file the first screen needs must be added to `SHELL`, or it is fetched from the network on first use.
 
 ## 3. Rules that must stay in sync
 
