@@ -701,7 +701,65 @@ Cerrar detalle|Close details|Fechar detalhes
 Cerrar aviso|Close notice|Fechar aviso
 Elegí una cuenta para consultar sus datos individuales. Las cuentas se conservan por separado.|Choose an account to see its own data. Accounts are kept separately.|Escolha uma conta para consultar seus dados individuais. As contas são mantidas separadamente.
 Seleccionar sin grupo y sin registros|Select ungrouped with no records|Selecionar sem grupo e sem registros
-EURUSD, Nasdaq, oro…|EURUSD, Nasdaq, gold…|EURUSD, Nasdaq, ouro…`;
+EURUSD, Nasdaq, oro…|EURUSD, Nasdaq, gold…|EURUSD, Nasdaq, ouro…
+Diario de trading para cuentas de fondeo|Trading journal for funded accounts|Diário de trading para contas de financiamento
+Operá tu challenge sabiendo exactamente cuánto podés arriesgar.|Trade your challenge knowing exactly how much you can risk.|Opere seu challenge sabendo exatamente quanto pode arriscar.
+Registrá tus operaciones y JourFund calcula al instante tu margen de pérdida, tu avance hacia el objetivo y tus condiciones de retiro, con las reglas de tu firma.|Log your trades and JourFund instantly works out your loss allowance, your progress to target and your withdrawal conditions, using your firm's rules.|Registre suas operações e o JourFund calcula na hora sua margem de perda, seu avanço até a meta e suas condições de saque, com as regras da sua empresa.
+Ya tengo cuenta|I already have an account|Já tenho conta
+Las reglas de tu firma, ya cargadas|Your firm's rules, preloaded|As regras da sua empresa, já carregadas
+FTMO, FundedNext y FundingPips con pérdida diaria, pérdida máxima, objetivos y días mínimos. Para otras firmas, configurás las reglas de tu contrato.|FTMO, FundedNext and FundingPips with daily loss, max loss, targets and minimum days. For other firms, you set your contract's rules.|FTMO, FundedNext e FundingPips com perda diária, perda máxima, metas e dias mínimos. Para outras empresas, você configura as regras do seu contrato.
+Tu riesgo, siempre a la vista|Your risk, always in view|Seu risco, sempre à vista
+Cuánto podés perder hoy, cuánto te queda en total y cuánto falta para pasar de fase, con avisos al 70 %, 90 % y al límite.|How much you can lose today, how much is left overall and how far you are from passing the phase, with alerts at 70%, 90% and the limit.|Quanto você pode perder hoje, quanto resta no total e quanto falta para passar de fase, com avisos em 70%, 90% e no limite.
+El tamaño de posición según tu stop y el riesgo que elegís, con el balance de la cuenta.|Position size from your stop and the risk you choose, using the account balance.|O tamanho da posição conforme seu stop e o risco escolhido, com o saldo da conta.
+Sesiones y noticias|Sessions and news|Sessões e notícias
+Horarios de cada mercado, agenda económica de Forex Factory y gráficos de TradingView.|Market hours, the Forex Factory economic calendar and TradingView charts.|Horários de cada mercado, agenda econômica da Forex Factory e gráficos do TradingView.
+Estadísticas y retiros|Statistics and withdrawals|Estatísticas e saques
+Win rate, drawdown, evolución del balance e historial de retiros de tus cuentas financiadas.|Win rate, drawdown, balance over time and withdrawal history for your funded accounts.|Win rate, drawdown, evolução do saldo e histórico de saques das suas contas financiadas.
+En todos tus dispositivos|On all your devices|Em todos os seus dispositivos
+Tu diario se sincroniza en la nube. Instalalo en el celular como una app.|Your journal syncs to the cloud. Install it on your phone like an app.|Seu diário sincroniza na nuvem. Instale no celular como um app.
+JourFund no está afiliado a ninguna firma de fondeo. Las reglas son una referencia: tu contrato y el dashboard de tu firma siempre mandan.|JourFund is not affiliated with any prop firm. Rules are a reference: your contract and your firm's dashboard always prevail.|O JourFund não é afiliado a nenhuma empresa de financiamento. As regras são uma referência: seu contrato e o dashboard da sua empresa sempre prevalecem.
+¿Qué es JourFund?|What is JourFund?|O que é o JourFund?
+Funciones|Features|Funcionalidades
+Hecho para traders de cuentas de fondeo|Built for prop firm traders|Feito para traders de contas de financiamento
+¿Sabés cuánto podés arriesgar hoy sin quemar la cuenta?|Do you know how much you can risk today without blowing the account?|Você sabe quanto pode arriscar hoje sem queimar a conta?
+Ver cómo funciona ↓|See how it works ↓|Ver como funciona ↓
+Reglas cargadas de|Rules preloaded for|Regras carregadas de
+y configuración manual para otras firmas|and manual setup for other firms|e configuração manual para outras empresas
+Tu límite de pérdida, siempre a la vista|Your loss limit, always in view|Seu limite de perda, sempre à vista
+Cada operación que registrás actualiza cuánto podés perder hoy y en total, y cuánto te falta para pasar de fase.|Every trade you log updates how much you can lose today and overall, and how far you are from passing the phase.|Cada operação registrada atualiza quanto você pode perder hoje e no total, e quanto falta para passar de fase.
+Pérdida diaria y máxima con las reglas de tu firma|Daily and max loss with your firm's rules|Perda diária e máxima com as regras da sua empresa
+Avisos al 70 %, 90 % y al llegar al límite|Alerts at 70%, 90% and at the limit|Avisos em 70%, 90% e ao atingir o limite
+Objetivos y días mínimos de cada fase|Targets and minimum days for each phase|Metas e dias mínimos de cada fase
+Ejemplo|Example|Exemplo
+FundedNext · Challenge $15K · Fase 1|FundedNext · Challenge $15K · Phase 1|FundedNext · Challenge $15K · Fase 1
+Objetivo de la fase|Phase target|Meta da fase
+Aviso: usaste el 70 % de tu pérdida diaria.|Alert: you've used 70% of your daily loss.|Aviso: você usou 70% da sua perda diária.
+Calculá el lotaje antes de entrar|Work out your lot size before you enter|Calcule o lote antes de entrar
+Elegí cuánto arriesgar y JourFund te dice el tamaño de posición para tu stop, con el balance real de la cuenta.|Choose how much to risk and JourFund tells you the position size for your stop, using the account's real balance.|Escolha quanto arriscar e o JourFund mostra o tamanho da posição para o seu stop, com o saldo real da conta.
+Porcentaje o importe fijo de riesgo|Percentage or fixed-amount risk|Risco em percentual ou valor fixo
+Especificaciones editables por bróker|Editable specs per broker|Especificações editáveis por corretora
+Valor del pip, beneficio y pérdida potencial|Pip value, potential profit and loss|Valor do pip, lucro e perda potencial
+Calculadora de lotaje · XAUUSD|Lot size calculator · XAUUSD|Calculadora de lote · XAUUSD
+0,15 lotes|0.15 lots|0,15 lotes
+Sesiones, noticias y gráfico en un solo lugar|Sessions, news and charts in one place|Sessões, notícias e gráfico em um só lugar
+Mirá qué mercados están abiertos, qué noticias vienen hoy y el gráfico del par que operás.|See which markets are open, what news is coming today and the chart of the pair you trade.|Veja quais mercados estão abertos, que notícias vêm hoje e o gráfico do par que você opera.
+Horarios de Sídney, Tokio, Londres y Nueva York|Sydney, Tokyo, London and New York hours|Horários de Sydney, Tóquio, Londres e Nova York
+Agenda económica de Forex Factory con filtros|Forex Factory economic calendar with filters|Agenda econômica da Forex Factory com filtros
+Gráficos de TradingView y tus pares favoritos|TradingView charts and your favorite pairs|Gráficos do TradingView e seus pares favoritos
+Sesiones de hoy · UTC-3|Today's sessions · UTC-3|Sessões de hoje · UTC-3
+Datos de empleo de EE. UU.|US employment data|Dados de emprego dos EUA
+Discurso del BCE|ECB speech|Discurso do BCE
+USD · Alto|USD · High|USD · Alto
+EUR · Medio|EUR · Medium|EUR · Médio
+Win rate, drawdown, rachas y evolución del balance.|Win rate, drawdown, streaks and balance over time.|Win rate, drawdown, sequências e evolução do saldo.
+Historial de retiros y condiciones de cada ciclo.|Withdrawal history and each cycle's conditions.|Histórico de saques e condições de cada ciclo.
+Avisos de riesgo, noticias y recordatorios en tu celular.|Risk alerts, news and reminders on your phone.|Avisos de risco, notícias e lembretes no seu celular.
+Todos tus dispositivos|All your devices|Todos os seus dispositivos
+Se sincroniza en la nube y se instala como app.|Syncs to the cloud and installs like an app.|Sincroniza na nuvem e instala como app.
+Tu próximo challenge empieza con un plan.|Your next challenge starts with a plan.|Seu próximo challenge começa com um plano.
+Creá tu cuenta y cargá tu primera cuenta de fondeo en menos de un minuto.|Create your account and add your first funded account in under a minute.|Crie sua conta e cadastre sua primeira conta de financiamento em menos de um minuto.
+Privacidad|Privacy|Privacidade
+Condiciones|Terms|Termos`;
 const uppercase=new Map();
 for(const row of rows.split('\n')){const [es,en,pt]=row.split('|');dictionary.set(es,{es,en,'pt-BR':pt});uppercase.set(es.toUpperCase(),es);}
 let language='es',selected='es',editorUser=null,lastButton=null;
