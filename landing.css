@@ -311,3 +311,6 @@
 .jf-person p:not(.jf-person-role){margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5}
 @media(max-width:899px){.jf-about{grid-template-columns:1fr;gap:24px}}
 
+
+/* The <head> hides the access screen until this file arrives (see #jf-landing-critical). */
+#ftCloudGate{visibility:visible}
