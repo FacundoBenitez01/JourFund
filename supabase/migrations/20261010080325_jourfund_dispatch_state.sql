@@ -1,4 +1,4 @@
--- Server-only evaluation state for push-dispatch (egress reduction). Applied to production 2026-10-10.
+-- Server-only evaluation state for push-dispatch (egress reduction). Applied to production 2026-10-10 (version 20261010080325).
 create table if not exists public.ft_dispatch_state (
  user_id uuid primary key references auth.users(id) on delete cascade,
  version text,
