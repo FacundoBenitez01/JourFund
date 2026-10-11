@@ -416,7 +416,10 @@ Dispositivos con sesión abierta|Devices signed in|Dispositivos com sessão aber
 Actualizar sesiones|Refresh sessions|Atualizar sessões
 Cerrar otras sesiones|Sign out other sessions|Encerrar outras sessões
 Cerrar todas las sesiones|Sign out all sessions|Encerrar todas as sessões
-Este dispositivo|This device|Este dispositivo`;
+Este dispositivo|This device|Este dispositivo
+Fin de semana: no hay eventos. La agenda de la próxima semana aparece apenas Forex Factory la publique.|Weekend: no events. Next week's calendar shows up as soon as Forex Factory publishes it.|Fim de semana: sem eventos. A agenda da próxima semana aparece assim que a Forex Factory publicar.
+Programas, fases y reglas de la firma|Programs, phases and firm rules|Programas, fases e regras da empresa
+Tu broker, depósitos y metas personales|Your broker, deposits and personal goals|Sua corretora, depósitos e metas pessoais`;
 const uppercase=new Map();
 for(const row of rows.split('\n')){const [es,en,pt]=row.split('|');dictionary.set(es,{es,en,'pt-BR':pt});uppercase.set(es.toUpperCase(),es);}
 let language='es',selected='es',editorUser=null,lastButton=null;
