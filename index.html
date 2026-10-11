@@ -4,6 +4,7 @@
 <meta charset="utf-8"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://s3.tradingview.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://ztkthcqjxptsxgtwfcfx.supabase.co wss://ztkthcqjxptsxgtwfcfx.supabase.co https://*.ingest.sentry.io https://*.ingest.us.sentry.io; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://*.tradingview.com https://*.tradingview-widget.com https://*.forexfactory.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"><link rel="stylesheet" href="./security.css?v=120"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080918"><link rel="icon" type="image/svg+xml" href="./brand-icon.svg?v=92"><link rel="apple-touch-icon" href="./apple-touch-icon.png?v=92"><link rel="manifest" href="manifest.webmanifest?v=92">
 <title>JourFund — Trading Journal</title>
 <style>
+@font-face{font-family:Inter;font-style:normal;font-weight:100 900;font-display:swap;src:url("./vendor/inter/InterVariable.woff2") format("woff2")}
 :root{color-scheme:dark;--surface2:#1d212b;--text:#f4f5f8;--muted:#9da4b2;--green:#32c98a;--red:#ef626c;--amber:#e1ad45;--accent2:#a78bfa}
 .theme-emerald{--bg:#0b1211;--surface:#121b19;--surface2:#192521;--text:#f1f7f4;--muted:#94a69f;--border:#293a35;--green:#35d39a;--red:#f06a70;--amber:#e4b55a;--accent:#18b985;--accent2:#58e0b1}
 .theme-navy{--bg:#0a101b;--surface:#111a29;--surface2:#182337;--text:#f2f5fa;--muted:#91a0b6;--border:#293852;--green:#48d59d;--red:#ef6973;--amber:#e7b65a;--accent:#3f8cff;--accent2:#7ab2ff}
@@ -254,20 +255,175 @@ html{scroll-behavior:smooth}button,input,select,textarea{font-family:inherit}.wr
 <script src="./js/13-ft-pwa-v1.js?v=115"></script>
 <div id="ftCloudBanner" hidden role="status"></div>
 <div id="ftCloudGate" class="show" data-state="checking" role="dialog" aria-modal="true" aria-label="Acceso a JourFund">
- <nav class="jf-landing-nav" aria-label="JourFund"><span class="jf-landing-logo"><img src="./brand-icon.svg?v=92" alt="" width="34" height="34"><b>Jour<span>Fund</span></b></span><div><a href="#jfFeatures">Funciones</a><button type="button" class="jf-landing-secondary" data-jf-action="landing-login">Entrar</button><button type="button" class="jf-landing-primary" data-jf-action="landing-signup">Crear cuenta</button></div></nav>
- <section id="jfLanding" class="jf-landing" aria-labelledby="jfLandingTitle">
-  <div class="jf-hero-copy"><p class="jf-landing-badge"><i></i>Hecho para traders de cuentas de fondeo</p>
-  <h1 id="jfLandingTitle">¿Sabés cuánto podés arriesgar hoy sin quemar la cuenta?</h1>
-  <p class="jf-landing-lead">Registrá tus operaciones y JourFund calcula al instante tu margen de pérdida, tu avance hacia el objetivo y tus condiciones de retiro, con las reglas de tu firma.</p>
-  <div class="jf-landing-cta"><button type="button" class="jf-landing-primary" data-jf-action="landing-signup">Crear cuenta</button><a class="jf-landing-link" href="#jfFeatures">Ver cómo funciona ↓</a></div>
-  <p class="jf-landing-firms"><span>Reglas cargadas de</span><b>FTMO</b><b>FundedNext</b><b>FundingPips</b><span>y configuración manual para otras firmas</span></p></div>
-  <div class="jf-mock jf-hero-mock" aria-hidden="true"><div class="jf-mock-head"><span>FundedNext · Challenge $15K · Fase 1</span><em>Ejemplo</em></div><div class="jf-hero-stats"><div><span>Balance</span><strong>$15.640</strong></div><div><span>P&amp;L de hoy</span><strong class="pos">+$230</strong></div><div><span>Días operados</span><strong>4 / 5</strong></div></div><div class="jf-mock-row"><div class="jf-mock-line"><span>Pérdida diaria disponible</span><strong>$750 <small>/ $750</small></strong></div><div class="jf-mock-bar"><i style="width:100%;background:var(--green,#32c98a)"></i></div></div><div class="jf-mock-row"><div class="jf-mock-line"><span>Pérdida máxima disponible</span><strong>$1.500 <small>/ $1.500</small></strong></div><div class="jf-mock-bar"><i style="width:100%;background:var(--green,#32c98a)"></i></div></div><div class="jf-mock-row"><div class="jf-mock-line"><span>Objetivo de la fase</span><strong>$640 <small>/ $1.200</small></strong></div><div class="jf-mock-bar"><i style="width:53%;background:var(--accent,#8b5cf6)"></i></div></div></div>
- </section>
- <section id="jfFeatures" class="jf-landing-more" aria-label="Funciones de JourFund">
-<div class="jf-feature"><div class="jf-feature-copy"><p class="jf-landing-kicker">Riesgo</p><h2>Tu límite de pérdida, siempre a la vista</h2><p>Cada operación que registrás actualiza cuánto podés perder hoy y en total, y cuánto te falta para pasar de fase.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Pérdida diaria y máxima con las reglas de tu firma</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Avisos al 70 %, 90 % y al llegar al límite</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Objetivos y días mínimos de cada fase</span></li></ul></div><div class="jf-mock" aria-hidden="true"><div class="jf-mock-head"><span>Notificaciones</span><em>Ejemplo</em></div><ul class="jf-mock-notes"><li class="warn"><b>70 % del límite diario utilizado</b><span>Revisá el riesgo antes de volver a operar.</span><time>14:32</time></li><li class="ok"><b>Objetivo de ganancia alcanzado</b><span>Revisá los días mínimos y demás condiciones.</span><time>Ayer</time></li><li><b>Prepará la sesión de Nueva York</b><span>Comienza en unos 15 minutos.</span><time>Ayer</time></li></ul></div></div><div class="jf-feature jf-feature-rev"><div class="jf-feature-copy"><p class="jf-landing-kicker">Herramientas</p><h2>Calculá el lotaje antes de entrar</h2><p>Elegí cuánto arriesgar y JourFund te dice el tamaño de posición para tu stop, con el balance real de la cuenta.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Porcentaje o importe fijo de riesgo</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Especificaciones editables por bróker</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Valor del pip, beneficio y pérdida potencial</span></li></ul></div><div class="jf-mock" aria-hidden="true"><div class="jf-mock-head"><span>Calculadora de lotaje · XAUUSD</span><em>Ejemplo</em></div><dl class="jf-mock-grid"><div><dt>Balance</dt><dd>$15.000</dd></div><div><dt>Riesgo</dt><dd>1 % · $150</dd></div><div><dt>Entrada</dt><dd>2.650,00</dd></div><div><dt>Stop Loss</dt><dd>2.640,00</dd></div></dl><div class="jf-mock-result"><span>Tamaño de posición</span><strong>0,15 lotes</strong></div></div></div><div class="jf-feature"><div class="jf-feature-copy"><p class="jf-landing-kicker">Mercado</p><h2>Sesiones, noticias y gráfico en un solo lugar</h2><p>Mirá qué mercados están abiertos, qué noticias vienen hoy y el gráfico del par que operás.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Horarios de Sídney, Tokio, Londres y Nueva York</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Agenda económica de Forex Factory con filtros</span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Gráficos de TradingView y tus pares favoritos</span></li></ul></div><div class="jf-mock" aria-hidden="true"><div class="jf-mock-head"><span>Sesiones de hoy · UTC-3</span><em>Ejemplo</em></div><div class="jf-mock-sess"><span>Sídney</span><div><i style="left:0%;width:12.5%"></i><i style="left:75%;width:25%"></i></div></div><div class="jf-mock-sess"><span>Tokio</span><div><i style="left:0%;width:25%"></i><i style="left:87.5%;width:12.5%"></i></div></div><div class="jf-mock-sess"><span>Londres</span><div><i style="left:16.7%;width:37.5%"></i></div></div><div class="jf-mock-sess"><span>Nueva York</span><div><i style="left:37.5%;width:37.5%"></i></div></div><ul class="jf-mock-events"><li><time>09:30</time><span>Datos de empleo de EE. UU.</span><b class="hi">USD · Alto</b></li><li><time>11:00</time><span>Discurso del BCE</span><b class="mid">EUR · Medio</b></li></ul></div></div>  <ul class="jf-landing-features"><li class="jf-landing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg><h3>Estadísticas</h3><p>Win rate, drawdown, rachas y evolución del balance.</p></li><li class="jf-landing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20"/><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><h3>Retiros</h3><p>Historial de retiros y condiciones de cada ciclo.</p></li><li class="jf-landing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21h4"/></svg><h3>Notificaciones</h3><p>Avisos de riesgo, noticias y recordatorios en tu celular.</p></li><li class="jf-landing-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><h3>Todos tus dispositivos</h3><p>Se sincroniza en la nube y se instala como app.</p></li></ul>
-  <div class="jf-landing-final"><h2>Tu próximo challenge empieza con un plan.</h2><p>Creá tu cuenta y cargá tu primera cuenta de fondeo en menos de un minuto.</p><button type="button" class="jf-landing-primary" data-jf-action="landing-signup">Crear cuenta</button></div>
-  <footer class="jf-landing-footer"><span class="jf-landing-logo"><img src="./brand-icon.svg?v=92" alt="" width="26" height="26"><b>Jour<span>Fund</span></b></span><nav aria-label="Información legal"><a href="./privacidad.html">Privacidad</a><a href="./condiciones.html">Condiciones</a></nav><p>JourFund no está afiliado a ninguna firma de fondeo. Las reglas son una referencia: tu contrato y el dashboard de tu firma siempre mandan.</p></footer>
- </section>
+  <nav class="jf-landing-nav jf-rise" aria-label="JourFund"><span class="jf-landing-logo"><img src="./brand-icon.svg?v=92" alt="" width="32" height="32"><b>Jour<span>Fund</span></b></span><div><a class="jf-ulink" href="#jfCalc">Calculadora</a><a class="jf-ulink" href="#jfFeatures">Funciones</a><a class="jf-ulink" href="#jfFaq">Preguntas</a><button type="button" class="jf-landing-secondary" data-jf-action="landing-login">Entrar</button><button type="button" class="jf-landing-primary" data-jf-action="landing-signup">Crear cuenta</button></div></nav>
+  <section id="jfLanding" class="jf-landing" aria-labelledby="jfLandingTitle">
+  <div class="jf-hero-copy">
+   <p class="jf-landing-badge jf-rise jf-d1"><i aria-hidden="true"></i><span>Para traders de cuentas de fondeo</span></p>
+   <h1 id="jfLandingTitle"><span class="jf-rise jf-d2">Sabé cuánto podés perder hoy</span> <span class="jf-rise jf-d3 jf-h1-soft">antes de abrir la próxima operación.</span></h1>
+   <p class="jf-landing-lead jf-rise jf-d4">Registrás tus operaciones y JourFund recalcula tu margen diario, tu pérdida máxima y tu avance de fase con las reglas de tu firma.</p>
+   <div class="jf-landing-cta jf-rise jf-d5"><button type="button" class="jf-landing-primary jf-lg" data-jf-action="landing-signup">Crear cuenta</button><a class="jf-landing-secondary jf-lg" href="#jfCalc">Probar la calculadora</a></div>
+   <p class="jf-landing-firms jf-rise jf-d6"><span>Reglas cargadas de</span><b>FTMO</b><b>FundedNext</b><b>FundingPips</b><span>+ cualquier firma a mano</span></p>
+  </div>
+  <div class="jf-hero-visual">
+   <div class="jf-halo" aria-hidden="true"></div>
+   <div class="jf-panel" id="jfHeroPanel" aria-hidden="true">
+    <div class="jf-mock-head"><span>FundedNext · Challenge $15K · Fase 1</span><em>Ejemplo</em></div>
+    <p class="jf-panel-label">Hoy todavía podés perder</p>
+    <p class="jf-panel-big jf-num" data-jf-hero="daily">$520</p>
+    <div class="jf-segs" data-jf-hero="segs"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="jf-panel-used"><span><span>Usaste</span> <b class="jf-num" data-jf-hero="used">$230</b> <span>de $750</span></span><span>Aviso al 70 %</span></div>
+    <div class="jf-trades">
+     <div class="jf-trade-empty" data-jf-hero="empty" hidden>Sin operaciones hoy</div>
+     <div class="jf-trade" data-jf-hero="t1"><span><b>XAUUSD</b> <span>· venta · 10:15</span></span><strong class="jf-num">−$150</strong></div>
+     <div class="jf-trade" data-jf-hero="t2"><span><b>NAS100</b> <span>· compra · 11:40</span></span><strong class="jf-num">−$80</strong></div>
+    </div>
+    <div class="jf-tiles">
+     <div><span>Pérdida máxima</span><strong class="jf-num" data-jf-hero="max">$1.910</strong><small class="jf-ok">disponible</small></div>
+     <div><span>Objetivo</span><strong><span class="jf-num" data-jf-hero="goal">$410</span><small> / 1.200</small></strong><i class="jf-goalbar"><i data-jf-hero="goalbar" style="width:34%"></i></i></div>
+     <div><span>Días operados</span><strong class="jf-num">4<small> / 5</small></strong><small>falta 1</small></div>
+    </div>
+    <div class="jf-panel-tip" data-jf-hero="tip"><span>Próxima al 1 % con stop de $10 en XAUUSD</span><strong class="jf-num">0,15 lotes</strong></div>
+   </div>
+  </div>
+  </section>
+  <section id="jfFeatures" class="jf-landing-more" aria-label="Funciones de JourFund">
+  <div class="jf-tape" aria-label="Qué controla JourFund"><div class="jf-tape-track">
+   <span>Pérdida diaria</span><span>Drawdown estático</span><span>Trailing al cierre</span><span>Trailing por balance</span><span>Trailing por equity</span><span>Regla del mejor día</span><span>Días mínimos</span><span>Objetivo de fase</span><span>Retiros</span><span>Calculadora de lotaje</span><span>Sesiones de mercado</span><span>Forex Factory</span><span>TradingView</span><span>Avisos push</span>
+   <span aria-hidden="true">Pérdida diaria</span><span aria-hidden="true">Drawdown estático</span><span aria-hidden="true">Trailing al cierre</span><span aria-hidden="true">Trailing por balance</span><span aria-hidden="true">Trailing por equity</span><span aria-hidden="true">Regla del mejor día</span><span aria-hidden="true">Días mínimos</span><span aria-hidden="true">Objetivo de fase</span><span aria-hidden="true">Retiros</span><span aria-hidden="true">Calculadora de lotaje</span><span aria-hidden="true">Sesiones de mercado</span><span aria-hidden="true">Forex Factory</span><span aria-hidden="true">TradingView</span><span aria-hidden="true">Avisos push</span>
+  </div></div>
+
+  <div class="jf-wrap jf-sec jf-reveal">
+   <p class="jf-landing-kicker">¿Te pasó?</p>
+   <h2 class="jf-h2">La mayoría de las cuentas no se pierden por una mala estrategia. Se pierden por un número que no estaba a la vista.</h2>
+   <div class="jf-pains">
+    <div class="jf-pain"><p class="jf-pain-q"><span class="jf-strike">Quemaste la cuenta por unos dólares que no sabías que te faltaban.</span></p><p><b>Con JourFund:</b> <span>ves tu margen diario y total exacto antes de cada entrada.</span></p></div>
+    <div class="jf-pain"><p class="jf-pain-q"><span class="jf-strike">Tu Excel dice una cosa y el dashboard de la firma, otra.</span></p><p><b>Con JourFund:</b> <span>el drawdown se calcula como lo hace tu firma, sea estático o trailing.</span></p></div>
+    <div class="jf-pain"><p class="jf-pain-q"><span class="jf-strike">Entraste con lotaje "a ojo" después de dos pérdidas seguidas.</span></p><p><b>Con JourFund:</b> <span>el tamaño de posición sale del riesgo que elegís y tu balance real.</span></p></div>
+   </div>
+  </div>
+
+  <div class="jf-wrap jf-sec jf-reveal">
+   <p class="jf-landing-kicker">Cómo funciona</p>
+   <h2 class="jf-h2">Tres pasos, y el número que importa queda siempre arriba.</h2>
+   <ol class="jf-steps">
+    <li><span class="jf-num">01</span><h3>Cargás tu cuenta</h3><p>Elegís la firma, el tamaño y la fase. Las reglas se completan solas, o las escribís a mano.</p></li>
+    <li><span class="jf-num">02</span><h3>Registrás cada operación</h3><p>Resultado, par y capturas. Desde la compu o el celular, se sincroniza en la nube.</p></li>
+    <li><span class="jf-num">03</span><h3>Ves tu margen al instante</h3><p>Pérdida diaria y máxima, objetivo y retiros, con avisos al 70 %, al 90 % y al límite.</p></li>
+   </ol>
+  </div>
+
+  <div class="jf-band">
+  <div class="jf-wrap jf-sec jf-reveal">
+   <p class="jf-landing-kicker">Drawdown sin confusiones</p>
+   <h2 class="jf-h2">Mismo balance, tres márgenes distintos.</h2>
+   <p class="jf-sub">Cada firma mide el piso de tu cuenta a su manera. Si lo calculás con la regla equivocada, creés que te queda más margen del que tenés. JourFund usa la regla de tu firma.</p>
+   <div class="jf-dd">
+    <div class="jf-dd-side">
+     <div class="jf-dd-tabs" role="group" aria-label="Tipo de drawdown">
+      <button type="button" data-jf-dd="0" aria-pressed="false"><b>Estático</b><span>El piso queda fijo en el capital inicial menos el 10 %.</span></button>
+      <button type="button" data-jf-dd="1" aria-pressed="true"><b>Trailing al cierre</b><span>El piso sube con tu mejor cierre del día y no vuelve a bajar.</span></button>
+      <button type="button" data-jf-dd="2" aria-pressed="false"><b>Trailing por equity</b><span>Sigue tu máximo flotante, aunque después la operación cierre más abajo.</span></button>
+     </div>
+     <div class="jf-dd-stats"><div><span>Margen disponible</span><strong class="jf-num jf-warn" data-jf-dd-out="margin">$1.300</strong></div><div><span>Piso actual</span><strong class="jf-num" data-jf-dd-out="floor">$14.500</strong></div></div>
+    </div>
+    <div class="jf-dd-chart">
+     <svg viewBox="0 0 640 290" role="img" aria-label="Ejemplo de balance y piso de pérdida máxima en ocho días">
+      <line class="jf-dd-cap" x1="40" y1="155.7" x2="600" y2="155.7"/>
+      <text class="jf-dd-caplabel" x="560" y="173.7" text-anchor="end">Capital inicial $15.000</text>
+      <path class="jf-dd-area" data-jf-dd-path="area" d=""/>
+      <path class="jf-dd-floor" data-jf-dd-path="floor" d=""/>
+      <path class="jf-dd-bal" data-jf-dd-path="bal" pathLength="1" d=""/>
+      <g data-jf-dd-path="dots"></g>
+      <path class="jf-dd-bracket" data-jf-dd-path="bracket" d=""/>
+      <g class="jf-dd-days" data-jf-dd-path="days"></g>
+     </svg>
+     <div class="jf-legend"><span><i class="jf-lg-bal"></i>Tu balance al cierre</span><span><i class="jf-lg-floor"></i>Piso de pérdida máxima</span><span><i class="jf-lg-area"></i>Tu margen</span></div>
+     <p class="jf-note">Ejemplo: cuenta de $15.000 con pérdida máxima del 10 %. Los números son ilustrativos.</p>
+    </div>
+   </div>
+  </div>
+  </div>
+
+  <div id="jfCalc" class="jf-wrap jf-sec jf-reveal jf-calc-sec">
+   <div class="jf-calc-copy">
+    <p class="jf-landing-kicker">Probalo ahora, sin cuenta</p>
+    <h2 class="jf-h2">¿Con cuántos lotes entrás?</h2>
+    <p class="jf-sub">Mové los controles. Es la misma cuenta que hace JourFund antes de cada operación, pero adentro de la app usa tu balance real y las especificaciones de tu bróker.</p>
+   </div>
+   <div class="jf-calc">
+    <div class="jf-calc-insts" role="group" aria-label="Instrumento"><button type="button" data-jf-inst="XAUUSD" aria-pressed="true">Oro · XAUUSD</button><button type="button" data-jf-inst="EURUSD" aria-pressed="false">EUR/USD</button></div>
+    <div class="jf-calc-field"><div><label for="jfCalcBal">Balance de la cuenta</label><output class="jf-num" for="jfCalcBal" data-jf-calc-out="bal">$15.000</output></div><input id="jfCalcBal" type="range" min="5000" max="200000" step="5000" value="15000"></div>
+    <div class="jf-calc-field"><div><label for="jfCalcRisk">Riesgo por operación</label><output class="jf-num" for="jfCalcRisk" data-jf-calc-out="risk">1 %</output></div><input id="jfCalcRisk" type="range" min="0.25" max="3" step="0.25" value="1"></div>
+    <div class="jf-calc-field"><div><label for="jfCalcStop" data-jf-calc-out="stopLabel">Distancia del stop (en $ de precio)</label><output class="jf-num" for="jfCalcStop" data-jf-calc-out="stop">$10</output></div><input id="jfCalcStop" type="range" min="1" max="50" step="1" value="10"></div>
+    <div class="jf-calc-result" aria-live="polite"><span>Tamaño de posición</span><strong class="jf-num"><span data-jf-calc-out="lots">0,15</span> <span>lotes</span></strong></div>
+    <div class="jf-calc-tiles"><div><span>Arriesgás</span><strong class="jf-num" data-jf-calc-out="usd">$150</strong></div><div><span>De un límite diario del 5 %</span><strong class="jf-num jf-ok" data-jf-calc-out="share">20 %</strong></div></div>
+    <p class="jf-note">Ejemplo con contrato estándar: oro 100 oz por lote, EUR/USD $10 por pip. Verificá las especificaciones de tu bróker.</p>
+   </div>
+  </div>
+
+  <div class="jf-wrap jf-sec jf-reveal">
+   <p class="jf-landing-kicker">Todo en un lugar</p>
+   <h2 class="jf-h2">Lo que tenías repartido en cinco pestañas.</h2>
+   <div class="jf-bento">
+    <div class="jf-card jf-b7 jf-card-alerts">
+     <div class="jf-card-copy"><h3>Avisos en tu celular, antes de que sea tarde</h3><p>JourFund se instala como app y te avisa aunque no la tengas abierta.</p>
+      <ul class="jf-chips"><li class="c-amber">70 % del límite</li><li class="c-red">90 % y al límite</li><li class="c-green">Objetivo alcanzado</li><li class="c-violet">Antes de cada sesión</li><li>Noticias de alto impacto</li></ul></div>
+     <div class="jf-phone" aria-hidden="true"><i class="jf-notch"></i><p class="jf-phone-date">sábado 11 de octubre</p><p class="jf-phone-time jf-num">14:32</p>
+      <div class="jf-push p-amber"><small><span>JOURFUND</span><span>ahora</span></small><b>70 % del límite diario utilizado</b><span>Te quedan $225 para hoy.</span></div>
+      <div class="jf-push p-green"><small><span>JOURFUND</span><span>ayer</span></small><b>Objetivo de la fase alcanzado</b></div>
+      <div class="jf-push p-violet"><small><span>JOURFUND</span><span>ayer</span></small><b>Nueva York abre en 15 minutos</b></div>
+     </div>
+    </div>
+    <div class="jf-card jf-b5 jf-card-stats">
+     <div class="jf-card-top"><h3>Estadísticas</h3><em>Ejemplo</em></div><p>Win rate, drawdown, rachas y la curva de tu balance.</p>
+     <div class="jf-kpis"><div><span>Win rate</span><strong class="jf-num">58 %</strong></div><div><span>Drawdown máx.</span><strong class="jf-num jf-warn">3,1 %</strong></div><div><span>Mejor racha</span><strong class="jf-num jf-ok">5</strong></div></div>
+     <svg class="jf-curve" viewBox="0 0 300 120" aria-hidden="true"><defs><linearGradient id="jfCurveFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".35"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><path class="jf-curve-area" d="M0 100 L40 92 L70 96 L110 70 L150 76 L190 50 L230 58 L270 30 L292 24 L292 120 L0 120 Z" fill="url(#jfCurveFill)"/><path class="jf-curve-line" pathLength="1" d="M0 100 L40 92 L70 96 L110 70 L150 76 L190 50 L230 58 L270 30 L292 24"/><circle class="jf-curve-pulse" cx="292" cy="24" r="10"/><circle cx="292" cy="24" r="4.5" fill="#f2f1f7"/></svg>
+    </div>
+    <div class="jf-card jf-b5">
+     <div class="jf-card-top"><h3>Sesiones y noticias</h3><em>Ejemplo</em></div><p>Qué mercados están abiertos, qué noticias vienen y el gráfico de TradingView.</p>
+     <div class="jf-sess" aria-hidden="true">
+      <div><span>Sídney</span><div><i style="left:0;width:12.5%"></i><i style="left:75%;width:25%"></i></div></div>
+      <div><span>Tokio</span><div><i class="s2" style="left:0;width:25%"></i><i class="s2" style="left:87.5%;width:12.5%"></i></div></div>
+      <div><span>Londres</span><div><i class="s3" style="left:16.7%;width:37.5%"></i></div></div>
+      <div><span>Nueva York</span><div><i class="s4" style="left:37.5%;width:37.5%"></i></div></div>
+      <div class="jf-now-track"><i class="jf-now"><b>AHORA</b></i></div>
+     </div>
+     <ul class="jf-news"><li><time class="jf-num">09:30</time><span>Datos de empleo de EE. UU.</span><b class="hi">USD · Alto</b></li><li><time class="jf-num">11:00</time><span>Discurso del BCE</span><b class="mid">EUR · Medio</b></li></ul>
+    </div>
+    <div class="jf-card jf-b4">
+     <div class="jf-card-top"><h3>Retiros</h3><em>Ejemplo</em></div><p>Sabé cuándo podés cobrar y qué condiciones te faltan.</p>
+     <div class="jf-payout"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" class="jf-ring-bg"/><circle cx="50" cy="50" r="42" class="jf-ring" transform="rotate(-90 50 50)"/><text x="50" y="49" text-anchor="middle" class="jf-ring-n">10</text><text x="50" y="65" text-anchor="middle" class="jf-ring-s">de 14 días</text></svg><div><span>Próximo retiro</span><strong>en 4 días</strong></div></div>
+     <ul class="jf-checks"><li class="ok">Mejor día por debajo del 50 %</li><li class="ok">Días mínimos operados</li><li>Ciclo de 14 días</li></ul>
+    </div>
+    <div class="jf-card jf-b3 jf-stack">
+     <h3>Varias cuentas</h3><p>Cada una con las reglas de su firma.</p>
+     <div class="jf-accts" aria-hidden="true">
+      <div class="jf-acct a3"><div><b>FundingPips</b><em class="g">Fondeada</em></div><span>$50K · Fondeada</span><i><i style="width:62%;background:#34c98a"></i></i></div>
+      <div class="jf-acct a2"><div><b>FTMO</b><em class="v">Fase 2</em></div><span>$100K · Fase 2</span><i><i style="width:45%;background:#a78bfa"></i></i></div>
+      <div class="jf-acct a1"><div><b>FundedNext</b><em class="a">Fase 1</em></div><span>$15K · Fase 1</span><i><i style="width:34%;background:#e7b04a"></i></i></div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <div class="jf-band">
+  <div id="jfFaq" class="jf-wrap jf-sec jf-narrow jf-reveal">
+   <p class="jf-landing-kicker">Preguntas frecuentes</p>
+   <h2 class="jf-h2">Lo que nos preguntan antes de empezar.</h2>
+   <div class="jf-faq">
+    <details><summary>¿Qué firmas de fondeo soporta?<i aria-hidden="true">+</i></summary><p>FTMO, FundedNext y FundingPips vienen con sus reglas cargadas. Para cualquier otra firma, cargás los límites a mano en un minuto.</p></details>
+    <details><summary>¿Reemplaza el dashboard de mi firma?<i aria-hidden="true">+</i></summary><p>No. JourFund te ayuda a planificar y a ver tu margen, pero tu contrato y el dashboard de la firma siempre mandan.</p></details>
+    <details><summary>¿Funciona en el celular?<i aria-hidden="true">+</i></summary><p>Sí. Se instala como app en el celular y en la compu, y tus datos se sincronizan en la nube entre dispositivos.</p></details>
+    <details><summary>¿Tengo que conectar mi cuenta de trading?<i aria-hidden="true">+</i></summary><p>No. Registrás tus operaciones vos, sin compartir contraseñas de tu bróker ni de tu firma.</p></details>
+   </div>
+  </div>
+  </div>
+
+  <div class="jf-wrap jf-sec jf-reveal">
+   <div class="jf-landing-final"><div class="jf-halo" aria-hidden="true"></div><div><h2>Tu próximo challenge empieza con un plan.</h2><p>Creá tu cuenta y cargá tu primera cuenta de fondeo en menos de un minuto.</p></div><button type="button" class="jf-landing-primary jf-lg" data-jf-action="landing-signup">Crear cuenta</button></div>
+  </div>
+  <footer class="jf-landing-footer jf-wrap"><span class="jf-landing-logo"><img src="./brand-icon.svg?v=92" alt="" width="26" height="26"><b>Jour<span>Fund</span></b></span><nav aria-label="Información legal"><a href="./privacidad.html">Privacidad</a><a href="./condiciones.html">Condiciones</a></nav><p>JourFund no está afiliado a ninguna firma de fondeo. Las reglas son una referencia: tu contrato y el dashboard de tu firma siempre mandan.</p></footer>
+  </section>
  <div class="jf-auth-backdrop" data-jf-action="landing-close" aria-hidden="true"></div>
  <div class="ft-cloud-box">
   <button type="button" class="jf-auth-close" data-jf-action="landing-close" aria-label="Cerrar">×</button>
@@ -443,7 +599,7 @@ body,#app{background:radial-gradient(ellipse at 75% 0%,color-mix(in srgb,var(--a
 .sidebar{isolation:isolate;overflow:hidden}.sidebar:before{content:'';position:absolute;inset:40% 0 0;z-index:-1;background-image:linear-gradient(180deg,var(--bg),transparent 70%),var(--ft61-sidebar-scene);background-position:center,65% center;background-size:cover;opacity:.22;filter:hue-rotate(var(--art-hue));pointer-events:none}.sidebar:after{z-index:-1}
 </style><script src="./js/23-ft-pages-ui-v63.js?v=115"></script><script src="./js/24-ft-ledger-core.js?v=115"></script><script src="./js/25-ft-ledger-ui.js?v=115"></script><script src="./js/26-ft-notifications-engine.js?v=115"></script><script src="./js/27-ft-alert-planner.js?v=115"></script><script src="./js/28-ft-notifications.js?v=115"></script><script src="./js/29-ft65sessionscript.js?v=115"></script>
 <script src="./js/30-ft66recoveryui.js?v=115"></script><script src="./js/31-ft67polish.js?v=115"></script><script src="./js/32-ft69events.js?v=115"></script>
-<script src="./js/33-ft70groups.js?v=115"></script><dialog id="ft73Viewer"><header><h3>Capturas de la operación</h3><button type="button" class="btn" id="ft73ViewerClose">Cerrar</button></header><div class="ft73-view-body"></div></dialog><script src="./js/34-inline.js?v=115"></script><link rel="stylesheet" href="./tools.css?v=115"><script src="./tools-engine.js"></script><script src="./tools.js?v=115"></script><link rel="stylesheet" href="./weekly.css"><script src="./weekly.js?v=114"></script><link rel="stylesheet" href="./accounts-overview.css"><script src="./account-delete.js"></script><script src="./accounts-overview.js?v=100"></script><link rel="stylesheet" href="./owner-badge.css"><script src="./owner-badge.js?v=111"></script><link rel="stylesheet" href="./mobile-navigation.css?v=114"><script src="./mobile-navigation.js"></script><datalist id="ft84Assets"><option value="XAUUSD">Oro / Dólar</option><option value="XAGUSD">Plata / Dólar</option><option value="SP500">S&amp;P 500 · US500</option><option value="NAS100">Nasdaq 100 · US100</option><option value="EURUSD">EUR / USD</option><option value="GBPUSD">GBP / USD</option><option value="USDJPY">USD / JPY</option><option value="USDCHF">USD / CHF</option><option value="USDCAD">USD / CAD</option><option value="AUDUSD">AUD / USD</option><option value="NZDUSD">NZD / USD</option><option value="EURGBP">EUR / GBP</option><option value="EURJPY">EUR / JPY</option><option value="EURCHF">EUR / CHF</option><option value="EURCAD">EUR / CAD</option><option value="EURAUD">EUR / AUD</option><option value="EURNZD">EUR / NZD</option><option value="GBPJPY">GBP / JPY</option><option value="GBPCHF">GBP / CHF</option><option value="GBPCAD">GBP / CAD</option><option value="GBPAUD">GBP / AUD</option><option value="GBPNZD">GBP / NZD</option><option value="AUDJPY">AUD / JPY</option><option value="AUDCHF">AUD / CHF</option><option value="AUDCAD">AUD / CAD</option><option value="AUDNZD">AUD / NZD</option><option value="NZDJPY">NZD / JPY</option><option value="NZDCHF">NZD / CHF</option><option value="NZDCAD">NZD / CAD</option><option value="CADJPY">CAD / JPY</option><option value="CADCHF">CAD / CHF</option><option value="CHFJPY">CHF / JPY</option><option value="USDSGD">USD / SGD</option><option value="USDHKD">USD / HKD</option><option value="USDCNH">USD / CNH</option><option value="USDNOK">USD / NOK</option><option value="USDSEK">USD / SEK</option><option value="USDDKK">USD / DKK</option><option value="USDMXN">USD / MXN</option><option value="USDZAR">USD / ZAR</option><option value="USDTRY">USD / TRY</option><option value="USDPLN">USD / PLN</option><option value="USDHUF">USD / HUF</option><option value="USDCZK">USD / CZK</option><option value="EURSGD">EUR / SGD</option><option value="EURHKD">EUR / HKD</option><option value="EURCNH">EUR / CNH</option><option value="EURNOK">EUR / NOK</option><option value="EURSEK">EUR / SEK</option><option value="EURDKK">EUR / DKK</option><option value="EURTRY">EUR / TRY</option><option value="EURPLN">EUR / PLN</option><option value="EURHUF">EUR / HUF</option><option value="EURCZK">EUR / CZK</option><option value="SGDJPY">SGD / JPY</option><option value="HKDJPY">HKD / JPY</option><option value="CNHJPY">CNH / JPY</option><option value="NOKJPY">NOK / JPY</option><option value="SEKJPY">SEK / JPY</option><option value="ZARJPY">ZAR / JPY</option><option value="TRYJPY">TRY / JPY</option><option value="BTCUSD">Bitcoin / Dólar</option></datalist><style>.ft-market-select-label{display:block;font-size:12px;color:var(--muted);margin:12px 0}.ft-market-select-label select{display:block;width:100%;min-width:0;min-height:44px;margin-top:6px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface2);color:var(--text);font:inherit;font-size:16px}</style><script src="./js/35-inline.js?v=115"></script><link rel="stylesheet" href="./auth-motion.css?v=92"><link rel="stylesheet" href="./landing.css?v=124"><script src="./auth-motion.js?v=92"></script><style id="ft-mobile-header-v88">
+<script src="./js/33-ft70groups.js?v=115"></script><dialog id="ft73Viewer"><header><h3>Capturas de la operación</h3><button type="button" class="btn" id="ft73ViewerClose">Cerrar</button></header><div class="ft73-view-body"></div></dialog><script src="./js/34-inline.js?v=115"></script><link rel="stylesheet" href="./tools.css?v=115"><script src="./tools-engine.js"></script><script src="./tools.js?v=115"></script><link rel="stylesheet" href="./weekly.css"><script src="./weekly.js?v=114"></script><link rel="stylesheet" href="./accounts-overview.css"><script src="./account-delete.js"></script><script src="./accounts-overview.js?v=100"></script><link rel="stylesheet" href="./owner-badge.css"><script src="./owner-badge.js?v=111"></script><link rel="stylesheet" href="./mobile-navigation.css?v=114"><script src="./mobile-navigation.js"></script><datalist id="ft84Assets"><option value="XAUUSD">Oro / Dólar</option><option value="XAGUSD">Plata / Dólar</option><option value="SP500">S&amp;P 500 · US500</option><option value="NAS100">Nasdaq 100 · US100</option><option value="EURUSD">EUR / USD</option><option value="GBPUSD">GBP / USD</option><option value="USDJPY">USD / JPY</option><option value="USDCHF">USD / CHF</option><option value="USDCAD">USD / CAD</option><option value="AUDUSD">AUD / USD</option><option value="NZDUSD">NZD / USD</option><option value="EURGBP">EUR / GBP</option><option value="EURJPY">EUR / JPY</option><option value="EURCHF">EUR / CHF</option><option value="EURCAD">EUR / CAD</option><option value="EURAUD">EUR / AUD</option><option value="EURNZD">EUR / NZD</option><option value="GBPJPY">GBP / JPY</option><option value="GBPCHF">GBP / CHF</option><option value="GBPCAD">GBP / CAD</option><option value="GBPAUD">GBP / AUD</option><option value="GBPNZD">GBP / NZD</option><option value="AUDJPY">AUD / JPY</option><option value="AUDCHF">AUD / CHF</option><option value="AUDCAD">AUD / CAD</option><option value="AUDNZD">AUD / NZD</option><option value="NZDJPY">NZD / JPY</option><option value="NZDCHF">NZD / CHF</option><option value="NZDCAD">NZD / CAD</option><option value="CADJPY">CAD / JPY</option><option value="CADCHF">CAD / CHF</option><option value="CHFJPY">CHF / JPY</option><option value="USDSGD">USD / SGD</option><option value="USDHKD">USD / HKD</option><option value="USDCNH">USD / CNH</option><option value="USDNOK">USD / NOK</option><option value="USDSEK">USD / SEK</option><option value="USDDKK">USD / DKK</option><option value="USDMXN">USD / MXN</option><option value="USDZAR">USD / ZAR</option><option value="USDTRY">USD / TRY</option><option value="USDPLN">USD / PLN</option><option value="USDHUF">USD / HUF</option><option value="USDCZK">USD / CZK</option><option value="EURSGD">EUR / SGD</option><option value="EURHKD">EUR / HKD</option><option value="EURCNH">EUR / CNH</option><option value="EURNOK">EUR / NOK</option><option value="EURSEK">EUR / SEK</option><option value="EURDKK">EUR / DKK</option><option value="EURTRY">EUR / TRY</option><option value="EURPLN">EUR / PLN</option><option value="EURHUF">EUR / HUF</option><option value="EURCZK">EUR / CZK</option><option value="SGDJPY">SGD / JPY</option><option value="HKDJPY">HKD / JPY</option><option value="CNHJPY">CNH / JPY</option><option value="NOKJPY">NOK / JPY</option><option value="SEKJPY">SEK / JPY</option><option value="ZARJPY">ZAR / JPY</option><option value="TRYJPY">TRY / JPY</option><option value="BTCUSD">Bitcoin / Dólar</option></datalist><style>.ft-market-select-label{display:block;font-size:12px;color:var(--muted);margin:12px 0}.ft-market-select-label select{display:block;width:100%;min-width:0;min-height:44px;margin-top:6px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface2);color:var(--text);font:inherit;font-size:16px}</style><script src="./js/35-inline.js?v=115"></script><link rel="stylesheet" href="./auth-motion.css?v=92"><link rel="stylesheet" href="./landing.css?v=125"><script src="./auth-motion.js?v=92"></script><script src="./js/landing-motion.js?v=125"></script><style id="ft-mobile-header-v88">
 /* Keep the real desktop header and controls; only arrange the mobile header. */
 @media(max-width:700px){
 #app .top{grid-template-columns:minmax(0,1fr) 44px!important;column-gap:10px!important;row-gap:16px!important;}
@@ -468,7 +624,7 @@ body,#app{background:radial-gradient(ellipse at 75% 0%,color-mix(in srgb,var(--a
 .side-brand-mark{background:none!important;width:38px;height:38px}
 .side-brand-mark img{display:block;width:100%;height:100%;object-fit:contain}
 .brand h1,.side-brand-name,.ft57-word,.ft86-word,.ft86-load-screen strong{font-weight:800;letter-spacing:-.045em}
-</style><link rel="stylesheet" href="./mobile-home.css?v=93"><script src="./mobile-home.js?v=93"></script><link rel="stylesheet" href="./my-account.css?v=94"><script src="./my-account.js?v=112"></script><link rel="stylesheet" href="./navigation-motion.css?v=96"><script src="./navigation-motion.js?v=96"></script><link rel="stylesheet" href="./settings-redesign.css?v=98"><script src="./settings-redesign.js?v=98"></script><link rel="stylesheet" href="./accounts-compact.css?v=99"><script src="./accounts-compact.js?v=110"></script><script src="./language.js?v=124"></script>
+</style><link rel="stylesheet" href="./mobile-home.css?v=93"><script src="./mobile-home.js?v=93"></script><link rel="stylesheet" href="./my-account.css?v=94"><script src="./my-account.js?v=112"></script><link rel="stylesheet" href="./navigation-motion.css?v=96"><script src="./navigation-motion.js?v=96"></script><link rel="stylesheet" href="./settings-redesign.css?v=98"><script src="./settings-redesign.js?v=98"></script><link rel="stylesheet" href="./accounts-compact.css?v=99"><script src="./accounts-compact.js?v=110"></script><script src="./language.js?v=125"></script>
 <link rel="stylesheet" href="./statistics.css?v=105"><script src="./statistics-engine.js?v=105"></script><script src="./statistics.js?v=105"></script><link rel="stylesheet" href="./risk-redesign.css?v=106"><script src="./risk-redesign.js?v=107"></script><script src="./js/actions.js?v=124"></script>
 </body></html>
 
