@@ -1,7 +1,19 @@
-/* Public presentation around the login box, shown only to visitors who are not signed in. */
-#ftCloudGate .jf-landing,#ftCloudGate .jf-landing-nav,#ftCloudGate .jf-landing-more,#ftCloudGate .jf-landing-more-link{display:none}
-#ftCloudGate[data-state="login"] .jf-landing,#ftCloudGate[data-state="login"] .jf-landing-more{display:block}
-#ftCloudGate[data-state="login"]{gap:32px;justify-content:center;scroll-behavior:smooth;background:radial-gradient(1100px 620px at 72% -8%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 70%) no-repeat,var(--bg);background-attachment:local}
+/* Public presentation for visitors who are not signed in. The sign-in box stays hidden until they ask for it. */
+#ftCloudGate .jf-landing,#ftCloudGate .jf-landing-nav,#ftCloudGate .jf-landing-more,#ftCloudGate .jf-auth-backdrop,#ftCloudGate .jf-auth-close{display:none}
+#ftCloudGate[data-state="login"]{display:block;padding:0 24px;scroll-behavior:smooth;background:radial-gradient(1100px 620px at 72% -8%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 70%) no-repeat,var(--bg);background-attachment:local}
+#ftCloudGate[data-state="login"] .jf-landing-nav{display:flex;max-width:1200px;margin:0 auto;padding:16px 0}
+#ftCloudGate[data-state="login"] .jf-landing{display:grid;max-width:1200px;margin:0 auto}
+#ftCloudGate[data-state="login"] .jf-landing-more{display:block;max-width:1200px;margin:0 auto}
+#ftCloudGate[data-state="login"]:not(.jf-auth-open) .ft-cloud-box{display:none}
+/* Sign-in dialog */
+#ftCloudGate[data-state="login"].jf-auth-open{overflow:hidden}
+#ftCloudGate[data-state="login"].jf-auth-open .jf-auth-backdrop{display:block;position:fixed;inset:0;z-index:2;background:#05070dcc;backdrop-filter:blur(6px)}
+#ftCloudGate[data-state="login"].jf-auth-open .ft-cloud-box{position:fixed;z-index:3;top:50%;left:50%;transform:translate(-50%,-50%);width:min(440px,calc(100% - 32px));max-height:calc(100dvh - 32px);min-height:0;overflow-y:auto;padding-top:28px;border-radius:24px;box-shadow:0 40px 120px #000a;animation:jfAuthIn .22s cubic-bezier(.22,1,.36,1)}
+#ftCloudGate[data-state="login"].jf-auth-open .ft85-auth-hero{display:none}
+#ftCloudGate[data-state="login"].jf-auth-open .jf-auth-close{display:grid;place-items:center;position:absolute;top:12px;right:12px;width:44px;height:44px;border:0;border-radius:12px;background:transparent;color:var(--muted);font-size:26px;line-height:1;cursor:pointer}
+#ftCloudGate .jf-auth-close:hover{color:#fff;background:color-mix(in srgb,var(--border) 60%,transparent)}
+@keyframes jfAuthIn{from{opacity:0;transform:translate(-50%,-46%)}to{opacity:1;transform:translate(-50%,-50%)}}
+@media(prefers-reduced-motion:reduce){#ftCloudGate[data-state="login"].jf-auth-open .ft-cloud-box{animation:none}}
 .jf-landing,.jf-landing-more{color:var(--text);text-align:left;box-sizing:border-box}
 .jf-landing-kicker{margin:0;color:var(--accent2,#a78bfa);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
 .jf-landing-badge{display:inline-flex;align-items:center;gap:8px;margin:0;padding:7px 14px;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:99px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:#d6c9ff;font-size:13px;font-weight:600}
@@ -65,27 +77,32 @@
 .jf-landing-footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin-top:32px;padding:24px 0 32px;border-top:1px solid color-mix(in srgb,var(--border) 60%,transparent)}
 .jf-landing-footer nav{display:flex;gap:18px}.jf-landing-footer a{color:#c5cad6;font-size:14px}
 .jf-landing-footer p{flex-basis:100%;margin:0;color:var(--muted);font-size:12px;line-height:1.5}
-/* Wide screens: nav on top, presentation left, login right, then the full-width sections. */
-@media(min-width:900px){
- #ftCloudGate[data-state="login"]{flex-direction:row;flex-wrap:wrap;align-items:center;align-content:flex-start;padding:0 40px}
- #ftCloudGate[data-state="login"] .jf-landing-nav{display:flex;order:-1;flex:0 0 min(1200px,100%);padding:18px 0 0}
- #ftCloudGate[data-state="login"] .ft-cloud-box{width:min(440px,100%);flex:0 0 auto}
- /* The nav already shows the logo: drop the box's brand header so the login is compact. */
- #ftCloudGate[data-state="login"] .ft85-auth-hero{display:none}
- #ftCloudGate[data-state="login"] .ft-cloud-box{padding-top:28px}
- #ftCloudGate[data-state="login"] .jf-landing{flex:1 1 380px;max-width:680px}
- #ftCloudGate[data-state="login"] .jf-landing-more{order:3;flex:0 0 min(1200px,100%)}
-}
-/* Phones and tablets: login first, the presentation follows below. */
+/* Hero: copy on the left, product example on the right. */
+#jfLanding{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center;padding:40px 0 48px}
+.jf-hero-mock{box-shadow:0 40px 120px #0008}
+.jf-hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.jf-hero-stats div{padding:12px;border:1px solid var(--border);border-radius:12px}
+.jf-hero-stats span{display:block;color:var(--muted);font-size:12px}
+.jf-hero-stats strong{display:block;margin-top:4px;color:#f5f4fb;font-size:18px;font-variant-numeric:tabular-nums}
+.jf-hero-stats .pos{color:var(--green,#32c98a)}
+.jf-mock-notes{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.jf-mock-notes li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 14px;border:1px solid var(--border);border-left:3px solid var(--accent,#8b5cf6);border-radius:12px}
+.jf-mock-notes li.warn{border-left-color:#f5a524}.jf-mock-notes li.ok{border-left-color:var(--green,#32c98a)}
+.jf-mock-notes b{color:#f5f4fb;font-size:14px}.jf-mock-notes span{grid-column:1;color:var(--muted);font-size:13px}
+.jf-mock-notes time{grid-row:1;grid-column:2;color:var(--muted);font-size:12px}
 @media(max-width:899px){
- #ftCloudGate[data-state="login"]{flex-direction:column;flex-wrap:nowrap;align-items:center;justify-content:flex-start}
- #ftCloudGate[data-state="login"] .ft-cloud-box{flex-shrink:0;min-height:0}
- #ftCloudGate[data-state="login"] .jf-landing,#ftCloudGate[data-state="login"] .jf-landing-more{order:2;flex-shrink:0;width:min(640px,100%);padding:8px 20px 0}
- #ftCloudGate[data-state="login"] .jf-landing-more{order:3;padding-bottom:8px}
- #ftCloudGate[data-state="login"] .jf-landing-more-link{display:inline-block;margin-top:12px;color:var(--accent2,#a78bfa);font-size:14px;font-weight:600}
- #ftCloudGate[data-state="login"] .jf-landing-cta .jf-landing-primary{display:none}
+ #jfLanding{grid-template-columns:1fr;gap:28px;padding:20px 0 32px}
  .jf-feature{grid-template-columns:1fr;gap:24px;padding:32px 0}
  .jf-feature-rev .jf-feature-copy{order:0}
  .jf-landing-features{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-@media(max-width:560px){.jf-landing-feature{padding:14px}.jf-landing-feature p{font-size:12px}.jf-landing-lead{font-size:16px}.jf-landing-final{padding:36px 20px}}
+@media(max-width:560px){
+ #ftCloudGate[data-state="login"]{padding:0 16px}
+ .jf-landing-nav>div>a{display:none}
+ .jf-landing-nav .jf-landing-primary,.jf-landing-nav .jf-landing-secondary{min-height:44px;padding:0 14px;font-size:14px}
+ .jf-landing-logo{font-size:18px}.jf-landing-logo img{width:30px;height:30px}
+ .jf-landing-lead{font-size:16px}.jf-landing-final{padding:32px 18px}
+ .jf-landing-feature{padding:14px}.jf-landing-feature p{font-size:12px}
+ .jf-hero-stats strong{font-size:16px}
+ #ftCloudGate[data-state="login"].jf-auth-open .ft-cloud-box{width:100%;max-height:100dvh;height:100dvh;border-radius:0;top:0;left:0;transform:none;animation:none}
+}

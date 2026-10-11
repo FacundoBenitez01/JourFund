@@ -759,7 +759,15 @@ Se sincroniza en la nube y se instala como app.|Syncs to the cloud and installs 
 Tu próximo challenge empieza con un plan.|Your next challenge starts with a plan.|Seu próximo challenge começa com um plano.
 Creá tu cuenta y cargá tu primera cuenta de fondeo en menos de un minuto.|Create your account and add your first funded account in under a minute.|Crie sua conta e cadastre sua primeira conta de financiamento em menos de um minuto.
 Privacidad|Privacy|Privacidade
-Condiciones|Terms|Termos`;
+Condiciones|Terms|Termos
+P&L de hoy|Today's P&L|P&L de hoje
+70 % del límite diario utilizado|70% of daily limit used|70% do limite diário usado
+Revisá el riesgo antes de volver a operar.|Review your risk before trading again.|Revise o risco antes de voltar a operar.
+Objetivo de ganancia alcanzado|Profit target reached|Meta de lucro alcançada
+Revisá los días mínimos y demás condiciones.|Check the minimum days and other conditions.|Verifique os dias mínimos e demais condições.
+Prepará la sesión de Nueva York|Get ready for the New York session|Prepare a sessão de Nova York
+Comienza en unos 15 minutos.|Starts in about 15 minutes.|Começa em uns 15 minutos.
+Ayer|Yesterday|Ontem`;
 const uppercase=new Map();
 for(const row of rows.split('\n')){const [es,en,pt]=row.split('|');dictionary.set(es,{es,en,'pt-BR':pt});uppercase.set(es.toUpperCase(),es);}
 let language='es',selected='es',editorUser=null,lastButton=null;
