@@ -890,7 +890,21 @@ Desde|Since|Desde
 Septiembre de 2026|September 2026|Setembro de 2026
 Hecho en|Made in|Feito em
 Los creadores|The founders|Os criadores
-Cofundador · Propietario|Co-founder · Owner|Cofundador · Proprietário`;
+Cofundador · Propietario|Co-founder · Owner|Cofundador · Proprietário
+Olvidé mi contraseña|Forgot my password|Esqueci minha senha
+o con tu correo|or with your email|ou com seu e-mail
+Política de privacidad|Privacy policy|Política de privacidade
+Condiciones del servicio|Terms of service|Termos de serviço
+Tu contraseña|Your password|Sua senha
+Mostrar contraseña|Show password|Mostrar senha
+Ocultar contraseña|Hide password|Ocultar senha
+nombre@correo.com|name@email.com|nome@email.com
+Iniciá sesión para acceder a tus cuentas y operaciones.|Sign in to access your accounts and trades.|Entre para acessar suas contas e operações.
+Crear alerta|Create alert|Criar alerta
+Descargar respaldo anterior|Download previous backup|Baixar backup anterior
+Sin próxima apertura|No upcoming open|Sem próxima abertura
+All|All|Todas
+Ingresá con tu correo y contraseña.|Sign in with your email and password.|Entre com seu e-mail e senha.`;
 const uppercase=new Map();
 for(const row of rows.split('\n')){const [es,en,pt]=row.split('|');dictionary.set(es,{es,en,'pt-BR':pt});uppercase.set(es.toUpperCase(),es);}
 let language='es',selected='es',editorUser=null,lastButton=null;
@@ -912,7 +926,10 @@ function translate(text){
   [/^Última actividad: (.+)$/,m=>(en?'Last activity: ':'Última atividade: ')+m[1]],
   [/^(\d+) (cuentas?) · Balance (.+)$/,m=>m[1]+(en?(m[2]==='cuenta'?' account':' accounts')+' · Balance ':(m[2]==='cuenta'?' conta':' contas')+' · Saldo ')+m[3]],
   [/^Abrir notificaciones \((\d+) sin leer\)$/,m=>en?'Open notifications ('+m[1]+' unread)':'Abrir notificações ('+m[1]+' não lidas)'],
-  [/^Fin de semana Forex · Próxima apertura: (.+) · en (.+)$/,m=>en?'Forex weekend · Next open: '+m[1]+' · in '+m[2]:'Fim de semana Forex · Próxima abertura: '+m[1]+' · em '+m[2]],
+  [/^Próxima apertura: (.+) · en (.+)$/,m=>en?'Next open: '+translate(m[1])+' · in '+m[2]:'Próxima abertura: '+translate(m[1])+' · em '+m[2]],
+  [/^Calendario actualizado: (.+)$/,m=>(en?'Calendar updated: ':'Calendário atualizado: ')+m[1]],
+  [/^Día (\d+)$/,m=>(en?'Day ':'Dia ')+m[1]],
+  [/^Fin de semana Forex · Próxima apertura: (.+) · en (.+)$/,m=>en?'Forex weekend · Next open: '+translate(m[1])+' · in '+m[2]:'Fim de semana Forex · Próxima abertura: '+translate(m[1])+' · em '+m[2]],
   [/^Actualizado (.+) · Horarios aproximados$/,m=>(en?'Updated ':'Atualizado ')+m[1]+(en?' · Approximate times':' · Horários aproximados')],
   [/^Objetivos · Fase (\d+) de (\d+)$/,m=>en?'Targets · Phase '+m[1]+' of '+m[2]:'Metas · Fase '+m[1]+' de '+m[2]],
   [/^Fechas según el servidor de esta cuenta \((.+)\)\.$/,m=>en?'Dates follow this account\'s server ('+m[1]+').':'Datas conforme o servidor desta conta ('+m[1]+').'],
