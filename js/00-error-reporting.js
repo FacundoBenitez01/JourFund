@@ -1,7 +1,7 @@
 /* Error reporting to Sentry without the SDK: uncaught errors and rejected promises only.
    Sends no diary data, no user id and no email; the DSN is a public client key. Empty DSN = off. */
 (function(){'use strict';
-const DSN='';
+const DSN='https://b3b2439a3eb50059fe2aac4a8ade3888@o4512235092639744.ingest.us.sentry.io/4512235098341376';
 const RELEASE='jourfund@v121';
 if(!DSN||!window.fetch)return;
 const m=/^https:\/\/([0-9a-f]+)@([^/]+)\/(\d+)$/.exec(DSN);if(!m)return;
