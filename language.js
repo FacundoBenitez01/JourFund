@@ -767,7 +767,120 @@ Objetivo de ganancia alcanzado|Profit target reached|Meta de lucro alcançada
 Revisá los días mínimos y demás condiciones.|Check the minimum days and other conditions.|Verifique os dias mínimos e demais condições.
 Prepará la sesión de Nueva York|Get ready for the New York session|Prepare a sessão de Nova York
 Comienza en unos 15 minutos.|Starts in about 15 minutes.|Começa em uns 15 minutos.
-Ayer|Yesterday|Ontem`;
+Ayer|Yesterday|Ontem
+Calculadora|Calculator|Calculadora
+Preguntas|FAQ|Perguntas
+Para traders de cuentas de fondeo|For prop firm traders|Para traders de contas de financiamento
+Sabé cuánto podés perder hoy|Know how much you can lose today|Saiba quanto você pode perder hoje
+antes de abrir la próxima operación.|before you open your next trade.|antes de abrir a próxima operação.
+Registrás tus operaciones y JourFund recalcula tu margen diario, tu pérdida máxima y tu avance de fase con las reglas de tu firma.|Log your trades and JourFund recalculates your daily margin, your max loss and your phase progress with your firm's rules.|Registre suas operações e o JourFund recalcula sua margem diária, sua perda máxima e seu avanço de fase com as regras da sua empresa.
+Probar la calculadora|Try the calculator|Testar a calculadora
++ cualquier firma a mano|+ any firm set up manually|+ qualquer empresa configurada manualmente
+Hoy todavía podés perder|You can still lose today|Hoje você ainda pode perder
+Usaste|You've used|Você usou
+de $750|of $750|de $750
+Aviso al 70 %|Alert at 70%|Aviso em 70%
+Sin operaciones hoy|No trades today|Sem operações hoje
+· venta · 10:15|· sell · 10:15|· venda · 10:15
+· compra · 11:40|· buy · 11:40|· compra · 11:40
+disponible|available|disponível
+falta 1|1 to go|falta 1
+Próxima al 1 % con stop de $10 en XAUUSD|Next at 1% with a $10 stop on XAUUSD|Próxima com 1% e stop de $10 no XAUUSD
+Funciones de JourFund|JourFund features|Funcionalidades do JourFund
+Qué controla JourFund|What JourFund tracks|O que o JourFund controla
+Drawdown estático|Static drawdown|Drawdown estático
+Trailing al cierre|End-of-day trailing|Trailing no fechamento
+Trailing por balance|Balance trailing|Trailing por saldo
+Trailing por equity|Equity trailing|Trailing por equity
+Regla del mejor día|Best-day rule|Regra do melhor dia
+Avisos push|Push alerts|Avisos push
+¿Te pasó?|Sound familiar?|Já aconteceu com você?
+La mayoría de las cuentas no se pierden por una mala estrategia. Se pierden por un número que no estaba a la vista.|Most accounts aren't lost to a bad strategy. They're lost to a number you couldn't see.|A maioria das contas não é perdida por uma estratégia ruim. É perdida por um número que não estava à vista.
+Quemaste la cuenta por unos dólares que no sabías que te faltaban.|You blew the account by a few dollars you didn't know you were short.|Você queimou a conta por uns dólares que não sabia que faltavam.
+Con JourFund:|With JourFund:|Com o JourFund:
+ves tu margen diario y total exacto antes de cada entrada.|you see your exact daily and total margin before every entry.|você vê sua margem diária e total exata antes de cada entrada.
+Tu Excel dice una cosa y el dashboard de la firma, otra.|Your spreadsheet says one thing and your firm's dashboard says another.|Sua planilha diz uma coisa e o dashboard da empresa, outra.
+el drawdown se calcula como lo hace tu firma, sea estático o trailing.|drawdown is calculated the way your firm does it, static or trailing.|o drawdown é calculado como a sua empresa faz, estático ou trailing.
+Entraste con lotaje "a ojo" después de dos pérdidas seguidas.|You eyeballed your lot size after two losses in a row.|Você entrou com o lote "no olho" depois de duas perdas seguidas.
+el tamaño de posición sale del riesgo que elegís y tu balance real.|position size comes from the risk you choose and your real balance.|o tamanho da posição sai do risco que você escolhe e do seu saldo real.
+Cómo funciona|How it works|Como funciona
+Tres pasos, y el número que importa queda siempre arriba.|Three steps, and the number that matters stays on top.|Três passos, e o número que importa fica sempre no topo.
+Cargás tu cuenta|Add your account|Cadastre sua conta
+Elegís la firma, el tamaño y la fase. Las reglas se completan solas, o las escribís a mano.|Pick the firm, size and phase. The rules fill in automatically, or you type them in.|Escolha a empresa, o tamanho e a fase. As regras se preenchem sozinhas, ou você as digita.
+Registrás cada operación|Log every trade|Registre cada operação
+Resultado, par y capturas. Desde la compu o el celular, se sincroniza en la nube.|Result, pair and screenshots. From your computer or phone, synced to the cloud.|Resultado, par e capturas. Do computador ou do celular, sincronizado na nuvem.
+Ves tu margen al instante|See your margin instantly|Veja sua margem na hora
+Pérdida diaria y máxima, objetivo y retiros, con avisos al 70 %, al 90 % y al límite.|Daily and max loss, target and payouts, with alerts at 70%, 90% and the limit.|Perda diária e máxima, meta e saques, com avisos em 70%, 90% e no limite.
+Drawdown sin confusiones|Drawdown, no confusion|Drawdown sem confusão
+Mismo balance, tres márgenes distintos.|Same balance, three different margins.|Mesmo saldo, três margens diferentes.
+Cada firma mide el piso de tu cuenta a su manera. Si lo calculás con la regla equivocada, creés que te queda más margen del que tenés. JourFund usa la regla de tu firma.|Each firm measures your account floor its own way. Use the wrong rule and you'll think you have more room than you do. JourFund uses your firm's rule.|Cada empresa mede o piso da sua conta do seu jeito. Se você calcular com a regra errada, acha que tem mais margem do que tem. O JourFund usa a regra da sua empresa.
+Tipo de drawdown|Drawdown type|Tipo de drawdown
+El piso queda fijo en el capital inicial menos el 10 %.|The floor stays fixed at starting capital minus 10%.|O piso fica fixo no capital inicial menos 10%.
+El piso sube con tu mejor cierre del día y no vuelve a bajar.|The floor rises with your best daily close and never comes back down.|O piso sobe com o seu melhor fechamento do dia e não volta a cair.
+Sigue tu máximo flotante, aunque después la operación cierre más abajo.|It follows your floating high, even if the trade later closes lower.|Segue sua máxima flutuante, mesmo que a operação feche mais abaixo.
+Margen disponible|Available margin|Margem disponível
+Piso actual|Current floor|Piso atual
+Ejemplo de balance y piso de pérdida máxima en ocho días|Example balance and max-loss floor over eight days|Exemplo de saldo e piso de perda máxima em oito dias
+Capital inicial $15.000|Starting capital $15,000|Capital inicial $15.000
+Tu balance al cierre|Your closing balance|Seu saldo no fechamento
+Piso de pérdida máxima|Max-loss floor|Piso de perda máxima
+Tu margen|Your margin|Sua margem
+Ejemplo: cuenta de $15.000 con pérdida máxima del 10 %. Los números son ilustrativos.|Example: $15,000 account with a 10% max loss. Numbers are illustrative.|Exemplo: conta de $15.000 com perda máxima de 10%. Os números são ilustrativos.
+Probalo ahora, sin cuenta|Try it now, no account needed|Teste agora, sem conta
+¿Con cuántos lotes entrás?|How many lots should you trade?|Com quantos lotes você entra?
+Mové los controles. Es la misma cuenta que hace JourFund antes de cada operación, pero adentro de la app usa tu balance real y las especificaciones de tu bróker.|Move the sliders. It's the same math JourFund runs before every trade, but inside the app it uses your real balance and your broker's specs.|Mova os controles. É o mesmo cálculo que o JourFund faz antes de cada operação, mas dentro do app usa seu saldo real e as especificações do seu corretor.
+Oro · XAUUSD|Gold · XAUUSD|Ouro · XAUUSD
+Balance de la cuenta|Account balance|Saldo da conta
+Distancia del stop (en $ de precio)|Stop distance (in $ of price)|Distância do stop (em $ de preço)
+Distancia del stop (en pips)|Stop distance (in pips)|Distância do stop (em pips)
+lotes|lots|lotes
+Arriesgás|You risk|Você arrisca
+De un límite diario del 5 %|Of a 5% daily limit|De um limite diário de 5%
+Ejemplo con contrato estándar: oro 100 oz por lote, EUR/USD $10 por pip. Verificá las especificaciones de tu bróker.|Example with standard contracts: gold 100 oz per lot, EUR/USD $10 per pip. Check your broker's specs.|Exemplo com contrato padrão: ouro 100 oz por lote, EUR/USD $10 por pip. Verifique as especificações do seu corretor.
+Todo en un lugar|All in one place|Tudo em um lugar
+Lo que tenías repartido en cinco pestañas.|What used to be spread across five tabs.|O que estava espalhado em cinco abas.
+Avisos en tu celular, antes de que sea tarde|Alerts on your phone, before it's too late|Avisos no seu celular, antes que seja tarde
+JourFund se instala como app y te avisa aunque no la tengas abierta.|JourFund installs like an app and alerts you even when it's closed.|O JourFund se instala como app e te avisa mesmo fechado.
+70 % del límite|70% of the limit|70% do limite
+90 % y al límite|90% and at the limit|90% e no limite
+Antes de cada sesión|Before every session|Antes de cada sessão
+Noticias de alto impacto|High-impact news|Notícias de alto impacto
+sábado 11 de octubre|Saturday, October 11|sábado, 11 de outubro
+ahora|now|agora
+70 % del límite diario utilizado|70% of daily limit used|70% do limite diário usado
+Te quedan $225 para hoy.|You have $225 left today.|Restam $225 para hoje.
+ayer|yesterday|ontem
+Objetivo de la fase alcanzado|Phase target reached|Meta da fase alcançada
+Nueva York abre en 15 minutos|New York opens in 15 minutes|Nova York abre em 15 minutos
+Win rate, drawdown, rachas y la curva de tu balance.|Win rate, drawdown, streaks and your balance curve.|Win rate, drawdown, sequências e a curva do seu saldo.
+Drawdown máx.|Max drawdown|Drawdown máx.
+Mejor racha|Best streak|Melhor sequência
+Qué mercados están abiertos, qué noticias vienen y el gráfico de TradingView.|Which markets are open, what news is coming and the TradingView chart.|Quais mercados estão abertos, quais notícias vêm aí e o gráfico do TradingView.
+AHORA|NOW|AGORA
+Sabé cuándo podés cobrar y qué condiciones te faltan.|Know when you can get paid and which conditions are left.|Saiba quando você pode sacar e quais condições faltam.
+de 14 días|of 14 days|de 14 dias
+en 4 días|in 4 days|em 4 dias
+Mejor día por debajo del 50 %|Best day under 50%|Melhor dia abaixo de 50%
+Días mínimos operados|Minimum days traded|Dias mínimos operados
+Ciclo de 14 días|14-day cycle|Ciclo de 14 dias
+Varias cuentas|Multiple accounts|Várias contas
+Cada una con las reglas de su firma.|Each with its own firm's rules.|Cada uma com as regras da sua empresa.
+Fondeada|Funded|Financiada
+$50K · Fondeada|$50K · Funded|$50K · Financiada
+$100K · Fase 2|$100K · Phase 2|$100K · Fase 2
+$15K · Fase 1|$15K · Phase 1|$15K · Fase 1
+Preguntas frecuentes|Frequently asked questions|Perguntas frequentes
+Lo que nos preguntan antes de empezar.|What people ask us before getting started.|O que nos perguntam antes de começar.
+¿Qué firmas de fondeo soporta?|Which prop firms are supported?|Quais empresas de financiamento são suportadas?
+FTMO, FundedNext y FundingPips vienen con sus reglas cargadas. Para cualquier otra firma, cargás los límites a mano en un minuto.|FTMO, FundedNext and FundingPips come with their rules preloaded. For any other firm, you enter the limits manually in a minute.|FTMO, FundedNext e FundingPips vêm com as regras carregadas. Para qualquer outra empresa, você cadastra os limites manualmente em um minuto.
+¿Reemplaza el dashboard de mi firma?|Does it replace my firm's dashboard?|Substitui o dashboard da minha empresa?
+No. JourFund te ayuda a planificar y a ver tu margen, pero tu contrato y el dashboard de la firma siempre mandan.|No. JourFund helps you plan and see your margin, but your contract and your firm's dashboard always prevail.|Não. O JourFund ajuda você a planejar e ver sua margem, mas seu contrato e o dashboard da empresa sempre prevalecem.
+¿Funciona en el celular?|Does it work on my phone?|Funciona no celular?
+Sí. Se instala como app en el celular y en la compu, y tus datos se sincronizan en la nube entre dispositivos.|Yes. It installs like an app on your phone and computer, and your data syncs across devices through the cloud.|Sim. Instala como app no celular e no computador, e seus dados sincronizam na nuvem entre dispositivos.
+¿Tengo que conectar mi cuenta de trading?|Do I have to connect my trading account?|Preciso conectar minha conta de trading?
+No. Registrás tus operaciones vos, sin compartir contraseñas de tu bróker ni de tu firma.|No. You log your trades yourself, without sharing your broker or firm passwords.|Não. Você registra suas operações, sem compartilhar senhas do corretor nem da empresa.
+Información legal|Legal information|Informações legais
+/ 1.200|/ 1,200|/ 1.200`;
 const uppercase=new Map();
 for(const row of rows.split('\n')){const [es,en,pt]=row.split('|');dictionary.set(es,{es,en,'pt-BR':pt});uppercase.set(es.toUpperCase(),es);}
 let language='es',selected='es',editorUser=null,lastButton=null;
