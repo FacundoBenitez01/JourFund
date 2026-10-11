@@ -314,3 +314,6 @@
 
 /* The <head> hides the access screen until this file arrives (see #jf-landing-critical). */
 #ftCloudGate{visibility:visible}
+
+/* Touch targets: legal links in the footer and the sign-in dialog were 17 px tall. */
+.jf-landing-footer nav a,#ftCloudGate nav[aria-label] a{display:inline-flex;align-items:center;min-height:44px}
