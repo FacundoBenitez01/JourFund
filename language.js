@@ -701,7 +701,24 @@ Cerrar detalle|Close details|Fechar detalhes
 Cerrar aviso|Close notice|Fechar aviso
 Elegí una cuenta para consultar sus datos individuales. Las cuentas se conservan por separado.|Choose an account to see its own data. Accounts are kept separately.|Escolha uma conta para consultar seus dados individuais. As contas são mantidas separadamente.
 Seleccionar sin grupo y sin registros|Select ungrouped with no records|Selecionar sem grupo e sem registros
-EURUSD, Nasdaq, oro…|EURUSD, Nasdaq, gold…|EURUSD, Nasdaq, ouro…`;
+EURUSD, Nasdaq, oro…|EURUSD, Nasdaq, gold…|EURUSD, Nasdaq, ouro…
+Diario de trading para cuentas de fondeo|Trading journal for funded accounts|Diário de trading para contas de financiamento
+Operá tu challenge sabiendo exactamente cuánto podés arriesgar.|Trade your challenge knowing exactly how much you can risk.|Opere seu challenge sabendo exatamente quanto pode arriscar.
+Registrá tus operaciones y JourFund calcula al instante tu margen de pérdida, tu avance hacia el objetivo y tus condiciones de retiro, con las reglas de tu firma.|Log your trades and JourFund instantly works out your loss allowance, your progress to target and your withdrawal conditions, using your firm's rules.|Registre suas operações e o JourFund calcula na hora sua margem de perda, seu avanço até a meta e suas condições de saque, com as regras da sua empresa.
+Ya tengo cuenta|I already have an account|Já tenho conta
+Las reglas de tu firma, ya cargadas|Your firm's rules, preloaded|As regras da sua empresa, já carregadas
+FTMO, FundedNext y FundingPips con pérdida diaria, pérdida máxima, objetivos y días mínimos. Para otras firmas, configurás las reglas de tu contrato.|FTMO, FundedNext and FundingPips with daily loss, max loss, targets and minimum days. For other firms, you set your contract's rules.|FTMO, FundedNext e FundingPips com perda diária, perda máxima, metas e dias mínimos. Para outras empresas, você configura as regras do seu contrato.
+Tu riesgo, siempre a la vista|Your risk, always in view|Seu risco, sempre à vista
+Cuánto podés perder hoy, cuánto te queda en total y cuánto falta para pasar de fase, con avisos al 70 %, 90 % y al límite.|How much you can lose today, how much is left overall and how far you are from passing the phase, with alerts at 70%, 90% and the limit.|Quanto você pode perder hoje, quanto resta no total e quanto falta para passar de fase, com avisos em 70%, 90% e no limite.
+El tamaño de posición según tu stop y el riesgo que elegís, con el balance de la cuenta.|Position size from your stop and the risk you choose, using the account balance.|O tamanho da posição conforme seu stop e o risco escolhido, com o saldo da conta.
+Sesiones y noticias|Sessions and news|Sessões e notícias
+Horarios de cada mercado, agenda económica de Forex Factory y gráficos de TradingView.|Market hours, the Forex Factory economic calendar and TradingView charts.|Horários de cada mercado, agenda econômica da Forex Factory e gráficos do TradingView.
+Estadísticas y retiros|Statistics and withdrawals|Estatísticas e saques
+Win rate, drawdown, evolución del balance e historial de retiros de tus cuentas financiadas.|Win rate, drawdown, balance over time and withdrawal history for your funded accounts.|Win rate, drawdown, evolução do saldo e histórico de saques das suas contas financiadas.
+En todos tus dispositivos|On all your devices|Em todos os seus dispositivos
+Tu diario se sincroniza en la nube. Instalalo en el celular como una app.|Your journal syncs to the cloud. Install it on your phone like an app.|Seu diário sincroniza na nuvem. Instale no celular como um app.
+JourFund no está afiliado a ninguna firma de fondeo. Las reglas son una referencia: tu contrato y el dashboard de tu firma siempre mandan.|JourFund is not affiliated with any prop firm. Rules are a reference: your contract and your firm's dashboard always prevail.|O JourFund não é afiliado a nenhuma empresa de financiamento. As regras são uma referência: seu contrato e o dashboard da sua empresa sempre prevalecem.
+¿Qué es JourFund?|What is JourFund?|O que é o JourFund?`;
 const uppercase=new Map();
 for(const row of rows.split('\n')){const [es,en,pt]=row.split('|');dictionary.set(es,{es,en,'pt-BR':pt});uppercase.set(es.toUpperCase(),es);}
 let language='es',selected='es',editorUser=null,lastButton=null;
