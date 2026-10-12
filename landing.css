@@ -80,3 +80,6 @@
 #jfVerifyResend::after{content:attr(data-wait)}
 #ftCloudGate.jf-verify-link .jf-code-only,#ftCloudGate:not(.jf-verify-link) .jf-link-only{display:none!important}
 #ftCloudGate.jf-verify-link .jf-verify-hint.jf-link-only{font-size:14px;margin:6px 0 4px}
+#ftCloudGate .jf-about-contact{margin:8px 0 0;font-size:14px;color:var(--muted,#9aa3b2)}
+#ftCloudGate .jf-about-contact span{margin-right:6px}
+#ftCloudGate .jf-about-contact a{color:#b99aff;display:inline-flex;align-items:center;min-height:44px}
