@@ -62,3 +62,21 @@
 @media(prefers-reduced-motion:no-preference){.jf-rise{animation:jfRise .45s ease-out both}.jf-panel{animation:jfRise .5s ease-out both}@keyframes jfRise{from{opacity:.65;transform:translateY(10px)}to{opacity:1;transform:none}}}
 @media(prefers-reduced-motion:reduce){#ftCloudGate[data-state=login]{scroll-behavior:auto}.jf-landing *,.jf-landing-more *, .jf-landing-nav{animation:none!important;transition:none!important}}
 #ftCloudGate{visibility:visible}#ftCloudGate nav[aria-label] a{min-height:44px}#jfCalc,#jfProducts,#jfAbout,#jfFaq{scroll-margin-top:20px}
+
+/* Email sign-up verification step */
+#ftCloudGate.jf-verifying .ft-cloud-tabs,#ftCloudGate.jf-verifying #ftAuthForm,#ftCloudGate.jf-verifying #ft68GoogleAccess{display:none!important}
+#ftCloudGate .jf-verify{display:flex;flex-direction:column;gap:8px;text-align:center}
+#ftCloudGate .jf-verify[hidden]{display:none}
+#ftCloudGate .jf-verify-icon{align-self:center;display:grid;place-items:center;width:56px;height:56px;border-radius:18px;background:color-mix(in srgb,#8b5cf6 16%,transparent);color:#b99aff;margin-bottom:4px}
+#ftCloudGate .jf-verify-icon svg{width:28px;height:28px}
+#ftCloudGate .jf-verify-lead{margin:0;color:var(--muted,#9aa3b2);font-size:14px}
+#ftCloudGate .jf-verify-email{margin:0 0 6px;font-weight:650;word-break:break-all}
+#ftCloudGate .jf-verify label{text-align:left}
+#ftCloudGate #jfVerifyCode{text-align:center;font-size:24px;letter-spacing:.35em;font-variant-numeric:tabular-nums;font-weight:650}
+#ftCloudGate .jf-verify .ft-cloud-actions{justify-content:center}
+#ftCloudGate .jf-verify-hint{margin:2px 0 0;font-size:12.5px;color:var(--muted,#9aa3b2)}
+#ftCloudGate .jf-verify-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+#ftCloudGate .jf-verify-actions .btn{min-height:44px}
+#jfVerifyResend::after{content:attr(data-wait)}
+#ftCloudGate.jf-verify-link .jf-code-only,#ftCloudGate:not(.jf-verify-link) .jf-link-only{display:none!important}
+#ftCloudGate.jf-verify-link .jf-verify-hint.jf-link-only{font-size:14px;margin:6px 0 4px}
