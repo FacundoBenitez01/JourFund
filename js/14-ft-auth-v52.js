@@ -65,7 +65,7 @@
   el('ft57GateTitle').textContent=recovery?'Restablecer contraseña':mode==='signup'?'Creá tu cuenta':'Bienvenido de nuevo';
   el('ftAuthEmail').parentElement.hidden=!!user&&!recovery;
   el('ftLoginTab').parentElement.hidden=!!user||recovery;
-  el('ftForgot').hidden=!!user||recovery;
+  el('ftForgot').hidden=!!user||recovery||mode==='signup';
   el('ftLoadRetry').hidden=!user||recovery||el('ftCloudGate').dataset.state!=='error';
   if(el('ft80GateResetLocal'))el('ft80GateResetLocal').hidden=true;
   el('ftGateSignOut').hidden=!user||(!recovery&&el('ftCloudGate').dataset.state!=='error');
@@ -74,9 +74,10 @@
   el('ftAuthEmail').hidden=recovery;
   document.querySelector('label[for="ftAuthEmail"]').hidden=recovery;
   el('ftAuthPassword').autocomplete=recovery||mode==='signup'?'new-password':'current-password';
+  {const twice=recovery||mode==='signup';document.querySelectorAll('.jf-pass2').forEach(n=>n.hidden=!twice);el('ftAuthPassword2').required=twice;if(!twice)el('ftAuthPassword2').value='';}
   el('ftAuthPassword').minLength=mode==='login'&&!recovery?1:8;
   el('ftAuthSubmit').textContent=recovery?'Guardar nueva contraseña':mode==='signup'?'Crear cuenta':'Entrar';
-  el('ftGateIntro').textContent=recovery?'Elegí una nueva contraseña de al menos 8 caracteres.':'Iniciá sesión para acceder a tus cuentas y operaciones.';
+  el('ftGateIntro').textContent=recovery?'Elegí una nueva contraseña de al menos 8 caracteres.':mode==='signup'?'Creá tu cuenta para guardar tus cuentas y operaciones.':'Iniciá sesión para acceder a tus cuentas y operaciones.';
  }
  async function loadWorkspace(){
   if(!user)return;
@@ -169,13 +170,14 @@
  el('ftAuthForm').onsubmit=async e=>{
   e.preventDefault();if(!client){msg('No se pudo cargar el servicio de acceso. Revisá tu conexión y recargá la página.',true);return;}
   const email=el('ftAuthEmail').value.trim(),password=el('ftAuthPassword').value;
+  if((recovery||mode==='signup')&&password!==el('ftAuthPassword2').value){msg('Las contraseñas no coinciden. Escribilas de nuevo.',true);el('ftAuthPassword2').setAttribute('aria-invalid','true');el('ftAuthPassword2').focus();return;}
   accessTransition=true;el('ftAuthSubmit').disabled=true;msg('Conectando…');
   try{
-   if(recovery){if(!user)throw Error('Abrí el enlace de recuperación recibido por correo.');if(!await window.JFSecurity.authorize(client,user.id))return;const {error}=await client.auth.updateUser({password});if(error)throw error;recovery=false;history.replaceState(null,'',location.pathname);authUI();await loadWorkspace();}
+   if(recovery){if(!user)throw Error('Abrí el enlace de recuperación recibido por correo.');if(!await window.JFSecurity.authorize(client,user.id))return;const {error}=await client.auth.updateUser({password});if(error)throw error;recovery=false;el('ftAuthPassword2').value='';history.replaceState(null,'',location.pathname);authUI();await loadWorkspace();}
    else{
     const r=mode==='signup'?await client.auth.signUp({email,password,options:{emailRedirectTo:SITE}}):await client.auth.signInWithPassword({email,password});
     if(r.error)throw r.error;
-    el('ftAuthPassword').value='';
+    el('ftAuthPassword').value='';el('ftAuthPassword2').value='';
     if(!r.data.session){accessTransition=false;
      if(mode==='signup'&&r.data.user&&Array.isArray(r.data.user.identities)&&!r.data.user.identities.length){el('ftLoginTab').click();el('ftAuthEmail').value=email;msg('Ese correo ya tiene una cuenta. Iniciá sesión o usá «Olvidé mi contraseña».',true);}
      else showVerify(email,true);}
@@ -186,12 +188,13 @@
  // Email sign-up: confirm with the 6-digit code from the email (the link in the same email also works).
  // Turn on once the Supabase "Confirm sign up" email includes {{ .Token }} (needs custom SMTP). Until then the step asks for the link.
  const EMAIL_CODE=false;
- let verifyEmail='',resendTimer=null;
+ let verifyEmail='',verifyKind='signup',resendTimer=null;
+ ['ftAuthPassword','ftAuthPassword2'].forEach(id=>el(id).addEventListener('input',()=>el('ftAuthPassword2').removeAttribute('aria-invalid')));
  function resendCooldown(sec){clearInterval(resendTimer);const b=el('jfVerifyResend');b.disabled=true;let n=sec;const tick=()=>{b.dataset.wait=n>0?' ('+n+')':'';if(n--<=0){clearInterval(resendTimer);b.disabled=false;}};tick();resendTimer=setInterval(tick,1000);}
- function showVerify(email,sent){verifyEmail=email;el('jfVerifyEmail').textContent=email;el('ftCloudGate').classList.toggle('jf-verify-link',!EMAIL_CODE);el('jfVerifyCode').required=EMAIL_CODE;el('jfVerifyCode').value='';el('ftCloudGate').classList.add('jf-verifying');el('jfVerifyForm').hidden=false;el('ft57GateTitle').textContent='Confirmá tu correo';el('ftGateIntro').textContent='Falta un paso para activar tu cuenta.';
-  if(sent){msg(EMAIL_CODE?'Te enviamos el código. Puede tardar un minuto en llegar.':'Te enviamos el enlace. Puede tardar un minuto en llegar.');resendCooldown(60);}else{msg(EMAIL_CODE?'Tu cuenta todavía no está confirmada. Escribí el código del correo o pedí uno nuevo.':'Tu cuenta todavía no está confirmada. Tocá el enlace del correo o pedí uno nuevo.',true);el('jfVerifyResend').disabled=false;el('jfVerifyResend').dataset.wait='';}
-  if(EMAIL_CODE)setTimeout(()=>el('jfVerifyCode').focus(),50);}
- function hideVerify(){el('ftCloudGate').classList.remove('jf-verifying');el('jfVerifyForm').hidden=true;clearInterval(resendTimer);authUI();}
+ function showVerify(email,sent,kind='signup'){verifyEmail=email;verifyKind=kind;const reset=kind==='reset';el('ftCloudGate').classList.toggle('jf-verify-reset',reset);el('jfVerifyEmail').textContent=email;el('ftCloudGate').classList.toggle('jf-verify-link',reset||!EMAIL_CODE);el('jfVerifyCode').required=EMAIL_CODE;el('jfVerifyCode').value='';el('ftCloudGate').classList.add('jf-verifying');el('jfVerifyForm').hidden=false;el('ft57GateTitle').textContent=reset?'Revisá tu correo':'Confirmá tu correo';el('ftGateIntro').textContent=reset?'Te ayudamos a recuperar tu acceso.':'Falta un paso para activar tu cuenta.';
+  if(sent){msg(!reset&&EMAIL_CODE?'Te enviamos el código. Puede tardar un minuto en llegar.':'Te enviamos el enlace. Puede tardar un minuto en llegar.');resendCooldown(60);}else{msg(EMAIL_CODE?'Tu cuenta todavía no está confirmada. Escribí el código del correo o pedí uno nuevo.':'Tu cuenta todavía no está confirmada. Tocá el enlace del correo o pedí uno nuevo.',true);el('jfVerifyResend').disabled=false;el('jfVerifyResend').dataset.wait='';}
+  if(!reset&&EMAIL_CODE)setTimeout(()=>el('jfVerifyCode').focus(),50);}
+ function hideVerify(){el('ftCloudGate').classList.remove('jf-verifying','jf-verify-reset');el('jfVerifyForm').hidden=true;clearInterval(resendTimer);authUI();}
  el('jfVerifyCode').addEventListener('input',e=>{const v=e.target.value.replace(/\D/g,'').slice(0,8);if(v!==e.target.value)e.target.value=v;});
  el('jfVerifyForm').onsubmit=async e=>{
   e.preventDefault();const token=el('jfVerifyCode').value.trim();
@@ -203,15 +206,15 @@
  };
  el('jfVerifyResend').onclick=async()=>{
   if(!verifyEmail)return;resendCooldown(60);
-  try{const {error}=await client.auth.resend({type:'signup',email:verifyEmail,options:{emailRedirectTo:SITE}});if(error)throw error;msg(EMAIL_CODE?'Te enviamos un código nuevo.':'Te enviamos un enlace nuevo.');}
+  try{const {error}=verifyKind==='reset'?await client.auth.resetPasswordForEmail(verifyEmail,{redirectTo:SITE}):await client.auth.resend({type:'signup',email:verifyEmail,options:{emailRedirectTo:SITE}});if(error)throw error;msg(verifyKind!=='reset'&&EMAIL_CODE?'Te enviamos un código nuevo.':'Te enviamos un enlace nuevo.');}
   catch(err){msg(/rate|seconds|security purposes/i.test(err?.message||'')?'Esperá un momento antes de pedir otro correo.':errorText(err),true);}
  };
- el('jfVerifyBack').onclick=()=>{hideVerify();el('ftSignupTab').click();el('ftAuthEmail').value=verifyEmail;el('ftAuthEmail').focus();};
+ el('jfVerifyBack').onclick=()=>{const reset=verifyKind==='reset';hideVerify();el(reset?'ftLoginTab':'ftSignupTab').click();el('ftAuthEmail').value=verifyEmail;el('ftAuthEmail').focus();};
  el('ftForgot').onclick=async()=>{
   if(!client)return;const email=el('ftAuthEmail').value.trim();
   if(!el('ftAuthEmail').checkValidity()||!email){msg('Escribí primero un correo válido.',true);el('ftAuthEmail').focus();return;}
   el('ftForgot').disabled=true;
-  try{const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:SITE});if(error)throw error;msg('Si existe una cuenta para ese correo, recibirás un enlace para cambiar la contraseña.');}catch(e){msg(errorText(e),true);}finally{el('ftForgot').disabled=false;}
+  try{const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:SITE});if(error)throw error;showVerify(email,true,'reset');}catch(e){msg(errorText(e),true);}finally{el('ftForgot').disabled=false;}
  };
  el('ftLoadRetry').onclick=loadWorkspace;el('ftGateSignOut').onclick=signOut;
  const legacy=localStorage.getItem('fundedtrack_v5');

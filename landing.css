@@ -85,3 +85,6 @@
 #ftCloudGate .jf-about-contact a{color:#b99aff;display:inline-flex;align-items:center;min-height:44px}
 /* The landing's own layout uses an id selector with !important; keep it off outside the sign-in screen (loading, ready, recovery, error). */
 #ftCloudGate:not([data-state="login"]) #jfLanding,#ftCloudGate:not([data-state="login"]) .jf-landing-nav,#ftCloudGate:not([data-state="login"]) .jf-landing-more,#ftCloudGate:not([data-state="login"]) .jf-auth-backdrop{display:none!important}
+#ftCloudGate:not(.jf-verify-reset) .jf-reset-only,#ftCloudGate.jf-verify-reset .jf-signup-only{display:none!important}
+#ftCloudGate .jf-pass2[hidden]{display:none!important}
+#ftCloudGate #ftAuthPassword2[aria-invalid="true"]{border-color:#f0616d!important;box-shadow:0 0 0 3px #f0616d33!important}
