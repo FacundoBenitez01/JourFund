@@ -964,7 +964,57 @@ Crear alerta|Create alert|Criar alerta
 Descargar respaldo anterior|Download previous backup|Baixar backup anterior
 Sin próxima apertura|No upcoming open|Sem próxima abertura
 All|All|Todas
-Ingresá con tu correo y contraseña.|Sign in with your email and password.|Entre com seu e-mail e senha.`;
+Ingresá con tu correo y contraseña.|Sign in with your email and password.|Entre com seu e-mail e senha.
+¡Bienvenido a JourFund!|Welcome to JourFund!|Boas-vindas ao JourFund!
+Armemos tu panel|Let's set up your dashboard|Vamos montar seu painel
+En dos pasos vas a ver cuánto podés perder hoy sin quemar tu cuenta.|In two steps you'll see how much you can lose today without blowing your account.|Em dois passos você vai ver quanto pode perder hoje sem queimar sua conta.
+Cargá tu cuenta de fondeo|Add your funded account|Cadastre sua conta de financiamento
+Firma, tamaño y fase · 30 seg|Firm, size and phase · 30 sec|Empresa, tamanho e fase · 30 seg
+Registrá tu primera operación|Log your first trade|Registre sua primeira operação
+O empezá con el día en cero · 30 seg|Or start the day at zero · 30 sec|Ou comece o dia do zero · 30 seg
+Mirá tu margen real|See your real margin|Veja sua margem real
+Pérdida diaria, máxima y objetivo|Daily loss, max loss and target|Perda diária, máxima e meta
+Empezar|Start|Começar
+Saltar|Skip|Pular
+Atrás|Back|Voltar
+Paso 1 de 2|Step 1 of 2|Passo 1 de 2
+Paso 2 de 2|Step 2 of 2|Passo 2 de 2
+¿Con qué firma operás?|Which firm do you trade with?|Com qual empresa você opera?
+Reglas cargadas|Rules preloaded|Regras carregadas
+Tamaño|Size|Tamanho
+Fase|Phase|Fase
+Reglas de|Rules for|Regras da
+aplicadas|applied|aplicadas
+Pérdida máx.|Max loss|Perda máx.
+Pérd. máx.|Max loss|Perda máx.
+Días mín.|Min. days|Dias mín.
+Sin límite|No limit|Sem limite
+Podés revisar edición y ciclo de retiro en Editar reglas.|You can review the edition and payout cycle in Edit rules.|Você pode revisar a edição e o ciclo de saque em Editar regras.
+Guardar y seguir|Save and continue|Salvar e continuar
+Mi firma no está en la lista|My firm isn't listed|Minha empresa não está na lista
+Tu primera operación|Your first trade|Sua primeira operação
+Con una sola ya ves cómo se mueve tu margen.|Just one is enough to see how your margin moves.|Com uma só você já vê como sua margem se move.
+Par o instrumento|Pair or instrument|Par ou instrumento
+Break even|Break even|Break even
+Monto|Amount|Valor
+Riesgo de la operación|Trade risk|Risco da operação
+Si todavía no operaste hoy, tocá “Empezar en cero” y cargala cuando cierres.|If you haven't traded today, tap “Start at zero” and log it when you close.|Se ainda não operou hoje, toque em “Começar do zero” e registre quando fechar.
+Registrar operación|Log trade|Registrar operação
+Empezar en cero|Start at zero|Começar do zero
+Escribí el monto de la operación.|Enter the trade amount.|Digite o valor da operação.
+Cuenta lista|Account ready|Conta pronta
+Hoy todavía tenés de margen|Margin left today|Margem disponível hoje
+de|of|de
+Días|Days|Dias
+Para sacarle el jugo|Get the most out of it|Para aproveitar ao máximo
+Registrar tu primera operación|Log your first trade|Registrar sua primeira operação
+Cargar tu cuenta de fondeo|Add your funded account|Cadastrar sua conta de financiamento
+Activar avisos al celular|Turn on phone alerts|Ativar avisos no celular
+Instalar JourFund como app|Install JourFund as an app|Instalar o JourFund como app
+Ir a mi panel|Go to my dashboard|Ir para meu painel
+No se pudo guardar|Couldn't save|Não foi possível salvar
+No se pudo guardar. Probá de nuevo.|Couldn't save. Try again.|Não foi possível salvar. Tente de novo.
+Las tres vienen con sus reglas cargadas|All three come with their rules preloaded|As três vêm com as regras carregadas`;
 const uppercase=new Map();
 for(const row of rows.split('\n')){const [es,en,pt]=row.split('|');dictionary.set(es,{es,en,'pt-BR':pt});uppercase.set(es.toUpperCase(),es);}
 let language='es',selected='es',editorUser=null,lastButton=null;
