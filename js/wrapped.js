@@ -1,4 +1,4 @@
-/* JourFund Wrapped (v143): animated stories of the user's last completed week for the active account.
+/* JourFund Wrapped (v144): animated stories of the user's last completed week for the active account.
    Data comes from the same trades and rules the app already uses (FTRules). Slides without data are skipped.
    Opens from a banner on Inicio; nothing is saved to the cloud (only a "seen" flag in localStorage). */
 (function () {
@@ -22,6 +22,7 @@
       k7: 'La canción que te definió esta semana', listen: 'Escuchar en Spotify',
       k8: 'Objetivo de la fase {phase}', h8: { start: 'Arrancando', half: 'Vas por la mitad', near: 'Ya casi', done: 'Objetivo alcanzado', low: 'En camino' }, l8: '{have} de {target} · faltan {left}', pace: 'A este ritmo, pasás de fase en {n}', week1: '1 semana', weeks: '{n} semanas', paceNo: 'Una semana positiva te acerca al objetivo.',
       k9: 'Mi semana de trading', bestDay: 'mejor día', star: 'activo estrella', maxLimit: 'máx. del límite', song: 'Mi canción', showAmounts: 'Mostrar importes en dólares', share: 'Compartir', again: 'Ver de nuevo', copied: 'Resumen copiado', copyFail: 'No se pudo copiar en este navegador.',
+      edition: 'Edición semanal', closed: 'Cerré la semana en', accuracy: '{wr} de acierto', wonOf: '{w} ganadas de {d}', dayMine: 'El {day} fue mío', dayShare: '{pct} de la ganancia en un día', dayAmt: '{amt} en un solo día', paid: '{asset} me pagó', starSub: 'Mi activo estrella', opsLine: '{n} operaciones', opsSub: 'Todas anotadas en mi diario', never1: 'NUNCA PASÉ', never2: 'DEL {pct}', reached1: 'LLEGUÉ AL', reached2: '{pct}', limitSub: 'DEL LÍMITE DIARIO', songOf: 'La canción de mi semana', phaseN: 'Fase {n}', funded: 'Fondeada',
       igShare: 'Compartir en Instagram', save: 'Guardar imagen', saved: 'Imagen guardada. Abrí Instagram y subila a tu historia.', madeWith: 'Hecho con JourFund', onAccount: 'sobre mi cuenta', imgAlt: 'Imagen de tu semana para compartir', ready: 'Tu imagen para historias',
       shareText: 'Mi semana en JourFund: {result} · {wr} win rate · mejor día {day} · canción: {song}. jourfund.com',
       states: { Bien: 'bien', Ansioso: 'ansioso', MOLESTO: 'molesto' },
@@ -47,6 +48,7 @@
       k7: 'The song that defined your week', listen: 'Listen on Spotify',
       k8: 'Phase {phase} target', h8: { start: 'Getting started', half: 'Halfway there', near: 'Almost there', done: 'Target reached', low: 'On your way' }, l8: '{have} of {target} · {left} to go', pace: 'At this pace, you pass the phase in {n}', week1: '1 week', weeks: '{n} weeks', paceNo: 'A positive week gets you closer to the target.',
       k9: 'My trading week', bestDay: 'best day', star: 'star asset', maxLimit: 'max. of limit', song: 'My song', showAmounts: 'Show dollar amounts', share: 'Share', again: 'Watch again', copied: 'Summary copied', copyFail: 'Couldn\'t copy in this browser.',
+      edition: 'Weekly edition', closed: 'I closed the week at', accuracy: '{wr} win rate', wonOf: '{w} wins out of {d}', dayMine: '{day} was mine', dayShare: '{pct} of the profit in one day', dayAmt: '{amt} in a single day', paid: '{asset} paid me', starSub: 'My star asset', opsLine: '{n} trades', opsSub: 'All logged in my journal', never1: 'NEVER WENT', never2: 'PAST {pct}', reached1: 'I REACHED', reached2: '{pct}', limitSub: 'OF THE DAILY LIMIT', songOf: 'The song of my week', phaseN: 'Phase {n}', funded: 'Funded',
       igShare: 'Share on Instagram', save: 'Save image', saved: 'Image saved. Open Instagram and add it to your story.', madeWith: 'Made with JourFund', onAccount: 'on my account', imgAlt: 'Image of your week to share', ready: 'Your story image',
       shareText: 'My week on JourFund: {result} · {wr} win rate · best day {day} · song: {song}. jourfund.com',
       states: { Bien: 'good', Ansioso: 'anxious', MOLESTO: 'upset' },
@@ -72,6 +74,7 @@
       k7: 'A música que definiu sua semana', listen: 'Ouvir no Spotify',
       k8: 'Meta da fase {phase}', h8: { start: 'Começando', half: 'Na metade', near: 'Quase lá', done: 'Meta alcançada', low: 'No caminho' }, l8: '{have} de {target} · faltam {left}', pace: 'Nesse ritmo, você passa de fase em {n}', week1: '1 semana', weeks: '{n} semanas', paceNo: 'Uma semana positiva te aproxima da meta.',
       k9: 'Minha semana de trading', bestDay: 'melhor dia', star: 'ativo estrela', maxLimit: 'máx. do limite', song: 'Minha música', showAmounts: 'Mostrar valores em dólares', share: 'Compartilhar', again: 'Ver de novo', copied: 'Resumo copiado', copyFail: 'Não foi possível copiar neste navegador.',
+      edition: 'Edição semanal', closed: 'Fechei a semana em', accuracy: '{wr} de acerto', wonOf: '{w} ganhas de {d}', dayMine: 'Meu dia: {day}', dayShare: '{pct} do lucro em um dia', dayAmt: '{amt} em um só dia', paid: '{asset} me pagou', starSub: 'Meu ativo estrela', opsLine: '{n} operações', opsSub: 'Todas anotadas no meu diário', never1: 'NUNCA PASSEI', never2: 'DE {pct}', reached1: 'CHEGUEI A', reached2: '{pct}', limitSub: 'DO LIMITE DIÁRIO', songOf: 'A música da minha semana', phaseN: 'Fase {n}', funded: 'Financiada',
       igShare: 'Compartilhar no Instagram', save: 'Salvar imagem', saved: 'Imagem salva. Abra o Instagram e poste nos seus stories.', madeWith: 'Feito com JourFund', onAccount: 'sobre minha conta', imgAlt: 'Imagem da sua semana para compartilhar', ready: 'Sua imagem para stories',
       shareText: 'Minha semana no JourFund: {result} · {wr} win rate · melhor dia {day} · música: {song}. jourfund.com',
       states: { Bien: 'bem', Ansioso: 'ansioso', MOLESTO: 'irritado' },
@@ -245,44 +248,75 @@
     }
   };
 
-  /* ---------- 1080×1920 story image for Instagram ---------- */
+  /* ---------- 1080×1920 story image for Instagram: weekly magazine cover ---------- */
+  function isoWeek(s) { const th = D(add(s, 3 - ((D(s).getUTCDay() + 6) % 7))), y0 = Date.UTC(th.getUTCFullYear(), 0, 1); return Math.ceil(((th - y0) / 864e5 + 1) / 7); }
   function storyImage(w, showAmounts) {
-    const Wd = 1080, Ht = 1920, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Ht;
-    const g = cv.getContext('2d'), pos = w.pnl >= 0, main = pos ? '#5ef0b6' : '#ff8a9a', BODY = 'Inter, ui-sans-serif, system-ui, sans-serif';
-    const bg = g.createLinearGradient(0, 0, Wd * .6, Ht); bg.addColorStop(0, '#7c4dff'); bg.addColorStop(.45, '#2c1574'); bg.addColorStop(1, '#0d0726');
-    g.fillStyle = bg; g.fillRect(0, 0, Wd, Ht);
-    [[Wd * .95, Ht * .12, 620, pos ? 'rgba(94,240,182,.30)' : 'rgba(255,138,154,.30)'], [Wd * .05, Ht * .78, 700, 'rgba(255,95,168,.28)'], [Wd * .5, Ht * .5, 900, 'rgba(124,77,255,.18)']].forEach(([x, y, r, c]) => {
-      const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, c); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(0, 0, Wd, Ht); });
-    const rr = (x, y, ww, hh, r, fill) => { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + ww, y, x + ww, y + hh, r); g.arcTo(x + ww, y + hh, x, y + hh, r); g.arcTo(x, y + hh, x, y, r); g.arcTo(x, y, x + ww, y, r); g.closePath(); g.fillStyle = fill; g.fill(); };
-    const fit = (txt, weight, size, maxW, font) => { let s2 = size; g.font = weight + ' ' + s2 + 'px ' + font; const m = g.measureText(txt).width; if (m > maxW) s2 = Math.floor(s2 * maxW / m); g.font = weight + ' ' + s2 + 'px ' + font; return s2; };
-    g.save(); g.translate(90, 104); g.scale(.36, .36); LOGO.forEach((d, i) => { g.fillStyle = i < 2 ? '#fbf9ff' : '#b79cff'; g.fill(new Path2D(d)); }); g.restore();
-    g.fillStyle = '#fff'; g.font = '800 54px ' + FONT; g.textBaseline = 'middle'; g.fillText('JourFund', 196, 152);
-    g.textAlign = 'right'; g.font = '600 34px ' + BODY; g.fillStyle = 'rgba(255,255,255,.78)'; g.fillText(range(w.start, w.end), Wd - 90, 152); g.textAlign = 'left';
-    g.fillStyle = 'rgba(255,255,255,.8)'; g.font = '700 40px ' + BODY; g.fillText(t('k9').toUpperCase(), 90, 330);
-    const big = showAmounts ? signed(w.pnl) : spct(w.accountPct);
-    fit(big, '800', 250, Wd - 180, FONT); g.fillStyle = main; g.shadowColor = main; g.shadowBlur = 60; g.fillText(big, 84, 500); g.shadowBlur = 0;
-    g.font = '600 42px ' + BODY; g.fillStyle = 'rgba(255,255,255,.85)';
-    g.fillText(showAmounts ? spct(w.accountPct) + ' ' + t('onAccount') + ' · ' + w.count + ' ' + t('ops') : w.count + ' ' + t('ops') + ' · ' + (w.account.nickname || w.account.firm), 90, 660);
-    const days = w.days.slice(-7), up = Math.max(0, ...days.map(d => d.pnl)), down = Math.max(0, ...days.map(d => -d.pnl)), span = (up + down) || 1;
-    const top = 760, height = 330, zero = top + height * up / span, n = days.length, gap = 26, bw = Math.min(130, (Wd - 180 - gap * (n - 1)) / n), x0 = (Wd - (bw * n + gap * (n - 1))) / 2;
-    rr(70, top - 40, Wd - 140, height + 150, 44, 'rgba(0,0,0,.22)');
-    if (down > 0) { g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(x0 - 10, zero - 1, bw * n + gap * (n - 1) + 20, 2); }
-    const best = days.reduce((m, d) => d.pnl > m.pnl ? d : m, days[0]);
-    days.forEach((d, i) => { const h = Math.max(6, Math.abs(d.pnl) / span * height), x = x0 + i * (bw + gap), y = d.pnl >= 0 ? zero - h : zero;
-      const c = d === best && d.pnl > 0 ? '#5ef0b6' : d.pnl >= 0 ? 'rgba(255,255,255,.55)' : 'rgba(255,138,154,.55)'; rr(x, y, bw, h, Math.min(18, bw / 3, h / 2), c);
-      g.fillStyle = 'rgba(255,255,255,.75)'; g.font = '600 28px ' + BODY; g.textAlign = 'center'; g.fillText(weekday(d.date, 'short'), x + bw / 2, top + height + 56); g.textAlign = 'left'; });
-    const cards = [[w.winRate == null ? '—' : pct(w.winRate), t('wr')], [w.best ? weekday(w.best.date) : '—', t('bestDay')], [w.star ? w.star.asset : '—', t('star')], [w.usage == null ? '—' : pct(Math.ceil(w.usage)), t('maxLimit')]];
-    const tw = (Wd - 180 - 30) / 2, th = 170;
-    cards.forEach(([b, l], i) => { const x = 90 + (i % 2) * (tw + 30), y = 1240 + Math.floor(i / 2) * (th + 30);
-      rr(x, y, tw, th, 36, 'rgba(255,255,255,.12)'); g.fillStyle = '#fff'; fit(String(b), '800', 66, tw - 60, FONT); g.fillText(String(b), x + 32, y + 72);
-      g.fillStyle = 'rgba(255,255,255,.72)'; g.font = '600 30px ' + BODY; g.fillText(l, x + 32, y + 132); });
-    const sy = 1660; rr(90, sy, Wd - 180, 120, 60, 'rgba(0,0,0,.28)');
-    g.fillStyle = '#121016'; g.beginPath(); g.arc(150, sy + 60, 40, 0, Math.PI * 2); g.fill();
-    g.fillStyle = '#ff5fa8'; g.beginPath(); g.arc(150, sy + 60, 13, 0, Math.PI * 2); g.fill();
-    g.fillStyle = 'rgba(255,255,255,.7)'; g.font = '600 26px ' + BODY; g.fillText(t('song'), 214, sy + 40);
-    g.fillStyle = '#fff'; fit(w.song[0] + ' · ' + w.song[1], '700', 36, Wd - 180 - 160, BODY); g.fillText(w.song[0] + ' · ' + w.song[1], 214, sy + 82);
-    g.fillStyle = 'rgba(255,255,255,.7)'; g.font = '600 30px ' + BODY; g.textAlign = 'center'; g.fillText(t('madeWith') + ' · jourfund.com', Wd / 2, 1860); g.textAlign = 'left';
-    return new Promise(res => cv.toBlob(b => res(b), 'image/png'));
+    const fonts = document.fonts?.load ? Promise.race([document.fonts.load('900 100px Inter'), new Promise(r => setTimeout(r, 1200))]).catch(() => {}) : Promise.resolve();
+    return fonts.then(() => {
+      const Wd = 1080, Ht = 1920, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Ht;
+      const g = cv.getContext('2d'), INK = '#140a3a', VIOLET = '#6d3cf0', F = 'Inter, ui-sans-serif, system-ui, sans-serif';
+      const tone = w.pnl > 0 ? ['#5ef0b6', '#b8ffe0', '#2fd39a', '#0e3b2c'] : w.pnl < 0 ? ['#ffa3b1', '#ffd9de', '#f2718a', '#4a1020'] : ['#c9b8ff', '#efe8ff', '#a58cff', '#2a1a5c'];
+      const spacing = v => { if ('letterSpacing' in g) g.letterSpacing = v + 'px'; };
+      const font = (wt, size, sp = 0) => { g.font = wt + ' ' + size + 'px ' + F; spacing(sp); };
+      const fit = (txt, wt, size, maxW, sp = 0) => { font(wt, size, sp); const m = g.measureText(txt).width; if (m > maxW) { size = Math.floor(size * maxW / m); font(wt, size, sp * maxW / m); } return size; };
+      const wrap = (txt, maxW) => { const out = []; let line = ''; txt.split(' ').forEach(word => { const next = line ? line + ' ' + word : word; if (line && g.measureText(next).width > maxW) { out.push(line); line = word; } else line = next; }); if (line) out.push(line); return out; };
+      // Background
+      g.fillStyle = tone[0]; g.fillRect(0, 0, Wd, Ht);
+      [[Wd * .8, Ht * .3, 820, tone[1]], [0, Ht, 900, tone[2]]].forEach(([x, y, r, c]) => { const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, c); gr.addColorStop(1, c + '00'); g.fillStyle = gr; g.fillRect(0, 0, Wd, Ht); });
+      g.textBaseline = 'alphabetic'; g.fillStyle = INK;
+      // Masthead and issue line
+      const mast = fit('JOURFUND', '900', 200, Wd - 120, -9); g.fillText('JOURFUND', 60, 60 + mast * .74);
+      g.fillRect(66, 250, Wd - 132, 5); g.fillRect(66, 316, Wd - 132, 5);
+      const issue = [t('edition'), (range(w.start, w.end) + ' ' + D(w.end).getUTCFullYear()).replace(/\./g, ''), 'Nº ' + isoWeek(w.start)].map(s => s.toUpperCase());
+      fit(issue.join('      '), '800', 28, Wd - 132, 3);
+      g.textAlign = 'left'; g.fillText(issue[0], 66, 296); g.textAlign = 'center'; g.fillText(issue[1], Wd / 2 + 40, 296); g.textAlign = 'right'; g.fillText(issue[2], Wd - 66, 296); g.textAlign = 'left';
+      // Kicker and the big result
+      g.fillStyle = VIOLET; fit(t('closed').toUpperCase(), '800', 40, Wd - 132, 2); g.fillText(t('closed').toUpperCase(), 66, 440);
+      g.fillStyle = INK;
+      const big = showAmounts ? signed(w.pnl) : spct(w.accountPct), unit = !showAmounts ? '%' : '', head = unit ? big.replace(/ %$/, '') : big;
+      font('900', 350, -20); const uw = unit ? (font('900', 170, -8), g.measureText(unit).width) : 0;
+      const size = fit(head, '900', 350, Wd - 110 - uw, -20); g.fillText(head, 50, 520 + size * .74);
+      const hw = g.measureText(head).width; if (unit) { font('900', Math.round(size * .49), -8); g.fillText(unit, 50 + hw + 6, 520 + size * .74); }
+      // Cover lines (up to three, only what the week has)
+      const lines = [];
+      if (w.winRate != null) lines.push([t('accuracy', { wr: pct(w.winRate) }), t('wonOf', { w: w.wins, d: w.decisive })]);
+      if (w.best) { const day = weekday(w.best.date); lines.push([t('dayMine', { day: lang() === 'en' ? day : day.toLowerCase() }), showAmounts ? t('dayAmt', { amt: signed(w.best.pnl) }) : t('dayShare', { pct: pct(w.best.share) })]); }
+      if (w.star) lines.push([t('paid', { asset: w.star.asset }), t('starSub')]);
+      if (lines.length < 3) lines.push([t('opsLine', { n: w.count }), t('opsSub')]);
+      const hasSticker = w.usage != null, maxW = hasSticker ? 570 : Wd - 180;
+      let y = 1010;
+      lines.slice(0, 3).forEach(([title, sub]) => {
+        font('900', 66, -2); let rows = wrap(title, maxW); if (rows.length > 2) { fit(title, '900', 66, maxW * 2, -2); rows = wrap(title, maxW).slice(0, 2); }
+        const top = y; g.fillStyle = INK; rows.forEach((r, i) => g.fillText(r, 98, y + 52 + i * 63)); y += 52 + (rows.length - 1) * 63;
+        g.fillStyle = tone[3]; fit(sub, '600', 30, maxW); g.fillText(sub, 98, y + 44); y += 58;
+        g.fillStyle = INK; g.fillRect(66, top, 10, y - top); y += 36;
+      });
+      // Discipline sticker
+      if (hasSticker) {
+        const ok = w.alerts === 0, used = pct(Math.max(1, Math.ceil(w.usage)));
+        g.save(); g.translate(855, 1225); g.rotate(12 * Math.PI / 180);
+        g.shadowColor = 'rgba(20,10,58,.35)'; g.shadowBlur = 50; g.shadowOffsetY = 20; g.fillStyle = VIOLET; g.beginPath(); g.arc(0, 0, 165, 0, Math.PI * 2); g.fill(); g.restore();
+        g.save(); g.translate(855, 1225); g.rotate(12 * Math.PI / 180);
+        g.strokeStyle = 'rgba(255,255,255,.6)'; g.lineWidth = 4; g.setLineDash([12, 9]); g.beginPath(); g.arc(0, 0, 149, 0, Math.PI * 2); g.stroke();
+        g.fillStyle = '#fff'; g.textAlign = 'center';
+        const l1 = t(ok ? 'never1' : 'reached1'), l2 = t(ok ? 'never2' : 'reached2', { pct: used });
+        fit(l1, '900', 36, 250, .5); g.fillText(l1, 0, -18); fit(l2, '900', 36, 250, .5); g.fillText(l2, 0, 22);
+        g.globalAlpha = .85; fit(t('limitSub'), '700', 20, 240, 2); g.fillText(t('limitSub'), 0, 62); g.restore();
+      }
+      // Song pill
+      const sy = 1622; g.fillStyle = INK; g.beginPath(); g.roundRect ? g.roundRect(66, sy, Wd - 132, 148, 74) : g.rect(66, sy, Wd - 132, 148); g.fill();
+      const vx = 144, vy = sy + 74; g.fillStyle = '#121016'; g.beginPath(); g.arc(vx, vy, 48, 0, Math.PI * 2); g.fill();
+      g.strokeStyle = '#24202e'; g.lineWidth = 2; [38, 28].forEach(r => { g.beginPath(); g.arc(vx, vy, r, 0, Math.PI * 2); g.stroke(); });
+      g.fillStyle = '#ff5fa8'; g.beginPath(); g.arc(vx, vy, 17, 0, Math.PI * 2); g.fill(); g.fillStyle = '#0b0614'; g.beginPath(); g.arc(vx, vy, 4, 0, Math.PI * 2); g.fill();
+      g.fillStyle = '#b8a6ff'; fit(t('songOf').toUpperCase(), '600', 24, 740, 3); g.fillText(t('songOf').toUpperCase(), 218, sy + 60);
+      const song = w.song[0] + ' · ' + w.song[1]; g.fillStyle = '#fff'; fit(song, '800', 40, 760, -.5); g.fillText(song, 218, sy + 106);
+      // Footer
+      g.save(); g.translate(66, 1812); g.scale(.19, .19); LOGO.forEach((d, i) => { g.fillStyle = i < 2 ? INK : VIOLET; g.fill(new Path2D(d)); }); g.restore();
+      g.fillStyle = INK; font('800', 28); g.fillText('jourfund.com', 124, 1848);
+      const a = w.account, acct = a.program + (a.status === 'Funded' ? ' · ' + t('funded') : a.status === 'Challenge' ? ' · ' + t('phaseN', { n: a.phase || 1 }) : '');
+      g.textAlign = 'right'; fit(acct, '800', 28, 520); g.fillText(acct, Wd - 66, 1848); g.textAlign = 'left';
+      return new Promise(res => cv.toBlob(b => res(b), 'image/png'));
+    });
   }
 
   /* ---------- slides from the data ---------- */
