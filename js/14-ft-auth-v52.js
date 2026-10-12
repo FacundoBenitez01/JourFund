@@ -96,7 +96,7 @@
     if(pending.version!==remoteVersion){conflict=true;status('Hay cambios en otro dispositivo. Exportá los pendientes antes de cargar la nube.',true);}
    }else{applyData(data?.accounts||fresh(),pending?.activeId);dirty=!data;}
    persist();window.ftCloudSession={user};authUI();if(accessTransition){await new Promise(resolve=>{const run=()=>Promise.resolve(window.ft87AccessSuccess?.()).then(resolve);if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();});if(token!==epoch||user?.id!==uid)return;accessTransition=false;}reveal();
-   if(!conflict){status(dirty?'Guardando…':'Sincronizado');if(dirty)schedule();}
+   if(conflict){status('Hay cambios en otro dispositivo. Compará las versiones antes de elegir.',true);}else{status(dirty?'Guardando…':'Sincronizado');if(dirty)schedule();}
   }catch(e){if(token!==epoch)return;msg('No se pudieron cargar tus datos: '+errorText(e),true);authUI();}
  }
  function schedule(){clearTimeout(timer);timer=setTimeout(flush,500);}
@@ -279,7 +279,7 @@
  client.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY')recovery=true;setTimeout(()=>{acceptSession(session);if(event==='PASSWORD_RECOVERY'){accessStage('recovery');gate();authUI();el('ftAuthForm').hidden=false;}},0);});
  client.auth.getSession().then(({data,error})=>{if(error)msg(errorText(error),true);else{acceptSession(data.session);if(!data.session&&oauthReturnError)msg('No se completó el acceso con Google. Podés volver a intentarlo o entrar con correo y contraseña.',true);}}).catch(e=>msg(errorText(e),true));
  window.addEventListener('offline',()=>status('Sin conexión. Los cambios guardados en este dispositivo siguen pendientes.',true));
- window.addEventListener('online',()=>{status('Comprobando conexión…');flush();});
+ window.addEventListener('online',()=>{status('Comprobando conexión…');if(user&&!ready&&!recovery)loadWorkspace();else flush();});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)flush();});
  window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
  setInterval(()=>{if(!document.hidden)flush();},20000);

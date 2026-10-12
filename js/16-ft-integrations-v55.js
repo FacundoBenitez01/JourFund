@@ -15,7 +15,7 @@
  <p class="ft-calendar-note">Fuente: Forex Factory · exportación semanal. Los horarios pueden cambiar. La exportación disponible incluye eventos, moneda e impacto.</p><div class="ft-market-actions"><a class="ft-external" href="https://www.forexfactory.com/calendar" target="_blank" rel="noopener noreferrer">Abrir Forex Factory ↗</a><button class="ft-retry" type="button" id="ftCalendarRetry">Actualizar</button></div>`;
  let symbol='OANDA:XAUUSD',interval='60',initialized=false;
  const timers=new Map(),observers=new Map();
- function status(id,text){const el=document.getElementById(id);el.hidden=false;el.querySelector('span').textContent=text;}
+ function status(id,text){const el=document.getElementById(id);if(!el)return;el.hidden=false;const label=el.querySelector('span');if(label)label.textContent=text;else el.textContent=text;}
  function embed(hostId,statusId,url,config){
   const host=document.getElementById(hostId);clearTimeout(timers.get(hostId));observers.get(hostId)?.disconnect();host.replaceChildren();
   if(!navigator.onLine){status(statusId,'Sin conexión. Podés seguir usando tu diario de operaciones.');return;}

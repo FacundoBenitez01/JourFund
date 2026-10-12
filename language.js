@@ -2,7 +2,8 @@
 (function(){
 'use strict';
 const supported=['es','en','pt-BR'], names={es:'Español',en:'English','pt-BR':'Português (Brasil)'}, dictionary=new Map();
-const rows=`Journal para traders|Trading journal|Diário de trading
+const rows=`Hay cambios en otro dispositivo. Compará las versiones antes de elegir.|There are changes on another device. Compare the versions before choosing.|Há alterações em outro dispositivo. Compare as versões antes de escolher.
+Journal para traders|Trading journal|Diário de trading
 Tu trading.|Your trading.|Seu trading.
 Bajo control.|Under control.|Sob controle.
 Conocé tu margen antes de operar. Registrá tus operaciones y seguí tus objetivos.|Know your available margin before trading. Record your trades and track your goals.|Conheça sua margem antes de operar. Registre suas operações e acompanhe suas metas.
