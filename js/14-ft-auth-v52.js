@@ -176,11 +176,35 @@
     const r=mode==='signup'?await client.auth.signUp({email,password,options:{emailRedirectTo:SITE}}):await client.auth.signInWithPassword({email,password});
     if(r.error)throw r.error;
     el('ftAuthPassword').value='';
-    if(!r.data.session){accessTransition=false;msg('Si el registro es válido, recibirás un correo para confirmar tu cuenta. Revisá también spam.');}
+    if(!r.data.session){accessTransition=false;
+     if(mode==='signup'&&r.data.user&&Array.isArray(r.data.user.identities)&&!r.data.user.identities.length){el('ftLoginTab').click();el('ftAuthEmail').value=email;msg('Ese correo ya tiene una cuenta. Iniciá sesión o usá «Olvidé mi contraseña».',true);}
+     else showVerify(email,true);}
     else acceptSession(r.data.session);
    }
-  }catch(e){accessTransition=false;msg(errorText(e),true);}finally{el('ftAuthSubmit').disabled=false;}
+  }catch(e){accessTransition=false;if(!recovery&&/email not confirmed/i.test(e?.message||'')){showVerify(email,false);}else msg(errorText(e),true);}finally{el('ftAuthSubmit').disabled=false;}
  };
+ // Email sign-up: confirm with the 6-digit code from the email (the link in the same email also works).
+ let verifyEmail='',resendTimer=null;
+ function resendCooldown(sec){clearInterval(resendTimer);const b=el('jfVerifyResend');b.disabled=true;let n=sec;const tick=()=>{b.dataset.wait=n>0?' ('+n+')':'';if(n--<=0){clearInterval(resendTimer);b.disabled=false;}};tick();resendTimer=setInterval(tick,1000);}
+ function showVerify(email,sent){verifyEmail=email;el('jfVerifyEmail').textContent=email;el('jfVerifyCode').value='';el('ftCloudGate').classList.add('jf-verifying');el('jfVerifyForm').hidden=false;el('ft57GateTitle').textContent='Confirmá tu correo';el('ftGateIntro').textContent='Falta un paso para activar tu cuenta.';
+  if(sent){msg('Te enviamos el código. Puede tardar un minuto en llegar.');resendCooldown(60);}else{msg('Tu cuenta todavía no está confirmada. Escribí el código del correo o pedí uno nuevo.',true);el('jfVerifyResend').disabled=false;el('jfVerifyResend').dataset.wait='';}
+  setTimeout(()=>el('jfVerifyCode').focus(),50);}
+ function hideVerify(){el('ftCloudGate').classList.remove('jf-verifying');el('jfVerifyForm').hidden=true;clearInterval(resendTimer);authUI();}
+ el('jfVerifyCode').addEventListener('input',e=>{const v=e.target.value.replace(/\D/g,'').slice(0,8);if(v!==e.target.value)e.target.value=v;});
+ el('jfVerifyForm').onsubmit=async e=>{
+  e.preventDefault();const token=el('jfVerifyCode').value.trim();
+  if(!/^\d{6,8}$/.test(token)){msg('Escribí el código de 6 dígitos que te llegó por correo.',true);el('jfVerifyCode').focus();return;}
+  el('jfVerifySubmit').disabled=true;msg('Confirmando…');
+  try{const {data,error}=await client.auth.verifyOtp({email:verifyEmail,token,type:'signup'});if(error)throw error;hideVerify();if(data.session){accessTransition=true;acceptSession(data.session);}else msg('Cuenta confirmada. Ya podés iniciar sesión.');}
+  catch(err){msg(/expired|invalid|token/i.test(err?.message||'')?'El código no es válido o ya venció. Revisalo o pedí uno nuevo.':errorText(err),true);}
+  finally{el('jfVerifySubmit').disabled=false;}
+ };
+ el('jfVerifyResend').onclick=async()=>{
+  if(!verifyEmail)return;resendCooldown(60);
+  try{const {error}=await client.auth.resend({type:'signup',email:verifyEmail,options:{emailRedirectTo:SITE}});if(error)throw error;msg('Te enviamos un código nuevo.');}
+  catch(err){msg(/rate|seconds|security purposes/i.test(err?.message||'')?'Esperá un momento antes de pedir otro código.':errorText(err),true);}
+ };
+ el('jfVerifyBack').onclick=()=>{hideVerify();el('ftSignupTab').click();el('ftAuthEmail').value=verifyEmail;el('ftAuthEmail').focus();};
  el('ftForgot').onclick=async()=>{
   if(!client)return;const email=el('ftAuthEmail').value.trim();
   if(!el('ftAuthEmail').checkValidity()||!email){msg('Escribí primero un correo válido.',true);el('ftAuthEmail').focus();return;}
