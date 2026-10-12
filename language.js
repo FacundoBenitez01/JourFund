@@ -243,6 +243,25 @@ Continuar con Google|Continue with Google|Continuar com Google
 Restablecer contraseña|Reset password|Redefinir senha
 Guardar nueva contraseña|Save new password|Salvar nova senha
 Tu trading. Tu progreso.|Your trading. Your progress.|Seu trading. Seu progresso.
+Borra tu usuario y todos tus datos de JourFund. No se puede deshacer.|Deletes your user and all your JourFund data. This can't be undone.|Apaga seu usuário e todos os seus dados do JourFund. Não pode ser desfeito.
+Eliminar esta cuenta|Delete this account|Excluir esta conta
+¿Eliminar tu cuenta de JourFund?|Delete your JourFund account?|Excluir sua conta do JourFund?
+Se borran de forma permanente:|These are permanently deleted:|Serão apagados permanentemente:
+Tus cuentas de fondeo, operaciones, retiros y objetivos|Your funded accounts, trades, withdrawals and goals|Suas contas de mesa, operações, saques e metas
+Las capturas de tus operaciones|Your trade screenshots|As capturas das suas operações
+Tus notificaciones y dispositivos con avisos|Your notifications and devices with alerts|Suas notificações e dispositivos com alertas
+Tu usuario y tu acceso con correo o Google|Your user and your email or Google sign-in|Seu usuário e seu acesso por e-mail ou Google
+Esta acción no se puede deshacer.|This action can't be undone.|Esta ação não pode ser desfeita.
+Exportar respaldo antes|Export a backup first|Exportar backup antes
+Escribí ELIMINAR para confirmar|Type DELETE to confirm|Digite EXCLUIR para confirmar
+Eliminando…|Deleting…|Excluindo…
+Iniciá sesión de nuevo e intentá otra vez.|Sign in again and try once more.|Entre de novo e tente outra vez.
+Conectate a Internet para eliminar la cuenta.|Connect to the Internet to delete the account.|Conecte-se à Internet para excluir a conta.
+No se pudo confirmar tu identidad.|Your identity couldn't be confirmed.|Não foi possível confirmar sua identidade.
+Tu sesión venció. Volvé a iniciar sesión.|Your session expired. Sign in again.|Sua sessão expirou. Entre novamente.
+No se pudo eliminar la cuenta. Intentá de nuevo en unos minutos.|The account couldn't be deleted. Try again in a few minutes.|Não foi possível excluir a conta. Tente novamente em alguns minutos.
+Confirmá tu código de autenticación antes de eliminar la cuenta.|Confirm your authentication code before deleting the account.|Confirme seu código de autenticação antes de excluir a conta.
+Tu cuenta y todos tus datos fueron eliminados.|Your account and all your data were deleted.|Sua conta e todos os seus dados foram excluídos.
 Contacto|Contact|Contato
 Te enviamos un enlace de confirmación a|We sent a confirmation link to|Enviamos um link de confirmação para
 Abrí el correo y tocá el enlace de confirmación para activar tu cuenta. Si no lo ves, revisá spam o promociones.|Open the email and tap the confirmation link to activate your account. If you can't find it, check spam or promotions.|Abra o e-mail e toque no link de confirmação para ativar sua conta. Se não encontrar, verifique o spam ou promoções.
