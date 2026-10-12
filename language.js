@@ -262,6 +262,15 @@ Tu sesión venció. Volvé a iniciar sesión.|Your session expired. Sign in agai
 No se pudo eliminar la cuenta. Intentá de nuevo en unos minutos.|The account couldn't be deleted. Try again in a few minutes.|Não foi possível excluir a conta. Tente novamente em alguns minutos.
 Confirmá tu código de autenticación antes de eliminar la cuenta.|Confirm your authentication code before deleting the account.|Confirme seu código de autenticação antes de excluir a conta.
 Tu cuenta y todos tus datos fueron eliminados.|Your account and all your data were deleted.|Sua conta e todos os seus dados foram excluídos.
+Repetí la contraseña|Repeat the password|Repita a senha
+Escribila de nuevo|Type it again|Digite novamente
+Las contraseñas no coinciden. Escribilas de nuevo.|The passwords don't match. Type them again.|As senhas não coincidem. Digite novamente.
+Si hay una cuenta con este correo, te enviamos un enlace para cambiar tu contraseña:|If there's an account with this email, we sent a link to change your password:|Se houver uma conta com este e-mail, enviamos um link para alterar sua senha:
+Abrí el correo y tocá el enlace para elegir una contraseña nueva. Si no lo ves, revisá spam o promociones.|Open the email and tap the link to choose a new password. If you can't find it, check spam or promotions.|Abra o e-mail e toque no link para escolher uma nova senha. Se não encontrar, verifique o spam ou promoções.
+Volver a iniciar sesión|Back to sign in|Voltar para entrar
+Revisá tu correo|Check your email|Verifique seu e-mail
+Te ayudamos a recuperar tu acceso.|Let's get you back in.|Vamos recuperar seu acesso.
+Creá tu cuenta para guardar tus cuentas y operaciones.|Create your account to save your accounts and trades.|Crie sua conta para salvar suas contas e operações.
 Contacto|Contact|Contato
 Te enviamos un enlace de confirmación a|We sent a confirmation link to|Enviamos um link de confirmação para
 Abrí el correo y tocá el enlace de confirmación para activar tu cuenta. Si no lo ves, revisá spam o promociones.|Open the email and tap the confirmation link to activate your account. If you can't find it, check spam or promotions.|Abra o e-mail e toque no link de confirmação para ativar sua conta. Se não encontrar, verifique o spam ou promoções.
