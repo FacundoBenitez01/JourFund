@@ -1,4 +1,4 @@
-/* JourFund Wrapped (v141): animated stories of the user's last completed week for the active account.
+/* JourFund Wrapped (v142): animated stories of the user's last completed week for the active account.
    Data comes from the same trades and rules the app already uses (FTRules). Slides without data are skipped.
    Opens from a banner on Inicio; nothing is saved to the cloud (only a "seen" flag in localStorage). */
 (function () {
@@ -101,9 +101,13 @@
   const range = (a, b) => { const f = s => D(s).toLocaleDateString(loc(), { day: 'numeric', month: 'short', timeZone: 'UTC' }).replace('.', ''); return f(a) + ' – ' + f(b); };
 
   /* ---------- the week's numbers ---------- */
-  function activeAccount() {
-    try { const s = window.ftProtectionCloud.snapshot(); return s.accounts.find(a => a.id === s.activeId) || null; } catch { return null; }
+  // The active account if it traded last week; otherwise the account with the most trades that week.
+  function pickWeek() {
+    let s; try { s = window.ftProtectionCloud.snapshot(); } catch { return null; }
+    const list = (s.accounts || []).map(a => { try { return compute(a); } catch { return null; } }).filter(Boolean);
+    return list.find(w => w.account.id === s.activeId) || list.sort((x, y) => y.count - x.count)[0] || null;
   }
+  const accountName = a => (a.nickname ? a.nickname + ' · ' : '') + a.firm + ' · ' + a.program;
   function compute(a) {
     if (!a || a.accountType === 'personal') return null;
     const today = R.accountDay(a), start = add(monday(today), -7), end = add(start, 6);
@@ -289,7 +293,7 @@
     const scenes = slidesFor(w), opener = document.activeElement;
     root = document.createElement('div'); root.className = 'jfw'; root.setAttribute('role', 'dialog'); root.setAttribute('aria-modal', 'true'); root.setAttribute('aria-label', t('aria')); root.setAttribute('data-i18n-ignore', '');
     root.innerHTML = '<div class="jfw-backdrop"></div><div class="jfw-stage" aria-roledescription="stories"><canvas aria-hidden="true"></canvas><div class="jfw-vig"></div><div class="jfw-grain"></div>' +
-      '<div class="jfw-top"><div class="jfw-bars">' + scenes.map(() => '<i><b></b></i>').join('') + '</div><div class="jfw-head"><img src="./brand-icon.svg?v=92" alt="" width="22" height="22"><strong>JourFund</strong><span>' + esc(range(w.start, w.end)) + '</span>' +
+      '<div class="jfw-top"><div class="jfw-bars">' + scenes.map(() => '<i><b></b></i>').join('') + '</div><div class="jfw-head"><img src="./brand-icon.svg?v=92" alt="" width="22" height="22"><strong>JourFund</strong><span>' + esc(range(w.start, w.end)) + '<br>' + esc(w.account.nickname || w.account.program) + '</span>' +
       '<button class="jfw-ctl" type="button" data-jfw="pause" aria-label="' + esc(t('pause')) + '"></button><button class="jfw-ctl" type="button" data-jfw="close" aria-label="' + esc(t('close')) + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></div>' +
       '<button class="jfw-nav prev" type="button" data-jfw="prev" aria-label="' + esc(t('prev')) + '"></button><button class="jfw-nav next" type="button" data-jfw="next" aria-label="' + esc(t('next')) + '"></button>' +
       scenes.map(s => '<section class="jfw-slide">' + s.html + '</section>').join('') + '</div>';
@@ -380,22 +384,22 @@
   function paintBanner() {
     const body = document.querySelector('#ftPageHome .ft-page-body');
     let el = document.getElementById('jfWrappedBanner');
-    const w = document.body.classList.contains('ft-ready') ? compute(activeAccount()) : null;
+    const w = document.body.classList.contains('ft-ready') ? pickWeek() : null;
     if (!w || !body) { el?.remove(); lastKey = ''; return; }
     let seen = false; try { seen = !!localStorage.getItem(seenKey(w)); } catch {}
-    const key = [lang(), seenKey(w), seen, w.pnl, w.count].join('|');
+    const key = [lang(), seenKey(w), seen, w.pnl, w.count, accountName(w.account)].join('|');
     if (el && key === lastKey && el.parentElement === body) return;
     lastKey = key;
     if (!el) { el = document.createElement('section'); el.id = 'jfWrappedBanner'; el.className = 'jfw-banner'; el.setAttribute('data-i18n-ignore', ''); }
     el.innerHTML = '<div class="jfw-banner-art" aria-hidden="true"><i></i><i></i><i></i></div><div class="jfw-banner-copy">' + (seen ? '' : '<span class="jfw-new">' + esc(t('isNew')) + '</span>') +
-      '<h3>' + esc(t('banner')) + '</h3><p>' + esc(t('bannerSub', { range: range(w.start, w.end) })) + '</p></div><button type="button" class="jfw-banner-btn">' + esc(t('bannerBtn')) + '</button>';
-    el.querySelector('button').onclick = () => { const fresh = compute(activeAccount()); if (fresh) open(fresh); };
+      '<h3>' + esc(t('banner')) + '</h3><p>' + esc(t('bannerSub', { range: range(w.start, w.end) })) + '</p><p class="jfw-acct">' + esc(accountName(w.account)) + '</p></div><button type="button" class="jfw-banner-btn">' + esc(t('bannerBtn')) + '</button>';
+    el.querySelector('button').onclick = () => { const fresh = pickWeek(); if (fresh) open(fresh); };
     if (el.parentElement !== body) body.prepend(el);
   }
   const previous = window.render;
   if (typeof previous === 'function') window.render = function () { const out = previous.apply(this, arguments); try { paintBanner(); } catch {} return out; };
   new MutationObserver(() => paintBanner()).observe(document.body, { attributes: true, attributeFilter: ['class'] });
   window.addEventListener('jfLanguageChanged', () => { lastKey = ''; paintBanner(); });
-  window.JourFundWrapped = { open: () => { const w = compute(activeAccount()); if (w) open(w); return !!w; }, compute: () => compute(activeAccount()) };
+  window.JourFundWrapped = { open: () => { const w = pickWeek(); if (w) open(w); return !!w; }, compute: pickWeek };
   paintBanner();
 })();
