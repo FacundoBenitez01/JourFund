@@ -184,11 +184,13 @@
   }catch(e){accessTransition=false;if(!recovery&&/email not confirmed/i.test(e?.message||'')){showVerify(email,false);}else msg(errorText(e),true);}finally{el('ftAuthSubmit').disabled=false;}
  };
  // Email sign-up: confirm with the 6-digit code from the email (the link in the same email also works).
+ // Turn on once the Supabase "Confirm sign up" email includes {{ .Token }} (needs custom SMTP). Until then the step asks for the link.
+ const EMAIL_CODE=false;
  let verifyEmail='',resendTimer=null;
  function resendCooldown(sec){clearInterval(resendTimer);const b=el('jfVerifyResend');b.disabled=true;let n=sec;const tick=()=>{b.dataset.wait=n>0?' ('+n+')':'';if(n--<=0){clearInterval(resendTimer);b.disabled=false;}};tick();resendTimer=setInterval(tick,1000);}
- function showVerify(email,sent){verifyEmail=email;el('jfVerifyEmail').textContent=email;el('jfVerifyCode').value='';el('ftCloudGate').classList.add('jf-verifying');el('jfVerifyForm').hidden=false;el('ft57GateTitle').textContent='Confirmá tu correo';el('ftGateIntro').textContent='Falta un paso para activar tu cuenta.';
-  if(sent){msg('Te enviamos el código. Puede tardar un minuto en llegar.');resendCooldown(60);}else{msg('Tu cuenta todavía no está confirmada. Escribí el código del correo o pedí uno nuevo.',true);el('jfVerifyResend').disabled=false;el('jfVerifyResend').dataset.wait='';}
-  setTimeout(()=>el('jfVerifyCode').focus(),50);}
+ function showVerify(email,sent){verifyEmail=email;el('jfVerifyEmail').textContent=email;el('ftCloudGate').classList.toggle('jf-verify-link',!EMAIL_CODE);el('jfVerifyCode').required=EMAIL_CODE;el('jfVerifyCode').value='';el('ftCloudGate').classList.add('jf-verifying');el('jfVerifyForm').hidden=false;el('ft57GateTitle').textContent='Confirmá tu correo';el('ftGateIntro').textContent='Falta un paso para activar tu cuenta.';
+  if(sent){msg(EMAIL_CODE?'Te enviamos el código. Puede tardar un minuto en llegar.':'Te enviamos el enlace. Puede tardar un minuto en llegar.');resendCooldown(60);}else{msg(EMAIL_CODE?'Tu cuenta todavía no está confirmada. Escribí el código del correo o pedí uno nuevo.':'Tu cuenta todavía no está confirmada. Tocá el enlace del correo o pedí uno nuevo.',true);el('jfVerifyResend').disabled=false;el('jfVerifyResend').dataset.wait='';}
+  if(EMAIL_CODE)setTimeout(()=>el('jfVerifyCode').focus(),50);}
  function hideVerify(){el('ftCloudGate').classList.remove('jf-verifying');el('jfVerifyForm').hidden=true;clearInterval(resendTimer);authUI();}
  el('jfVerifyCode').addEventListener('input',e=>{const v=e.target.value.replace(/\D/g,'').slice(0,8);if(v!==e.target.value)e.target.value=v;});
  el('jfVerifyForm').onsubmit=async e=>{
@@ -201,8 +203,8 @@
  };
  el('jfVerifyResend').onclick=async()=>{
   if(!verifyEmail)return;resendCooldown(60);
-  try{const {error}=await client.auth.resend({type:'signup',email:verifyEmail,options:{emailRedirectTo:SITE}});if(error)throw error;msg('Te enviamos un código nuevo.');}
-  catch(err){msg(/rate|seconds|security purposes/i.test(err?.message||'')?'Esperá un momento antes de pedir otro código.':errorText(err),true);}
+  try{const {error}=await client.auth.resend({type:'signup',email:verifyEmail,options:{emailRedirectTo:SITE}});if(error)throw error;msg(EMAIL_CODE?'Te enviamos un código nuevo.':'Te enviamos un enlace nuevo.');}
+  catch(err){msg(/rate|seconds|security purposes/i.test(err?.message||'')?'Esperá un momento antes de pedir otro correo.':errorText(err),true);}
  };
  el('jfVerifyBack').onclick=()=>{hideVerify();el('ftSignupTab').click();el('ftAuthEmail').value=verifyEmail;el('ftAuthEmail').focus();};
  el('ftForgot').onclick=async()=>{

@@ -243,6 +243,13 @@ Continuar con Google|Continue with Google|Continuar com Google
 Restablecer contraseña|Reset password|Redefinir senha
 Guardar nueva contraseña|Save new password|Salvar nova senha
 Tu trading. Tu progreso.|Your trading. Your progress.|Seu trading. Seu progresso.
+Te enviamos un enlace de confirmación a|We sent a confirmation link to|Enviamos um link de confirmação para
+Abrí el correo y tocá el enlace de confirmación para activar tu cuenta. Si no lo ves, revisá spam o promociones.|Open the email and tap the confirmation link to activate your account. If you can't find it, check spam or promotions.|Abra o e-mail e toque no link de confirmação para ativar sua conta. Se não encontrar, verifique o spam ou promoções.
+Reenviar correo|Resend email|Reenviar e-mail
+Te enviamos el enlace. Puede tardar un minuto en llegar.|We sent the link. It may take a minute to arrive.|Enviamos o link. Pode levar um minuto para chegar.
+Tu cuenta todavía no está confirmada. Tocá el enlace del correo o pedí uno nuevo.|Your account isn't confirmed yet. Tap the link in the email or request a new one.|Sua conta ainda não foi confirmada. Toque no link do e-mail ou peça um novo.
+Te enviamos un enlace nuevo.|We sent you a new link.|Enviamos um link novo.
+Esperá un momento antes de pedir otro correo.|Wait a moment before requesting another email.|Aguarde um momento antes de pedir outro e-mail.
 Te enviamos un código de verificación a|We sent a verification code to|Enviamos um código de verificação para
 Código de verificación|Verification code|Código de verificação
 Confirmar cuenta|Confirm account|Confirmar conta

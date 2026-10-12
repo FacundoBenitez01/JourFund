@@ -78,3 +78,5 @@
 #ftCloudGate .jf-verify-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
 #ftCloudGate .jf-verify-actions .btn{min-height:44px}
 #jfVerifyResend::after{content:attr(data-wait)}
+#ftCloudGate.jf-verify-link .jf-code-only,#ftCloudGate:not(.jf-verify-link) .jf-link-only{display:none!important}
+#ftCloudGate.jf-verify-link .jf-verify-hint.jf-link-only{font-size:14px;margin:6px 0 4px}
