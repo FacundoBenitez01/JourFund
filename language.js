@@ -243,6 +243,31 @@ Continuar con Google|Continue with Google|Continuar com Google
 Restablecer contraseña|Reset password|Redefinir senha
 Guardar nueva contraseña|Save new password|Salvar nova senha
 Tu trading. Tu progreso.|Your trading. Your progress.|Seu trading. Seu progresso.
+Contacto|Contact|Contato
+Te enviamos un enlace de confirmación a|We sent a confirmation link to|Enviamos um link de confirmação para
+Abrí el correo y tocá el enlace de confirmación para activar tu cuenta. Si no lo ves, revisá spam o promociones.|Open the email and tap the confirmation link to activate your account. If you can't find it, check spam or promotions.|Abra o e-mail e toque no link de confirmação para ativar sua conta. Se não encontrar, verifique o spam ou promoções.
+Reenviar correo|Resend email|Reenviar e-mail
+Te enviamos el enlace. Puede tardar un minuto en llegar.|We sent the link. It may take a minute to arrive.|Enviamos o link. Pode levar um minuto para chegar.
+Tu cuenta todavía no está confirmada. Tocá el enlace del correo o pedí uno nuevo.|Your account isn't confirmed yet. Tap the link in the email or request a new one.|Sua conta ainda não foi confirmada. Toque no link do e-mail ou peça um novo.
+Te enviamos un enlace nuevo.|We sent you a new link.|Enviamos um link novo.
+Esperá un momento antes de pedir otro correo.|Wait a moment before requesting another email.|Aguarde um momento antes de pedir outro e-mail.
+Te enviamos un código de verificación a|We sent a verification code to|Enviamos um código de verificação para
+Código de verificación|Verification code|Código de verificação
+Confirmar cuenta|Confirm account|Confirmar conta
+También podés tocar el enlace del correo. Si no lo ves, revisá spam o promociones.|You can also tap the link in the email. If you can't find it, check spam or promotions.|Você também pode tocar no link do e-mail. Se não encontrar, verifique o spam ou promoções.
+Reenviar código|Resend code|Reenviar código
+Usar otro correo|Use another email|Usar outro e-mail
+Confirmá tu correo|Confirm your email|Confirme seu e-mail
+Falta un paso para activar tu cuenta.|One more step to activate your account.|Falta um passo para ativar sua conta.
+Te enviamos el código. Puede tardar un minuto en llegar.|We sent the code. It may take a minute to arrive.|Enviamos o código. Pode levar um minuto para chegar.
+Tu cuenta todavía no está confirmada. Escribí el código del correo o pedí uno nuevo.|Your account isn't confirmed yet. Enter the code from the email or request a new one.|Sua conta ainda não foi confirmada. Digite o código do e-mail ou peça um novo.
+Escribí el código de 6 dígitos que te llegó por correo.|Enter the 6-digit code we emailed you.|Digite o código de 6 dígitos que enviamos por e-mail.
+Confirmando…|Confirming…|Confirmando…
+Cuenta confirmada. Ya podés iniciar sesión.|Account confirmed. You can sign in now.|Conta confirmada. Você já pode entrar.
+El código no es válido o ya venció. Revisalo o pedí uno nuevo.|The code is invalid or has expired. Check it or request a new one.|O código é inválido ou expirou. Confira ou peça um novo.
+Te enviamos un código nuevo.|We sent you a new code.|Enviamos um código novo.
+Esperá un momento antes de pedir otro código.|Wait a moment before requesting another code.|Aguarde um momento antes de pedir outro código.
+Ese correo ya tiene una cuenta. Iniciá sesión o usá «Olvidé mi contraseña».|That email already has an account. Sign in or use "Forgot my password".|Esse e-mail já tem uma conta. Entre ou use "Esqueci minha senha".
 Preparando tu espacio|Preparing your workspace|Preparando seu espaço
 Sincronizando tus cuentas|Syncing your accounts|Sincronizando suas contas
 Reintentar carga|Retry loading|Tentar carregar novamente
