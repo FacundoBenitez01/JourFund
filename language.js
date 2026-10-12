@@ -2,7 +2,42 @@
 (function(){
 'use strict';
 const supported=['es','en','pt-BR'], names={es:'Español',en:'English','pt-BR':'Português (Brasil)'}, dictionary=new Map();
-const rows=`Capital propio|Personal capital|Capital próprio
+const rows=`Journal para traders|Trading journal|Diário de trading
+Tu trading.|Your trading.|Seu trading.
+Bajo control.|Under control.|Sob controle.
+Conocé tu margen antes de operar. Registrá tus operaciones y seguí tus objetivos.|Know your available margin before trading. Record your trades and track your goals.|Conheça sua margem antes de operar. Registre suas operações e acompanhe suas metas.
+Ejemplo ilustrativo|Illustrative example|Exemplo ilustrativo
+Ejemplo ilustrativo de una cuenta|Illustrative account example|Exemplo ilustrativo de uma conta
+Margen diario disponible|Available daily margin|Margem diária disponível
+Objetivo de fase|Phase target|Meta da fase
+Reglas disponibles|Available rules|Regras disponíveis
+Del registro al control.|From tracking to control.|Do registro ao controle.
+Elegí tu cuenta|Choose your account|Escolha sua conta
+Agregá tu cuenta de fondeo o capital propio y configurá sus reglas.|Add your funded or personal account and set its rules.|Adicione sua conta de avaliação ou capital próprio e configure suas regras.
+Registrá tu operación|Record your trade|Registre sua operação
+Cargá el resultado, el riesgo y tus capturas.|Record the result, risk and screenshots.|Registre o resultado, o risco e suas capturas.
+Revisá tu margen|Check your margin|Confira sua margem
+Consultá tus límites y tu avance hacia el objetivo.|Check your limits and progress toward the target.|Confira seus limites e seu progresso rumo à meta.
+Probala sin registrarte|Try it without signing up|Teste sem se cadastrar
+Calculá tu próxima entrada.|Size your next trade.|Calcule sua próxima entrada.
+Elegí tu riesgo y la distancia del stop. Probá el tamaño de posición antes de registrar una operación.|Choose your risk and stop distance. Try the position size before recording a trade.|Escolha seu risco e a distância do stop. Teste o tamanho da posição antes de registrar uma operação.
+Todo conectado.|Everything connected.|Tudo conectado.
+Cuentas y grupos|Accounts and groups|Contas e grupos
+Organizá tus cuentas de fondeo y tu capital propio.|Organize your funded accounts and personal capital.|Organize suas contas de avaliação e seu capital próprio.
+Cuentas de ejemplo|Example accounts|Contas de exemplo
+Analizá tu rendimiento y encontrá patrones.|Analyze your performance and find patterns.|Analise seu desempenho e encontre padrões.
+Curva de balance ilustrativa|Illustrative balance curve|Curva de saldo ilustrativa
+Avisos y noticias|Alerts and news|Alertas e notícias
+Recordatorios, sesiones y eventos económicos.|Reminders, sessions and economic events.|Lembretes, sessões e eventos econômicos.
+70 % del límite diario|70% of the daily limit|70% do limite diário
+Revisá tu margen antes de operar.|Check your margin before trading.|Confira sua margem antes de operar.
+Objetivos y retiros|Goals and withdrawals|Metas e saques
+Llevá el control de tu avance y tus retiros.|Track your progress and withdrawals.|Acompanhe seu progresso e seus saques.
+Nacimos en Paraguay para simplificar el control de tus cuentas.|Created in Paraguay to simplify tracking your accounts.|Nascemos no Paraguai para simplificar o controle das suas contas.
+Nuestra historia|Our story|Nossa história
+Antes de empezar|Before you start|Antes de começar
+Cómo se calcula el drawdown|How drawdown is calculated|Como o drawdown é calculado
+Capital propio|Personal capital|Capital próprio
 Agregar cuenta|Add account|Adicionar conta
 Cuenta de fondeo|Funded account|Conta de avaliação
 Guardar cuenta|Save account|Salvar conta

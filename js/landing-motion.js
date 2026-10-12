@@ -21,13 +21,13 @@
     { daily: 520, max: 1910, goal: 410, used: 230 },
     { daily: 520, max: 1910, goal: 410, used: 230 }
   ];
-  const SCHEDULE = [0, 1600, 3800, 5400], LOOP = 10500;
+  const SCHEDULE = [0, 1600, 3800, 5400];
   const hero = name => $('[data-jf-hero="' + name + '"]');
-  let current = { ...PHASES[2] }, heroTimers = [], raf = 0, heroRunning = false;
+  let current = { ...PHASES[2] }, heroTimers = [], raf = 0, heroRunning = false, heroPlayed = false;
 
   function paint(values) {
     hero('daily').textContent = money(values.daily);
-    hero('max').textContent = money(values.max);
+    if (hero('max')) hero('max').textContent = money(values.max);
     hero('goal').textContent = money(values.goal);
     hero('used').textContent = money(values.used);
     hero('goalbar').style.width = Math.round(values.goal / 1200 * 100) + '%';
@@ -37,7 +37,7 @@
     hero('empty').hidden = i !== 0;
     hero('t1').hidden = i < 1;
     hero('t2').hidden = i < 2;
-    hero('tip').hidden = i < 3;
+    if (hero('tip')) hero('tip').hidden = i < 3;
     const lit = Math.round(target.used / 75);
     hero('segs').querySelectorAll('i').forEach((seg, n) => { seg.style.transitionDelay = (n * 0.09) + 's'; seg.classList.toggle('on', n < lit); });
     if (i === 1 || i === 2) { const big = hero('daily'); big.classList.remove('jf-hit'); void big.offsetWidth; big.classList.add('jf-hit'); }
@@ -52,9 +52,9 @@
   }
   function runHero() {
     SCHEDULE.forEach((at, i) => heroTimers.push(setTimeout(() => showPhase(i), at)));
-    heroTimers.push(setTimeout(runHero, LOOP));
+
   }
-  function startHero() { if (heroRunning || reduceMotion) return; heroRunning = true; runHero(); }
+  function startHero() { if (heroRunning || heroPlayed || reduceMotion) return; heroRunning = true; heroPlayed = true; runHero(); }
   function stopHero() {
     if (!heroRunning) return;
     heroRunning = false; heroTimers.forEach(clearTimeout); heroTimers = []; cancelAnimationFrame(raf);
@@ -109,11 +109,13 @@
     ddTabs.forEach((tab, i) => tab.setAttribute('aria-pressed', String(i === index)));
   }
   ddTabs.forEach((tab, i) => tab.addEventListener('click', () => { ddTouched = true; showDrawdown(i); }));
+  const ddDetails = $('.jf-drawdown-details');
   function startDrawdown() {
-    if (ddTimer || reduceMotion || ddTouched) return;
+    if (ddTimer || reduceMotion || ddTouched || !ddDetails?.open) return;
     ddTimer = setInterval(() => { if (!ddTouched && isShown()) showDrawdown((ddIndex + 1) % 3); }, 4000);
   }
   function stopDrawdown() { clearInterval(ddTimer); ddTimer = 0; }
+  ddDetails?.addEventListener('toggle', () => { if (ddDetails.open && isShown()) startDrawdown(); else stopDrawdown(); });
 
   /* ---------- Lot calculator ---------- */
   const INSTRUMENTS = {
