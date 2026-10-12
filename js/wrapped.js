@@ -1,4 +1,4 @@
-/* JourFund Wrapped (v142): animated stories of the user's last completed week for the active account.
+/* JourFund Wrapped (v143): animated stories of the user's last completed week for the active account.
    Data comes from the same trades and rules the app already uses (FTRules). Slides without data are skipped.
    Opens from a banner on Inicio; nothing is saved to the cloud (only a "seen" flag in localStorage). */
 (function () {
@@ -22,6 +22,7 @@
       k7: 'La canción que te definió esta semana', listen: 'Escuchar en Spotify',
       k8: 'Objetivo de la fase {phase}', h8: { start: 'Arrancando', half: 'Vas por la mitad', near: 'Ya casi', done: 'Objetivo alcanzado', low: 'En camino' }, l8: '{have} de {target} · faltan {left}', pace: 'A este ritmo, pasás de fase en {n}', week1: '1 semana', weeks: '{n} semanas', paceNo: 'Una semana positiva te acerca al objetivo.',
       k9: 'Mi semana de trading', bestDay: 'mejor día', star: 'activo estrella', maxLimit: 'máx. del límite', song: 'Mi canción', showAmounts: 'Mostrar importes en dólares', share: 'Compartir', again: 'Ver de nuevo', copied: 'Resumen copiado', copyFail: 'No se pudo copiar en este navegador.',
+      igShare: 'Compartir en Instagram', save: 'Guardar imagen', saved: 'Imagen guardada. Abrí Instagram y subila a tu historia.', madeWith: 'Hecho con JourFund', onAccount: 'sobre mi cuenta', imgAlt: 'Imagen de tu semana para compartir', ready: 'Tu imagen para historias',
       shareText: 'Mi semana en JourFund: {result} · {wr} win rate · mejor día {day} · canción: {song}. jourfund.com',
       states: { Bien: 'bien', Ansioso: 'ansioso', MOLESTO: 'molesto' },
       why: {
@@ -46,6 +47,7 @@
       k7: 'The song that defined your week', listen: 'Listen on Spotify',
       k8: 'Phase {phase} target', h8: { start: 'Getting started', half: 'Halfway there', near: 'Almost there', done: 'Target reached', low: 'On your way' }, l8: '{have} of {target} · {left} to go', pace: 'At this pace, you pass the phase in {n}', week1: '1 week', weeks: '{n} weeks', paceNo: 'A positive week gets you closer to the target.',
       k9: 'My trading week', bestDay: 'best day', star: 'star asset', maxLimit: 'max. of limit', song: 'My song', showAmounts: 'Show dollar amounts', share: 'Share', again: 'Watch again', copied: 'Summary copied', copyFail: 'Couldn\'t copy in this browser.',
+      igShare: 'Share on Instagram', save: 'Save image', saved: 'Image saved. Open Instagram and add it to your story.', madeWith: 'Made with JourFund', onAccount: 'on my account', imgAlt: 'Image of your week to share', ready: 'Your story image',
       shareText: 'My week on JourFund: {result} · {wr} win rate · best day {day} · song: {song}. jourfund.com',
       states: { Bien: 'good', Ansioso: 'anxious', MOLESTO: 'upset' },
       why: {
@@ -70,6 +72,7 @@
       k7: 'A música que definiu sua semana', listen: 'Ouvir no Spotify',
       k8: 'Meta da fase {phase}', h8: { start: 'Começando', half: 'Na metade', near: 'Quase lá', done: 'Meta alcançada', low: 'No caminho' }, l8: '{have} de {target} · faltam {left}', pace: 'Nesse ritmo, você passa de fase em {n}', week1: '1 semana', weeks: '{n} semanas', paceNo: 'Uma semana positiva te aproxima da meta.',
       k9: 'Minha semana de trading', bestDay: 'melhor dia', star: 'ativo estrela', maxLimit: 'máx. do limite', song: 'Minha música', showAmounts: 'Mostrar valores em dólares', share: 'Compartilhar', again: 'Ver de novo', copied: 'Resumo copiado', copyFail: 'Não foi possível copiar neste navegador.',
+      igShare: 'Compartilhar no Instagram', save: 'Salvar imagem', saved: 'Imagem salva. Abra o Instagram e poste nos seus stories.', madeWith: 'Feito com JourFund', onAccount: 'sobre minha conta', imgAlt: 'Imagem da sua semana para compartilhar', ready: 'Sua imagem para stories',
       shareText: 'Minha semana no JourFund: {result} · {wr} win rate · melhor dia {day} · música: {song}. jourfund.com',
       states: { Bien: 'bem', Ansioso: 'ansioso', MOLESTO: 'irritado' },
       why: {
@@ -233,6 +236,7 @@
       g.strokeStyle = '#d9d6e4'; g.lineWidth = Math.max(3, r * .035); g.lineCap = 'round'; g.beginPath(); g.moveTo(0, 0); g.lineTo(-r * .18, r * .9); g.lineTo(-r * .42, r * 1.12); g.stroke();
       g.fillStyle = '#d9d6e4'; g.beginPath(); g.arc(0, 0, r * .09, 0, Math.PI * 2); g.fill(); g.restore();
     },
+    none() {},
     logo(g, [x0, y0, x1, y1], t, c) {
       const s = Math.min(x1 - x0, y1 - y0) / 215, from = [[-60, -40], [-70, 50], [0, 80], [70, -50], [-40, 60], [40, 70]];
       g.save(); g.translate((x0 + x1) / 2 - 123 * s, (y0 + y1) / 2 - 136 * s); g.scale(s, s);
@@ -240,6 +244,46 @@
       g.restore();
     }
   };
+
+  /* ---------- 1080×1920 story image for Instagram ---------- */
+  function storyImage(w, showAmounts) {
+    const Wd = 1080, Ht = 1920, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Ht;
+    const g = cv.getContext('2d'), pos = w.pnl >= 0, main = pos ? '#5ef0b6' : '#ff8a9a', BODY = 'Inter, ui-sans-serif, system-ui, sans-serif';
+    const bg = g.createLinearGradient(0, 0, Wd * .6, Ht); bg.addColorStop(0, '#7c4dff'); bg.addColorStop(.45, '#2c1574'); bg.addColorStop(1, '#0d0726');
+    g.fillStyle = bg; g.fillRect(0, 0, Wd, Ht);
+    [[Wd * .95, Ht * .12, 620, pos ? 'rgba(94,240,182,.30)' : 'rgba(255,138,154,.30)'], [Wd * .05, Ht * .78, 700, 'rgba(255,95,168,.28)'], [Wd * .5, Ht * .5, 900, 'rgba(124,77,255,.18)']].forEach(([x, y, r, c]) => {
+      const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, c); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(0, 0, Wd, Ht); });
+    const rr = (x, y, ww, hh, r, fill) => { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + ww, y, x + ww, y + hh, r); g.arcTo(x + ww, y + hh, x, y + hh, r); g.arcTo(x, y + hh, x, y, r); g.arcTo(x, y, x + ww, y, r); g.closePath(); g.fillStyle = fill; g.fill(); };
+    const fit = (txt, weight, size, maxW, font) => { let s2 = size; g.font = weight + ' ' + s2 + 'px ' + font; const m = g.measureText(txt).width; if (m > maxW) s2 = Math.floor(s2 * maxW / m); g.font = weight + ' ' + s2 + 'px ' + font; return s2; };
+    g.save(); g.translate(90, 104); g.scale(.36, .36); LOGO.forEach((d, i) => { g.fillStyle = i < 2 ? '#fbf9ff' : '#b79cff'; g.fill(new Path2D(d)); }); g.restore();
+    g.fillStyle = '#fff'; g.font = '800 54px ' + FONT; g.textBaseline = 'middle'; g.fillText('JourFund', 196, 152);
+    g.textAlign = 'right'; g.font = '600 34px ' + BODY; g.fillStyle = 'rgba(255,255,255,.78)'; g.fillText(range(w.start, w.end), Wd - 90, 152); g.textAlign = 'left';
+    g.fillStyle = 'rgba(255,255,255,.8)'; g.font = '700 40px ' + BODY; g.fillText(t('k9').toUpperCase(), 90, 330);
+    const big = showAmounts ? signed(w.pnl) : spct(w.accountPct);
+    fit(big, '800', 250, Wd - 180, FONT); g.fillStyle = main; g.shadowColor = main; g.shadowBlur = 60; g.fillText(big, 84, 500); g.shadowBlur = 0;
+    g.font = '600 42px ' + BODY; g.fillStyle = 'rgba(255,255,255,.85)';
+    g.fillText(showAmounts ? spct(w.accountPct) + ' ' + t('onAccount') + ' · ' + w.count + ' ' + t('ops') : w.count + ' ' + t('ops') + ' · ' + (w.account.nickname || w.account.firm), 90, 660);
+    const days = w.days.slice(-7), up = Math.max(0, ...days.map(d => d.pnl)), down = Math.max(0, ...days.map(d => -d.pnl)), span = (up + down) || 1;
+    const top = 760, height = 330, zero = top + height * up / span, n = days.length, gap = 26, bw = Math.min(130, (Wd - 180 - gap * (n - 1)) / n), x0 = (Wd - (bw * n + gap * (n - 1))) / 2;
+    rr(70, top - 40, Wd - 140, height + 150, 44, 'rgba(0,0,0,.22)');
+    if (down > 0) { g.fillStyle = 'rgba(255,255,255,.35)'; g.fillRect(x0 - 10, zero - 1, bw * n + gap * (n - 1) + 20, 2); }
+    const best = days.reduce((m, d) => d.pnl > m.pnl ? d : m, days[0]);
+    days.forEach((d, i) => { const h = Math.max(6, Math.abs(d.pnl) / span * height), x = x0 + i * (bw + gap), y = d.pnl >= 0 ? zero - h : zero;
+      const c = d === best && d.pnl > 0 ? '#5ef0b6' : d.pnl >= 0 ? 'rgba(255,255,255,.55)' : 'rgba(255,138,154,.55)'; rr(x, y, bw, h, Math.min(18, bw / 3, h / 2), c);
+      g.fillStyle = 'rgba(255,255,255,.75)'; g.font = '600 28px ' + BODY; g.textAlign = 'center'; g.fillText(weekday(d.date, 'short'), x + bw / 2, top + height + 56); g.textAlign = 'left'; });
+    const cards = [[w.winRate == null ? '—' : pct(w.winRate), t('wr')], [w.best ? weekday(w.best.date) : '—', t('bestDay')], [w.star ? w.star.asset : '—', t('star')], [w.usage == null ? '—' : pct(Math.ceil(w.usage)), t('maxLimit')]];
+    const tw = (Wd - 180 - 30) / 2, th = 170;
+    cards.forEach(([b, l], i) => { const x = 90 + (i % 2) * (tw + 30), y = 1240 + Math.floor(i / 2) * (th + 30);
+      rr(x, y, tw, th, 36, 'rgba(255,255,255,.12)'); g.fillStyle = '#fff'; fit(String(b), '800', 66, tw - 60, FONT); g.fillText(String(b), x + 32, y + 72);
+      g.fillStyle = 'rgba(255,255,255,.72)'; g.font = '600 30px ' + BODY; g.fillText(l, x + 32, y + 132); });
+    const sy = 1660; rr(90, sy, Wd - 180, 120, 60, 'rgba(0,0,0,.28)');
+    g.fillStyle = '#121016'; g.beginPath(); g.arc(150, sy + 60, 40, 0, Math.PI * 2); g.fill();
+    g.fillStyle = '#ff5fa8'; g.beginPath(); g.arc(150, sy + 60, 13, 0, Math.PI * 2); g.fill();
+    g.fillStyle = 'rgba(255,255,255,.7)'; g.font = '600 26px ' + BODY; g.fillText(t('song'), 214, sy + 40);
+    g.fillStyle = '#fff'; fit(w.song[0] + ' · ' + w.song[1], '700', 36, Wd - 180 - 160, BODY); g.fillText(w.song[0] + ' · ' + w.song[1], 214, sy + 82);
+    g.fillStyle = 'rgba(255,255,255,.7)'; g.font = '600 30px ' + BODY; g.textAlign = 'center'; g.fillText(t('madeWith') + ' · jourfund.com', Wd / 2, 1860); g.textAlign = 'left';
+    return new Promise(res => cv.toBlob(b => res(b), 'image/png'));
+  }
 
   /* ---------- slides from the data ---------- */
   const esc = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -271,12 +315,11 @@
       out.push({ bg: [18, 10, 58], cols: ['#a78bfa', '#efe8ff', '#6d3cf0'], box: [.14, .25, .86, .70], hero: ['ring', f],
         html: '<div><p class="jfw-kick">' + esc(t('k8', { phase: w.goal.phase })) + '</p><h2 class="jfw-kin">' + esc(t('h8.' + key)) + '</h2></div><div class="jfw-lower"><p class="jfw-line jfw-rise jfw-d2">' + esc(t('l8', { have: money(w.goal.have), target: money(w.goal.target), left: money(left) })) + '</p>' +
           (f < 1 ? '<p class="jfw-note jfw-rise jfw-d3 jfw-tc">' + esc(weeks ? t('pace', { n: weeks === 1 ? t('week1') : t('weeks', { n: weeks }) }) : t('paceNo')) + '</p>' : '') + foot() + '</div>' }); }
-    const tiles = [[w.winRate == null ? '—' : pct(w.winRate), t('wr')], [w.best ? weekday(w.best.date) : '—', t('bestDay')], [w.star ? w.star.asset : '—', t('star')], [w.usage == null ? '—' : pct(Math.ceil(w.usage)), t('maxLimit')]];
-    out.push({ bg: [12, 9, 24], cols: ['#9464ef', '#c9b0ff', '#6a3be0'], box: [.33, .10, .67, .30], hero: ['logo'], share: true,
-      html: '<div style="height:30%"></div><div class="jfw-lower"><div class="jfw-card"><div class="jfw-ch"><span>' + esc(t('k9')) + '</span><span>' + esc(range(w.start, w.end)) + '</span></div><p class="jfw-cbig' + (w.pnl < 0 ? ' neg' : '') + '" data-jfw-result>' + esc(spct(w.accountPct)) + '</p>' +
-        '<div class="jfw-cg">' + tiles.map(([b, s]) => '<div><b>' + esc(b) + '</b><span>' + esc(s) + '</span></div>').join('') + '<div class="full">' + esc(t('song')) + ': <b>' + esc(song + ' · ' + artist) + '</b></div></div></div>' +
-        '<div class="jfw-toggle jfw-live"><button class="jfw-sw" type="button" role="switch" aria-checked="false" data-jfw="amounts" aria-label="' + esc(t('showAmounts')) + '"></button><span>' + esc(t('showAmounts')) + '</span></div>' +
-        '<div class="jfw-row jfw-live"><button class="jfw-btn" type="button" data-jfw="share">' + esc(t('share')) + '</button><button class="jfw-btn ghost" type="button" data-jfw="again">' + esc(t('again')) + '</button></div><p class="jfw-toast" role="status" data-jfw="toast"></p></div>' });
+    out.push({ bg: [12, 9, 24], cols: ['#9464ef', '#c9b0ff', '#6a3be0'], box: [0, 0, 0, 0], hero: ['none'], share: true,
+      html: '<div><p class="jfw-kick">' + esc(t('ready')) + '</p></div><div class="jfw-shot"><img data-jfw-img alt="' + esc(t('imgAlt')) + '"></div>' +
+        '<div class="jfw-lower"><div class="jfw-row jfw-live"><button class="jfw-btn" type="button" data-jfw="share"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>' + esc(t('igShare')) + '</button></div>' +
+        '<div class="jfw-row jfw-live"><button class="jfw-btn ghost" type="button" data-jfw="save">' + esc(t('save')) + '</button><button class="jfw-btn ghost" type="button" data-jfw="again">' + esc(t('again')) + '</button></div>' +
+        '<div class="jfw-toggle jfw-live"><button class="jfw-sw" type="button" role="switch" aria-checked="false" data-jfw="amounts" aria-label="' + esc(t('showAmounts')) + '"></button><span>' + esc(t('showAmounts')) + '</span></div><p class="jfw-toast" role="status" data-jfw="toast"></p></div>' });
     return out;
   }
 
@@ -358,24 +401,38 @@
       const act = e.target.closest('[data-jfw]')?.dataset.jfw; if (!act) { if (e.target.classList.contains('jfw-backdrop')) close(); return; }
       if (act === 'next' && !held) show(index + 1); else if (act === 'prev' && !held) show(index - 1);
       else if (act === 'pause') setPaused(!paused); else if (act === 'close') close(); else if (act === 'again') show(0);
-      else if (act === 'amounts') { const sw = e.target.closest('[data-jfw="amounts"]'), on = sw.getAttribute('aria-checked') !== 'true'; sw.setAttribute('aria-checked', String(on)); root.querySelector('[data-jfw-result]').textContent = on ? signed(w.pnl) : spct(w.accountPct); }
-      else if (act === 'share') share();
+      else if (act === 'amounts') { const sw = e.target.closest('[data-jfw="amounts"]'), on = sw.getAttribute('aria-checked') !== 'true'; sw.setAttribute('aria-checked', String(on)); render(on); }
+      else if (act === 'share') share(); else if (act === 'save') save();
     });
-    function share() {
-      const on = root.querySelector('[data-jfw="amounts"]').getAttribute('aria-checked') === 'true', toast = root.querySelector('[data-jfw="toast"]');
-      const text = t('shareText', { result: on ? signed(w.pnl) : spct(w.accountPct), wr: w.winRate == null ? '—' : pct(w.winRate), day: w.best ? weekday(w.best.date) : '—', song: w.song[0] + ' (' + w.song[1] + ')' });
-      if (navigator.share) { navigator.share({ text }).catch(() => {}); return; }
-      navigator.clipboard?.writeText(text).then(() => { toast.textContent = t('copied'); }, () => { toast.textContent = t('copyFail'); });
+    // The shareable image: rebuilt when the amounts switch changes.
+    let blob = null, blobUrl = '', building = null;
+    const imgEl = root.querySelector('[data-jfw-img]'), toast = () => root.querySelector('[data-jfw="toast"]');
+    function render(on) {
+      blob = null;
+      building = storyImage(w, on).then(b => { blob = b; if (blobUrl) URL.revokeObjectURL(blobUrl); blobUrl = URL.createObjectURL(b); if (imgEl) imgEl.src = blobUrl; return b; });
+      return building;
+    }
+    const fileName = () => 'jourfund-semana-' + w.start + '.png';
+    async function share() {
+      const b = blob || await building; if (!b) return;
+      const file = new File([b], fileName(), { type: 'image/png' });
+      if (navigator.canShare?.({ files: [file] })) { try { await navigator.share({ files: [file] }); } catch {} return; }
+      save();
+    }
+    async function save() {
+      const b = blob || await building; if (!b) return;
+      const a = document.createElement('a'); a.href = blobUrl; a.download = fileName(); document.body.append(a); a.click(); a.remove();
+      toast().textContent = t('saved');
     }
     close = () => {
       if (!root) return; alive = false;
       stage.removeEventListener('pointerdown', onDown); removeEventListener('pointerup', onUp); document.removeEventListener('keydown', onKey, true); removeEventListener('resize', onResize);
-      root.remove(); root = null; document.documentElement.classList.remove('jfw-lock');
+      root.remove(); root = null; document.documentElement.classList.remove('jfw-lock'); if (blobUrl) URL.revokeObjectURL(blobUrl);
       (opener && document.contains(opener) ? opener : document.querySelector('#jfWrappedBanner button'))?.focus?.({ preventScroll: true });
     };
     try { localStorage.setItem(seenKey(w), '1'); } catch {}
     paintBanner();
-    const go = () => { size(); show(0); setPaused(reduce); requestAnimationFrame(frame); root?.querySelector('[data-jfw="close"]')?.focus({ preventScroll: true }); };
+    const go = () => { size(); render(false); show(0); setPaused(reduce); requestAnimationFrame(frame); root?.querySelector('[data-jfw="close"]')?.focus({ preventScroll: true }); };
     (document.fonts?.load ? Promise.race([document.fonts.load('800 100px "Bricolage Grotesque"'), new Promise(r => setTimeout(r, 1200))]) : Promise.resolve()).then(go, go);
   }
 
