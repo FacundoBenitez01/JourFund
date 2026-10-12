@@ -1,0 +1,96 @@
+/* JourFund Wrapped (v141): story player overlay and the Inicio banner. */
+html.jfw-lock,html.jfw-lock body{overflow:hidden}
+.jfw{position:fixed;inset:0;z-index:12500;display:flex;align-items:center;justify-content:center;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom));font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;--jfw-d:"Bricolage Grotesque",Inter,ui-sans-serif,system-ui,sans-serif;--jfw-out:cubic-bezier(.16,1,.3,1)}
+.jfw *{box-sizing:border-box}
+.jfw-backdrop{position:absolute;inset:0;background:#030207f2;backdrop-filter:blur(10px)}
+.jfw-stage{position:relative;width:min(430px,100%,calc((100dvh - 24px) * 9 / 16));aspect-ratio:9/16;max-height:100%;border-radius:30px;overflow:hidden;background:#12062e;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.07);user-select:none;-webkit-user-select:none;touch-action:none;isolation:isolate;animation:jfwIn .45s var(--jfw-out)}
+@keyframes jfwIn{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:520px){.jfw{padding:0}.jfw-stage{width:100%;height:100%;aspect-ratio:auto;border-radius:0;max-height:none}}
+.jfw-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.jfw-vig{position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(120% 80% at 50% 45%,transparent 55%,rgba(0,0,0,.55))}
+.jfw-grain{position:absolute;inset:-50%;pointer-events:none;z-index:2;opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");animation:jfwGrain 1s steps(6) infinite}
+@keyframes jfwGrain{0%{transform:translate(0,0)}33%{transform:translate(-4%,3%)}66%{transform:translate(3%,-5%)}100%{transform:translate(-2%,2%)}}
+
+.jfw-top{position:absolute;inset:0 0 auto;z-index:20;padding:calc(12px + env(safe-area-inset-top,0px)) 16px 0;pointer-events:none}
+@media(min-width:521px){.jfw-top{padding-top:14px}}
+.jfw-bars{display:flex;gap:4px}
+.jfw-bars i{flex:1;height:3px;border-radius:9px;background:rgba(255,255,255,.26);overflow:hidden}
+.jfw-bars b{display:block;height:100%;width:0;background:#fff}
+.jfw-head{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12px;color:rgba(255,255,255,.76)}
+.jfw-head strong{color:#fff;font-size:14px}
+.jfw-head span{margin-left:auto}
+.jfw-ctl{pointer-events:auto;display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;cursor:pointer}
+.jfw-ctl:focus-visible,.jfw-btn:focus-visible,.jfw-sw:focus-visible,.jfw-nav:focus-visible,.jfw-banner-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.jfw-nav{position:absolute;top:0;bottom:0;z-index:5;border:0;background:transparent;cursor:pointer;padding:0}
+.jfw-nav.prev{left:0;width:34%}.jfw-nav.next{right:0;width:66%}
+
+.jfw-slide{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;padding:calc(92px + env(safe-area-inset-top,0px)) 24px calc(26px + env(safe-area-inset-bottom,0px));pointer-events:none;visibility:hidden}
+@media(min-width:521px){.jfw-slide{padding:92px 24px 26px}}
+.jfw-slide.on{visibility:visible}
+.jfw-live{pointer-events:auto}
+.jfw-kick{margin:0;font-size:12px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,.76)}
+.jfw h2{margin:8px 0 0;font-family:var(--jfw-d);font-weight:800;font-size:clamp(26px,7.8vw,34px);line-height:1;letter-spacing:-1px;text-wrap:balance;color:#fff}
+.jfw-lower{margin-top:auto;display:flex;flex-direction:column;gap:10px}
+.jfw-foot{margin:0;text-align:center;font-size:12px;color:rgba(255,255,255,.7)}
+.jfw-kin .wd{display:inline-block;white-space:nowrap}.jfw-kin .ch{display:inline-block}
+.jfw-slide.on .jfw-kin .ch{animation:jfwLetter .7s var(--jfw-out) both}
+@keyframes jfwLetter{from{opacity:0;transform:translateY(.6em) rotate(8deg);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
+.jfw-slide.on .jfw-rise{animation:jfwRise .8s var(--jfw-out) both}
+.jfw-slide.on .jfw-d1{animation-delay:.9s}.jfw-slide.on .jfw-d2{animation-delay:1.2s}.jfw-slide.on .jfw-d3{animation-delay:1.5s}
+@keyframes jfwRise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.jfw-chips{display:flex;gap:8px}
+.jfw-chip{flex:1;min-width:0;padding:11px 8px;border-radius:16px;background:rgba(255,255,255,.09);backdrop-filter:blur(8px);text-align:center}
+.jfw-chip b{display:block;font-family:var(--jfw-d);font-size:21px;overflow-wrap:anywhere}
+.jfw-chip span{font-size:11px;color:rgba(255,255,255,.76)}
+.jfw-line{margin:0;font-size:15px;font-weight:600;color:rgba(255,255,255,.8);text-align:center}
+.jfw-big{margin:4px 0 0;font-family:var(--jfw-d);font-weight:800;font-size:clamp(44px,14vw,60px);line-height:.95;letter-spacing:-2px;font-variant-numeric:tabular-nums}
+.jfw-center{text-align:center;display:flex;justify-content:center;flex-wrap:wrap;gap:0 .3em}
+.jfw-tc{text-align:center}
+.jfw-note{margin:0;padding:13px 15px;border-radius:18px;background:rgba(255,255,255,.09);backdrop-filter:blur(8px);font-size:14px;line-height:1.4;font-weight:600}
+.jfw-days{display:flex;margin:0 9%;font-size:11px;font-weight:700}
+.jfw-days span{flex:1;min-width:0;text-align:center;font-variant-numeric:tabular-nums}
+.jfw-days span.hi{color:#ffc14d}
+.jfw-days em{display:block;font-style:normal;font-weight:500;color:rgba(255,255,255,.7)}
+.jfw-song{margin:0;text-align:center;font-family:var(--jfw-d);font-weight:800;font-size:clamp(28px,8.6vw,38px);line-height:1;letter-spacing:-1px}
+.jfw-artist{margin:4px 0 0;text-align:center;font-size:16px;font-weight:600;color:rgba(255,255,255,.76)}
+.jfw-eq{display:flex;justify-content:center;align-items:flex-end;gap:4px;height:30px}
+.jfw-eq i{width:5px;height:30%;border-radius:3px;background:linear-gradient(#ff8bc4,#a78bfa)}
+.jfw-slide.on .jfw-eq i{animation:jfwEq .8s ease-in-out infinite alternate}
+.jfw-eq i:nth-child(2n){animation-duration:.6s!important}.jfw-eq i:nth-child(3n){animation-duration:1.05s!important}.jfw-eq i:nth-child(5n){animation-duration:.5s!important}
+@keyframes jfwEq{to{height:100%}}
+.jfw-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border:0;border-radius:99px;background:#fff;color:#170d2c;font:700 15px/1 inherit;text-decoration:none;cursor:pointer}
+.jfw-btn.ghost{background:rgba(255,255,255,.12);color:#fff}
+.jfw-card{position:relative;padding:18px;border-radius:24px;background:linear-gradient(155deg,rgba(124,77,255,.92),rgba(44,21,116,.94));box-shadow:0 24px 60px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.18);overflow:hidden}
+.jfw-slide.on .jfw-card{animation:jfwFlip 1.1s var(--jfw-out) .6s both}
+@keyframes jfwFlip{from{opacity:0;transform:perspective(800px) rotateX(40deg) translateY(50px) scale(.9)}to{opacity:1;transform:none}}
+.jfw-card::after{content:"";position:absolute;inset:-40% -60%;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.25) 50%,transparent 58%);transform:translateX(-60%);pointer-events:none}
+.jfw-slide.on .jfw-card::after{animation:jfwShine 3.2s ease-in-out 1.8s infinite}
+@keyframes jfwShine{0%{transform:translateX(-60%)}50%,100%{transform:translateX(60%)}}
+.jfw-cbig.neg{color:#ff8a9a}
+.jfw-ch{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:rgba(255,255,255,.8)}
+.jfw-cbig{margin:6px 0 0;font-family:var(--jfw-d);font-weight:800;font-size:clamp(44px,14vw,58px);letter-spacing:-2px;line-height:1;color:#5ef0b6;font-variant-numeric:tabular-nums}
+.jfw-cg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.jfw-cg div{padding:9px 10px;border-radius:12px;background:rgba(0,0,0,.22);min-width:0}
+.jfw-cg b{display:block;font-size:16px;overflow-wrap:anywhere}.jfw-cg span{font-size:11px;color:rgba(255,255,255,.76)}
+.jfw-cg .full{grid-column:1/-1;font-size:12px}.jfw-cg .full b{display:inline;font-size:12px}
+.jfw-toggle{display:flex;align-items:center;gap:10px;font-size:14px}
+.jfw-sw{width:44px;height:26px;border:0;border-radius:99px;background:rgba(255,255,255,.2);position:relative;cursor:pointer;flex:0 0 44px}
+.jfw-sw::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .25s var(--jfw-out)}
+.jfw-sw[aria-checked="true"]{background:#7446e8}.jfw-sw[aria-checked="true"]::after{transform:translateX(18px)}
+.jfw-row{display:flex;gap:10px}.jfw-row .jfw-btn{flex:1}
+.jfw-toast{min-height:16px;margin:0;text-align:center;font-size:13px;color:#5ef0b6}
+
+/* Banner on Inicio */
+.jfw-banner{position:relative;display:flex;align-items:center;gap:14px;margin:0 0 16px;padding:16px 18px;border-radius:20px;overflow:hidden;color:#fff;background:linear-gradient(120deg,#5b2fd0,#2a1468 55%,#3a0b4a);box-shadow:0 14px 40px rgba(60,20,140,.35),inset 0 0 0 1px rgba(255,255,255,.12);flex-wrap:wrap}
+.jfw-banner-art{position:relative;flex:0 0 52px;height:52px}
+.jfw-banner-art i{position:absolute;bottom:4px;width:12px;border-radius:5px;background:#5ef0b6;animation:jfwBar 1.6s ease-in-out infinite alternate}
+.jfw-banner-art i:nth-child(1){left:4px;height:22px;background:#a78bfa}.jfw-banner-art i:nth-child(2){left:20px;height:34px;animation-delay:.3s}.jfw-banner-art i:nth-child(3){left:36px;height:44px;background:#ffc14d;animation-delay:.6s}
+@keyframes jfwBar{to{transform:scaleY(.7);transform-origin:bottom}}
+.jfw-banner-copy{flex:1 1 180px;min-width:0}
+.jfw-banner h3{margin:0;font-size:17px;font-weight:700;color:#fff}
+.jfw-banner p{margin:3px 0 0;font-size:13px;color:rgba(255,255,255,.8)}
+.jfw-new{display:inline-block;margin-bottom:6px;padding:2px 8px;border-radius:99px;background:#5ef0b6;color:#05261b;font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase}
+.jfw-banner-btn{min-height:44px;padding:0 18px;border:0;border-radius:12px;background:#fff;color:#1f1047;font:700 14px/1 inherit;cursor:pointer;transition:transform .16s var(--jfw-out,ease)}
+.jfw-banner-btn:active{transform:scale(.97)}
+
+@media(prefers-reduced-motion:reduce){.jfw *,.jfw-stage,.jfw-grain,.jfw-banner-art i{animation:none!important}}
