@@ -997,6 +997,7 @@ Septiembre de 2026|September 2026|Setembro de 2026
 Hecho en|Made in|Feito em
 Los creadores|The founders|Os criadores
 Cofundador · Propietario|Co-founder · Owner|Cofundador · Proprietário
+Desarrollador|Developer|Desenvolvedor
 Olvidé mi contraseña|Forgot my password|Esqueci minha senha
 o con tu correo|or with your email|ou com seu e-mail
 Política de privacidad|Privacy policy|Política de privacidade
