@@ -1,6 +1,14 @@
 (function(){
  const home=document.querySelector('#ftPageHome .ft-page-body');if(!home)return;
- const icons=["<path d=\"m3 10 9-7 9 7v10H5V10m4 10v-7h6v7\"/>", "<path d=\"M7 3h10v3H7zM5 5v16h14V5M8 10h8M8 14h8M8 18h5\"/>", "<rect x=\"3\" y=\"5\" width=\"18\" height=\"15\" rx=\"3\"/><path d=\"M3 9h18m-5 5h3\"/>", "<path d=\"M5 17 19 3M9 3h10v10M4 12v8h16v-6\"/>", "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"1\"/>", "<path d=\"M9 4V2h6v2l2 1 2-1 3 5-2 2v2l2 2-3 5-2-1-2 1v2H9v-2l-2-1-2 1-3-5 2-2v-2L2 9l3-5 2 1z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/>"];const pageIcons={ftPageHome:icons[0],ftPageOps:icons[1],ftPageAccounts:icons[2],ftPageWithdrawals:icons[3],ftPageObjectives:icons[4],ftPageTools:'<path d="M14 6a4 4 0 0 0-5 5L3 17a2.8 2.8 0 0 0 4 4l6-6a4 4 0 0 0 5-5l-3 3-4-4z"/>',ftPageSettings:icons[5]};document.querySelectorAll('.mobile-nav button,.sidebar button[data-page]').forEach(b=>{const span=b.querySelector('span'),icon=pageIcons[b.dataset.page];if(span&&icon)span.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">'+icon+'</svg>';});
+ const pageIcons={
+  ftPageHome:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/>',
+  ftPageOps:'<path d="M5 3v4m0 10v4M12 2v3m0 10v4M19 5v4m0 10v3"/><rect x="3" y="7" width="4" height="10" rx=".7"/><rect x="10" y="5" width="4" height="10" rx=".7"/><rect x="17" y="9" width="4" height="10" rx=".7"/>',
+  ftPageAccounts:'<path d="M20 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h15v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6"/><path d="M21 12h-5a2 2 0 0 0 0 4h5Z"/>',
+  ftPageWithdrawals:'<path d="M12 5H5a2 2 0 0 0 0 4h14v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7M20 13h-5a2 2 0 0 0 0 4h5Z"/><path d="m14 8 7-7m-5 0h5v5"/>',
+  ftPageObjectives:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  ftPageTools:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7h8M8 12h2m4 0h2M8 16h2m4 0h2"/>',
+  ftPageSettings:'<path d="m9 3-.5 2-2 1-2-.5-2 3.5L4 10v3l-1.5 1 2 3.5 2-.5 2 1 .5 3h6l.5-3 2-1 2 .5 2-3.5-1.5-1v-3L21.5 9l-2-3.5-2 .5-2-1-.5-2Z"/><circle cx="12" cy="12" r="3"/>'
+ };document.querySelectorAll('.mobile-nav button,.sidebar button[data-page]').forEach(b=>{const span=b.querySelector('span'),icon=pageIcons[b.dataset.page];if(span&&icon){span.setAttribute('aria-hidden','true');span.innerHTML='<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+icon+'</svg>';}});
  const market=home.querySelector('.ft-market-card'),news=home.querySelector('.ft-news-card');
  const overview=home.querySelector('.ft-home-overview');if(overview)home.prepend(overview);
  market.innerHTML=`<div class="ft-market-head"><strong>Mercados</strong><span class="ft-provider">TradingView</span></div>
