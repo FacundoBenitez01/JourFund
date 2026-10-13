@@ -186,8 +186,8 @@
   }catch(e){accessTransition=false;if(!recovery&&/email not confirmed/i.test(e?.message||'')){showVerify(email,false);}else msg(errorText(e),true);}finally{el('ftAuthSubmit').disabled=false;}
  };
  // Email sign-up: confirm with the 6-digit code from the email (the link in the same email also works).
- // Turn on once the Supabase "Confirm sign up" email includes {{ .Token }} (needs custom SMTP). Until then the step asks for the link.
- const EMAIL_CODE=false;
+ // On since 2026-10-12: Resend SMTP is connected and the "Confirm sign up" template includes {{ .Token }}.
+ const EMAIL_CODE=true;
  let verifyEmail='',verifyKind='signup',resendTimer=null;
  ['ftAuthPassword','ftAuthPassword2'].forEach(id=>el(id).addEventListener('input',()=>el('ftAuthPassword2').removeAttribute('aria-invalid')));
  function resendCooldown(sec){clearInterval(resendTimer);const b=el('jfVerifyResend');b.disabled=true;let n=sec;const tick=()=>{b.dataset.wait=n>0?' ('+n+')':'';if(n--<=0){clearInterval(resendTimer);b.disabled=false;}};tick();resendTimer=setInterval(tick,1000);}
