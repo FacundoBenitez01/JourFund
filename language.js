@@ -272,6 +272,23 @@ Volver a iniciar sesión|Back to sign in|Voltar para entrar
 Revisá tu correo|Check your email|Verifique seu e-mail
 Te ayudamos a recuperar tu acceso.|Let's get you back in.|Vamos recuperar seu acesso.
 Creá tu cuenta para guardar tus cuentas y operaciones.|Create your account to save your accounts and trades.|Crie sua conta para salvar suas contas e operações.
+Ayuda|Help|Ajuda
+Reportar un problema o sugerencia|Report a problem or suggestion|Relatar um problema ou sugestão
+Contanos qué pasó|Tell us what happened|Conte o que aconteceu
+Problema|Problem|Problema
+Sugerencia|Suggestion|Sugestão
+Mensaje|Message|Mensagem
+¿Qué estabas haciendo y qué pasó? Cuanto más detalle, mejor.|What were you doing and what happened? The more detail, the better.|O que você estava fazendo e o que aconteceu? Quanto mais detalhes, melhor.
+Se envía junto con la versión de la app, la pantalla y el tipo de dispositivo. También podés escribirnos a|It's sent with the app version, the screen and the device type. You can also write to us at|É enviado com a versão do app, a tela e o tipo de dispositivo. Você também pode nos escrever em
+Enviar|Send|Enviar
+Enviando…|Sending…|Enviando…
+Enviado|Sent|Enviado
+¡Gracias! Lo recibimos.|Thanks! We got it.|Obrigado! Recebemos.
+Escribí un poco más de detalle.|Add a bit more detail.|Escreva um pouco mais de detalhes.
+Conectate a Internet para enviar el reporte.|Connect to the Internet to send the report.|Conecte-se à Internet para enviar o relato.
+Llegaste al límite de reportes por hoy.|You've reached today's report limit.|Você atingiu o limite de relatos de hoje.
+No se pudo enviar. Revisá tu conexión e intentá de nuevo.|Couldn't send it. Check your connection and try again.|Não foi possível enviar. Verifique sua conexão e tente novamente.
+¿Encontraste un error o tenés una idea? Contanos y lo revisamos.|Found a bug or have an idea? Tell us and we'll look into it.|Encontrou um erro ou tem uma ideia? Conte para nós e vamos analisar.
 Contacto|Contact|Contato
 Te enviamos un enlace de confirmación a|We sent a confirmation link to|Enviamos um link de confirmação para
 Abrí el correo y tocá el enlace de confirmación para activar tu cuenta. Si no lo ves, revisá spam o promociones.|Open the email and tap the confirmation link to activate your account. If you can't find it, check spam or promotions.|Abra o e-mail e toque no link de confirmação para ativar sua conta. Se não encontrar, verifique o spam ou promoções.
