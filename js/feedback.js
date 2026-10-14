@@ -38,7 +38,7 @@ function open(){$('jfFbText').value='';$('jfFbStatus').textContent='';$('jfFbSta
 $('jfFbText').addEventListener('input',()=>{if($('jfFbStatus').classList.contains('err'))status('',false);});
 $('jfFbCancel').onclick=()=>{if(!busy)dialog.close();};
 dialog.addEventListener('cancel',e=>{if(busy)e.preventDefault();});
-async function version(){try{const k=(await caches.keys()).find(x=>x.startsWith('fundedtrack-'));if(k)return k.replace('fundedtrack-','');}catch{}return SCRIPT_V?'v'+SCRIPT_V:'';}
+async function version(){const pub=window.JF_VERSION||'';let build='';try{const k=(await caches.keys()).find(x=>x.startsWith('fundedtrack-'));if(k)build=k.replace('fundedtrack-','');}catch{}if(!build&&SCRIPT_V)build='v'+SCRIPT_V;return pub&&build?pub+' ('+build+')':pub||build;}
 function status(text,bad){$('jfFbStatus').textContent=text;$('jfFbStatus').className='jf-fb-status '+(bad?'err':'ok');}
 $('jfFbForm').addEventListener('submit',async e=>{
  e.preventDefault();if(busy)return;

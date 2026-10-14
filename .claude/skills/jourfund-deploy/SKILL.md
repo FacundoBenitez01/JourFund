@@ -21,6 +21,11 @@ The app is cached by the service worker (`sw.js`) and by the browser.
 - Since v129 the service worker serves scripts, styles, images and fonts **cache-first**: a changed file reaches phones only when `CACHE` changes. Never ship a `.js`/`.css`/image change without bumping `CACHE`. The page itself (`index.html`) stays network-first with a 3 s fallback.
 - A new file the first screen needs must be added to `SHELL`, or it is fetched from the network on first use.
 
+## 2b. Public version (what users see)
+
+- The version users see is `window.JF_VERSION` in `js/version.js` (shown in Mi cuenta and sent with feedback). It follows semantic versioning: a release with only fixes bumps the last number (1.0.1 → 1.0.2); a release with new features bumps the middle one (1.0.2 → 1.1.0).
+- The `?v=` numbers and `CACHE` are internal build numbers. Never show them to users.
+
 ## 3. Rules that must stay in sync
 
 - Prop-firm rules live twice: `supabase/functions/_shared/rules.js` (server, ends `globalThis.FTRules=`) and `js/17-ft-rules-catalogue-v56.js` (browser, ends `window.FTRules=`). Edit both identically. A test fails if they differ.
