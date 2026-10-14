@@ -18,7 +18,7 @@ const key=()=>'jf_exposure_'+uid();
 function load(){try{const v=JSON.parse(localStorage.getItem(key())||'null');if(Array.isArray(v)&&v.length)return v.slice(0,MAX).map(r=>({symbol:String(r.symbol||'').slice(0,20),side:r.side==='sell'?'sell':'buy',risk:String(r.risk??'').slice(0,12)}));}catch{}return [{symbol:'',side:'buy',risk:''}];}
 function store(){try{localStorage.setItem(key(),JSON.stringify(rows));}catch{}}
 
-const btn=document.createElement('button');btn.type='button';btn.className='ft74-tool';btn.id='jfExposureTool';btn.setAttribute('aria-pressed','false');
+const btn=document.createElement('button');btn.type='button';btn.className='ft74-tool';btn.id='jfExposureTool';btn.dataset.jfinTool='exposure';btn.setAttribute('aria-pressed','false');
 function label(){btn.innerHTML='<span class="ft74-icon">'+ICON+'</span><span><strong>'+E(T('Riesgo total del día','Total risk today','Risco total do dia'))+'</strong><small>'+E(T('Todas tus posiciones juntas','All your positions together','Todas as posições juntas'))+'</small></span>';}
 label();menu.append(btn);
 
@@ -57,7 +57,7 @@ function paint(){
 function open(){if(!ready())return;active=true;rows=load();paint();}
 btn.addEventListener('click',open);
 // Any other calculator takes the panel back.
-menu.addEventListener('click',e=>{if(e.target.closest('[data-tool]')){active=false;btn.setAttribute('aria-pressed','false');}},true);
+menu.addEventListener('click',e=>{if(e.target.closest('[data-tool],[data-jfin-tool]:not(#jfExposureTool)')){active=false;btn.setAttribute('aria-pressed','false');}},true);
 panel.addEventListener('input',e=>{if(!active)return;const row=e.target.closest('[data-row]'),f=e.target.dataset.f;if(!row||!f)return;rows[+row.dataset.row][f]=e.target.value;store();result();});
 panel.addEventListener('change',e=>{if(active&&e.target.dataset.f==='side'){rows[+e.target.closest('[data-row]').dataset.row].side=e.target.value;store();result();}});
 panel.addEventListener('click',e=>{if(!active)return;const d=e.target.closest('[data-exp-del]');
