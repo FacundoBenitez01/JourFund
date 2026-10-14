@@ -92,3 +92,17 @@
 .jfin-tilt-note{margin:0 0 12px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--red) 13%,transparent);border:1px solid color-mix(in srgb,var(--red) 45%,transparent);font-size:13px;line-height:1.45}
 .jfin-tilt-note[hidden]{display:none}
 @media(max-width:700px){.jfin-tilt{grid-template-columns:auto minmax(0,1fr)}.jfin-tilt .btn{grid-column:1/-1}.jfin-tilt-fields{grid-template-columns:1fr}}
+.jfin-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.jfin-chk-items{list-style:none;counter-reset:chk;margin:0 0 12px;padding:0;display:grid;gap:8px}
+.jfin-chk-items li{counter-increment:chk;display:grid;grid-template-columns:26px minmax(0,1fr) 40px;gap:8px;align-items:center}
+.jfin-chk-items li::before{content:counter(chk);color:var(--muted);font-size:13px;text-align:center}
+.jfin-chk-items input{min-height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font:inherit;font-size:16px;width:100%;box-sizing:border-box}
+.jfin-chk-field{border:1px solid var(--border);border-radius:14px;padding:10px 12px 6px;margin:0;min-width:0}
+.jfin-chk-field[hidden]{display:none}
+.jfin-chk-field legend{padding:0 6px;font-size:13px;font-weight:600}.jfin-chk-field legend small{color:var(--muted);font-weight:500;margin-left:4px}
+.jfin-chk-row{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:14px;line-height:1.35;cursor:pointer}
+.jfin-chk-row input{flex:none;width:20px;height:20px;margin:0;accent-color:var(--accent)}
+#modal #jfTradeChecklist{grid-column:1/-1!important;width:auto!important;max-width:none!important}
+#modal #jfTradeChecklist label.jfin-chk-row{display:flex!important;flex-direction:row!important;align-items:flex-start!important;gap:10px!important;margin:0!important;padding:7px 0!important;font-size:14px!important;color:var(--text)!important;cursor:pointer}
+#modal #jfTradeChecklist label.jfin-chk-row input[type=checkbox]{appearance:auto!important;-webkit-appearance:checkbox!important;flex:0 0 20px!important;width:20px!important;height:20px!important;min-height:0!important;min-width:0!important;padding:0!important;margin:1px 0 0!important;border:0!important;background:none!important;box-shadow:none!important;accent-color:var(--accent)}
+#modal #jfTradeChecklist label.jfin-chk-row span{flex:1 1 auto;min-width:0;font-size:14px;line-height:1.4;color:var(--text);font-weight:500}
