@@ -60,3 +60,19 @@
 .jfin-cons-form label{display:block;font-size:13.5px;margin:0 0 8px}
 .jfin-cons-row{display:flex;gap:8px;flex-wrap:wrap}.jfin-cons-row input{width:110px;min-height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font:inherit;font-size:16px}.jfin-cons-row .btn{min-height:44px}
 @media(max-width:700px){.jfin-cons-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.jfin-cons-stats>div:last-child{grid-column:1/-1}.jfin-cons-stats b{font-size:18px}}
+.jfin-costs{margin-top:16px}.jfin-costs .jfin-head .btn{min-height:40px}
+.jfin-cost-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}
+.jfin-cost-form{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:14px;margin:0 0 14px}
+.jfin-cost-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.jfin-cost-fields label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--muted);min-width:0}
+.jfin-cost-fields .jfin-cost-note{grid-column:1/-1}
+.jfin-cost-fields input,.jfin-cost-fields select{min-height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--border);background:var(--surface);color:var(--text);font:inherit;font-size:16px;width:100%;box-sizing:border-box}
+.jfin-moves{list-style:none;margin:0;padding:0}
+.jfin-moves li{display:grid;grid-template-columns:minmax(0,1fr) auto 40px;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--border)}
+.jfin-move-main{display:flex;flex-direction:column;min-width:0}.jfin-move-main b{font-size:13.5px;font-weight:600}.jfin-move-main small{color:var(--muted);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.jfin-move-amt{font-weight:650;font-variant-numeric:tabular-nums}
+.jfin-move-del{width:36px;height:36px;font-size:18px}.jfin-move-del.armed{border-color:var(--red);color:var(--red)}
+@media(max-width:700px){.jfin-cost-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.jfin-cost-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.jfin-cost-fields label:first-child{grid-column:1/-1}}
+.jfin-costs .jfin-table td,.jfin-costs .jfin-table th{white-space:nowrap}
+@media(max-width:700px){.jfin-costs .jfin-table th:nth-child(2),.jfin-costs .jfin-table td:nth-child(2){display:none}.jfin-costs .jfin-table{font-size:12px}.jfin-costs .jfin-table td,.jfin-costs .jfin-table th{padding:8px 4px}}
+.jfin h3.jfin-sub{margin:22px 0 10px}
