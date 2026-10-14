@@ -25,3 +25,13 @@
 .jfin-table th{color:var(--muted);font-weight:500;font-size:11.5px;text-align:right;padding:6px 8px}.jfin-table td{padding:9px 8px;border-top:1px solid var(--border);text-align:right}
 .jfin-table th:first-child,.jfin-table td:first-child{text-align:left}
 @media(max-width:900px){.jfin-grid{grid-template-columns:1fr}.jfin-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.jfin-dialog{width:min(520px,calc(100% - 32px));max-height:calc(100dvh - 32px);padding:22px;border:1px solid var(--border);border-radius:20px;background:var(--surface);color:var(--text);box-sizing:border-box}
+.jfin-dialog::backdrop{background:#05070dcc;backdrop-filter:blur(4px)}
+.jfin-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.jfin-dialog-head h3{margin:0;font-size:19px}
+.jfin-x{width:40px;height:40px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--text);font-size:22px;line-height:1;cursor:pointer}
+.jfin-muted{color:var(--muted);font-size:13px;margin:8px 0}
+.jfin-label{margin:16px 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.jfin-chips{display:flex;flex-wrap:wrap;gap:6px}
+.jfin-status{min-height:1.2em;margin:14px 0 0;font-size:13px}.jfin-status.ok{color:var(--green)}.jfin-status.err{color:var(--red)}
+.jfin-actions{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:12px}.jfin-actions .btn{min-height:44px}
