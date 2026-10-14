@@ -41,3 +41,8 @@ test('checklist stats and validation',()=>{
  const ts=[T('d',100,{checklist:{total:2,done:['a','b'],missed:[]}}),T('d',-50,{checklist:{total:2,done:['a'],missed:['Noticias']}}),T('d',-50,{checklist:{total:2,done:['a'],missed:['Noticias']}}),T('d',80)];
  const s=I.checklistStats(ts);assert.equal(s.checked,3);assert.equal(Math.round(s.compliance),33);assert.equal(s.winFull,100);assert.equal(s.winPartial,0);assert.deepEqual(s.mostMissed,{text:'Noticias',count:2});
  assert(I.validTradeChecklist(ts[1].checklist));assert(!I.validTradeChecklist({total:2,done:['a','b','c'],missed:[]}));});
+test('consistency room left for today',()=>{
+ assert.equal(I.consistencyToday({'2026-10-01':300,'2026-10-02':300},40,'2026-10-03'),400);
+ assert.equal(I.consistencyToday({'2026-10-01':300,'2026-10-02':300,'2026-10-03':100},40,'2026-10-03'),300);
+ assert.equal(I.consistencyToday({'2026-10-01':-100},40,'2026-10-03'),null);assert.equal(I.consistencyToday({'2026-10-01':100},null,'x'),null);
+ assert(I.validConsistencyPct(40));assert(!I.validConsistencyPct(5));assert(I.validConsistencyPct(undefined));});

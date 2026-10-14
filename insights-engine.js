@@ -61,6 +61,12 @@ function consistency(list,limitPct){
  return {profit,bestDay,bestDate:best?best[0]:null,share,limit,ok:limit==null||share==null||share<=limit+1e-8,needed,tradingDays:values.length};
 }
 
+// grouped: {date: pnl}. How much more today can make before today alone breaks the limit (null = no cap or no profit yet).
+function consistencyToday(grouped,limitPct,today){
+ const L=Number(limitPct)/100;if(!(L>0&&L<1))return null;const now=num(grouped?.[today]),others=round(Object.entries(grouped||{}).filter(([d])=>d!==today).reduce((s,[,v])=>s+num(v),0));
+ if(others<=0)return null;return Math.max(0,round(L*others/(1-L)-now));
+}
+function validConsistencyPct(v){return v==null||Number.isFinite(v)&&v>=10&&v<=90;}
 /* ---------- Tilt guard ---------- */
 const TILT_DEFAULT={enabled:false,dailyPct:50,losses:3,cooldownMin:0};
 function validTilt(x){return x==null||typeof x==='object'&&!Array.isArray(x)&&typeof x.enabled==='boolean'&&[x.dailyPct,x.losses,x.cooldownMin].every(v=>v==null||Number.isFinite(v))&&(x.dailyPct==null||x.dailyPct>=10&&x.dailyPct<=100)&&(x.losses==null||Number.isInteger(x.losses)&&x.losses>=0&&x.losses<=20)&&(x.cooldownMin==null||Number.isInteger(x.cooldownMin)&&x.cooldownMin>=0&&x.cooldownMin<=240)&&Object.keys(x).every(k=>['enabled','dailyPct','losses','cooldownMin'].includes(k));}
@@ -120,6 +126,6 @@ function checklistStats(list){
  return {checked:rows.length,compliance:rows.length?full.length/rows.length*100:null,winFull:wr(full),winPartial:wr(partial),pnlFull:round(full.reduce((s,t)=>s+num(t.pnl),0)),pnlPartial:round(partial.reduce((s,t)=>s+num(t.pnl),0)),mostMissed:top?{text:top[0],count:top[1]}:null};
 }
 
-root.JourFundInsights={WEEKDAYS,validTime,validOffset,session,weekday,ordered,breakdown,highlight,metrics,consistency,TILT_DEFAULT,validTilt,tilt,COST_TYPES,validCost,validCosts,costs,legs,exposure,validChecklist,validTradeChecklist,checklistStats};
+root.JourFundInsights={WEEKDAYS,validTime,validOffset,session,weekday,ordered,breakdown,highlight,metrics,consistency,consistencyToday,validConsistencyPct,TILT_DEFAULT,validTilt,tilt,COST_TYPES,validCost,validCosts,costs,legs,exposure,validChecklist,validTradeChecklist,checklistStats};
 if(typeof module!=='undefined')module.exports=root.JourFundInsights;
 })(typeof globalThis!=='undefined'?globalThis:window);
