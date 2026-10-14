@@ -289,6 +289,7 @@ Conectate a Internet para enviar el reporte.|Connect to the Internet to send the
 Llegaste al límite de reportes por hoy.|You've reached today's report limit.|Você atingiu o limite de relatos de hoje.
 No se pudo enviar. Revisá tu conexión e intentá de nuevo.|Couldn't send it. Check your connection and try again.|Não foi possível enviar. Verifique sua conexão e tente novamente.
 ¿Encontraste un error o tenés una idea? Contanos y lo revisamos.|Found a bug or have an idea? Tell us and we'll look into it.|Encontrou um erro ou tem uma ideia? Conte para nós e vamos analisar.
+Hora de entrada (opcional)|Entry time (optional)|Horário de entrada (opcional)
 Contacto|Contact|Contato
 Te enviamos un enlace de confirmación a|We sent a confirmation link to|Enviamos um link de confirmação para
 Abrí el correo y tocá el enlace de confirmación para activar tu cuenta. Si no lo ves, revisá spam o promociones.|Open the email and tap the confirmation link to activate your account. If you can't find it, check spam or promotions.|Abra o e-mail e toque no link de confirmação para ativar sua conta. Se não encontrar, verifique o spam ou promoções.
