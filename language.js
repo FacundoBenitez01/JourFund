@@ -2,7 +2,15 @@
 (function(){
 'use strict';
 const supported=['es','en','pt-BR'], names={es:'Español',en:'English','pt-BR':'Português (Brasil)'}, dictionary=new Map();
-const rows=`Hay cambios en otro dispositivo. Compará las versiones antes de elegir.|There are changes on another device. Compare the versions before choosing.|Há alterações em outro dispositivo. Compare as versões antes de escolher.
+const rows=`Calendario no disponible o desactualizado. Tocá Actualizar o abrí Forex Factory.|Calendar unavailable or out of date. Tap Refresh or open Forex Factory.|Calendário indisponível ou desatualizado. Toque em Atualizar ou abra o Forex Factory.
+Sin límite diario|No daily limit|Sem limite diário
+Promedio de resultados negativos|Average of losing results|Média dos resultados negativos
+Todavía no hay retiros registrados.|No withdrawals recorded yet.|Ainda não há saques registrados.
+Sin sesión de mercado|No market session|Sem sessão de mercado
+Uruguay|Uruguay|Uruguai
+Perú|Peru|Peru
+Brasil|Brazil|Brasil
+Hay cambios en otro dispositivo. Compará las versiones antes de elegir.|There are changes on another device. Compare the versions before choosing.|Há alterações em outro dispositivo. Compare as versões antes de escolher.
 Journal para traders|Trading journal|Diário de trading
 Tu trading.|Your trading.|Seu trading.
 Bajo control.|Under control.|Sob controle.
@@ -1077,8 +1085,11 @@ function translate(text){
  const count=/^(\d+) (operación|operaciones|cuenta|cuentas|día|días)( registrada| registradas)?$/.exec(text);
  if(count){const noun=language==='en'?{operación:'trade',operaciones:'trades',cuenta:'account',cuentas:'accounts',día:'day',días:'days'}:{operación:'operação',operaciones:'operações',cuenta:'conta',cuentas:'contas',día:'dia',días:'dias'};return count[1]+' '+noun[count[2]]+(count[3]?(language==='en'?' recorded':Number(count[1])===1?' registrada':' registradas'):'');}
  const en=language==='en',patterns=[
+  [/^(.+) · Todas las fases y PA\. No incluye retiros\.$/,m=>m[1]+(en?' · All phases and funded stage. Withdrawals not included.':' · Todas as fases e etapa financiada. Saques não incluídos.')],
+  [/^Capital inicial (.+) \+ resultado de operaciones (.+) − descuentos de retiros (.+)\. Los retiros no son operaciones perdedoras y no reducen el P&L ni el win rate\.$/,m=>en?'Starting capital '+m[1]+' + trade result '+m[2]+' − withdrawal deductions '+m[3]+'. Withdrawals are not losing trades and do not reduce P&L or win rate.':'Capital inicial '+m[1]+' + resultado das operações '+m[2]+' − descontos de saques '+m[3]+'. Saques não são operações perdedoras e não reduzem o P&L nem o win rate.'],
+  [/^Valores de referencia para (.+): (.+) unidades\/lote · Pip (.+)\. Revisá el contrato, tick y lotaje en tu bróker\. En oro e índices, la definición de “pip” puede variar\.$/,m=>en?'Reference values for '+translate(m[1])+': '+m[2]+' units/lot · Pip '+m[3]+'. Check the contract, tick and lot size with your broker. For gold and indices, the definition of “pip” can vary.':'Valores de referência para '+translate(m[1])+': '+m[2]+' unidades/lote · Pip '+m[3]+'. Confira o contrato, tick e lote na sua corretora. Em ouro e índices, a definição de “pip” pode variar.'],
   [/^(Abre|Cierra) en (.+)$/,m=>(en?(m[1]==='Abre'?'Opens in ':'Closes in '):(m[1]==='Abre'?'Abre em ':'Fecha em '))+m[2]],
-  [/^Diaria: (.+) · Máxima: (.+)$/,m=>(en?'Daily: ':'Diária: ')+m[1]+(en?' · Max: ':' · Máxima: ')+m[2]],
+  [/^Diaria: (.+) · Máxima: (.+)$/,m=>(en?'Daily: ':'Diária: ')+translate(m[1])+(en?' · Max: ':' · Máxima: ')+translate(m[2])],
   [/^(\d+) registradas?$/,m=>m[1]+(en?' recorded':Number(m[1])===1?' registrada':' registradas')],
   [/^Faltan (.+) para el objetivo$/,m=>en?m[1]+' to go to target':'Faltam '+m[1]+' para a meta'],
   [/^Última actividad: (.+)$/,m=>(en?'Last activity: ':'Última atividade: ')+m[1]],
@@ -1102,7 +1113,7 @@ function translate(text){
  const upper=uppercase.get(text);if(upper)return dictionary.get(upper)[language].toUpperCase();
  return text;
 }
-function textNode(node){const p=node.parentElement;if(!p||p.closest(protectedSelector)||p.closest('td')&&!p.closest('button'))return;let item=sources.get(node);if(!item||node.nodeValue!==item.output)item={source:node.nodeValue};const trimmed=item.source.trim(),translated=translate(trimmed);item.output=item.source.replace(trimmed,translated);if(node.nodeValue!==item.output)node.nodeValue=item.output;sources.set(node,item);}
+function textNode(node){const p=node.parentElement;if(!p||p.closest(protectedSelector)||p.closest('td')&&!p.closest('button,td.empty'))return;let item=sources.get(node);if(!item||node.nodeValue!==item.output)item={source:node.nodeValue};const trimmed=item.source.trim(),translated=translate(trimmed);item.output=item.source.replace(trimmed,translated);if(node.nodeValue!==item.output)node.nodeValue=item.output;sources.set(node,item);}
 function scan(root){if(root.nodeType===3){textNode(root);return;}if(root.nodeType!==1||root.matches(protectedSelector)||root.closest(protectedSelector))return;const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while(n=walker.nextNode())textNode(n);for(const element of [root,...root.querySelectorAll('[placeholder],[aria-label],[title]')]){if(element.closest(protectedSelector))continue;let cache=attributes.get(element)||{};for(const attr of ['placeholder','aria-label','title']){if(!element.hasAttribute(attr))continue;const current=element.getAttribute(attr);let state=cache[attr];if(!state||current!==state.output)state={source:current};state.output=translate(state.source);if(current!==state.output)element.setAttribute(attr,state.output);cache[attr]=state;}attributes.set(element,cache);}}
 const observer=new MutationObserver(records=>{observer.disconnect();for(const record of records){if(record.type==='characterData')scan(record.target);else if(record.type==='attributes')scan(record.target);else record.addedNodes.forEach(scan);}observe();});
 function observe(){if(typeof document==='undefined'||!document.body)return;observer.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','title']});}
@@ -1120,8 +1131,8 @@ dialog.querySelector('form').onsubmit=e=>{e.preventDefault();const error=dialog.
 function browserLanguage(){for(const l of navigator.languages||[navigator.language||'']){const c=String(l).toLowerCase();if(c.startsWith('es'))return 'es';if(c.startsWith('pt'))return 'pt-BR';if(c.startsWith('en'))return 'en';}return 'en';}
 function refresh(){const user=window.ftCloudSession?.user?.id||null;if(dialog.open&&user!==editorUser)close();if(user){try{const state=window.ftProtectionCloud.snapshot();const preference=state.accounts.map(a=>a.preferences).filter(p=>supported.includes(p?.language)).sort((a,b)=>(Date.parse(b.languageChangedAt)||0)-(Date.parse(a.languageChangedAt)||0))[0];const next=preference?.language||browserLanguage();if(next!==language)apply(next);}catch{/* Data not ready: do not write or replace a pending preference. */}}else{let next=browserLanguage();try{next=localStorage.getItem('jourfund_login_language')||next;}catch{}if(next!==language)apply(next);}}
 window.addEventListener('pagehide',()=>observer.disconnect());window.addEventListener('pageshow',observe);
-window.JourFundI18n={t:translate,get language(){return language;},refresh};window.addEventListener('ft67SyncStatus',refresh);apply('es');refresh();
 // Locale for Intl/toLocale* calls; undefined in Spanish so each call keeps its own es-* format.
 window.jfLocale=()=>({en:'en-US','pt-BR':'pt-BR'})[language];
-window.addEventListener('jfLanguageChanged',()=>{if(document.body.classList.contains('ft-ready'))window.render?.();});
+let renderWait=null;window.addEventListener('jfLanguageChanged',()=>{if(document.body.classList.contains('ft-ready')){window.render?.();return;}if(renderWait)return;renderWait=new MutationObserver(()=>{if(!document.body.classList.contains('ft-ready'))return;renderWait.disconnect();renderWait=null;if(language!=='es')window.render?.();});renderWait.observe(document.body,{attributes:true,attributeFilter:['class']});});
+window.JourFundI18n={t:translate,get language(){return language;},refresh};window.addEventListener('ft67SyncStatus',refresh);apply('es');refresh();
 })();
