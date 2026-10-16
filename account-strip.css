@@ -1,0 +1,21 @@
+/* Cuentas: active account header (js/account-strip.js) */
+#accountStrip.jfs-strip{display:block!important;padding:18px 20px!important;border:1px solid var(--border)!important;border-radius:20px!important;background:linear-gradient(135deg,color-mix(in srgb,var(--surface) 92%,#7c5cff 8%),var(--surface))!important;box-shadow:0 12px 32px #0004;gap:0!important}
+.jfs{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px 16px;align-items:center}
+.jfs-logo{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-weight:800;font-size:16px;letter-spacing:-.02em;background:linear-gradient(140deg,#2a1d5c,#1b1f3a);border:1px solid #6d4fd04d;color:#a78bfa}
+.jfs-title{min-width:0}
+.jfs-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.jfs-title h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.jfs-title p{margin:4px 0 0;font-size:13px;color:var(--muted);display:flex;gap:6px;flex-wrap:wrap;align-items:center}.jfs-title p b{color:var(--text);opacity:.85;font-weight:600}.jfs-dot{opacity:.5}
+.jfs-status{flex:none;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;font-size:12.5px;font-weight:600;white-space:nowrap;border:1px solid}
+.jfs-status i{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px color-mix(in srgb,currentColor 18%,transparent)}
+.jfs-status.pos{color:var(--green);background:color-mix(in srgb,var(--green) 9%,transparent);border-color:color-mix(in srgb,var(--green) 28%,transparent)}
+.jfs-status.funded{color:#a78bfa;background:#8b5cf614;border-color:#8b5cf640}
+.jfs-status.neg{color:var(--red);background:color-mix(in srgb,var(--red) 9%,transparent);border-color:color-mix(in srgb,var(--red) 30%,transparent)}
+.jfs-status.muted{color:var(--muted);background:#ffffff08;border-color:var(--border)}
+.jfs-foot{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid var(--border);flex-wrap:wrap}
+.jfs-meta{display:flex;gap:20px;font-size:12px;color:var(--muted)}.jfs-meta b{display:block;color:var(--text);font-size:15px;font-weight:650;margin-top:2px;font-variant-numeric:tabular-nums}.jfs-meta .pos{color:var(--green)}.jfs-meta .neg{color:var(--red)}
+#accountStrip .jfs-reset{display:inline-flex!important;align-items:center;gap:7px;background:transparent!important;border:1px solid var(--border)!important;color:var(--text)!important;opacity:.9;border-radius:11px!important;padding:8px 12px!important;min-height:40px;font-size:13px!important;font-weight:600;margin:0!important;box-shadow:none!important}
+#accountStrip .jfs-reset svg{width:15px;height:15px}
+@media(max-width:700px){#accountStrip.jfs-strip{padding:16px!important}.jfs{gap:12px}.jfs-logo{width:44px;height:44px}.jfs-title h3{font-size:16.5px}.jfs-status{padding:4px 9px;font-size:12px}.jfs-ops{display:none}.jfs-meta{gap:16px}}
+#accountStrip .jfs-reset .jfs-long{font-style:normal;white-space:pre}
+@media(max-width:700px){#accountStrip .jfs-reset .jfs-long{display:none}.jfs-foot{flex-wrap:nowrap}}
