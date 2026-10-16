@@ -19,3 +19,6 @@
 @media(prefers-reduced-motion:reduce){#modal.ft151-crystal{backdrop-filter:none}}
 /* A previous save toast must not cover the open form's mobile footer. */
 body:has(#modal.ft151-crystal.show) #ft67Toast{visibility:hidden;pointer-events:none}
+/* The fields area scrolls; never let it squash the "Nota y capturas" section (overflow:hidden lets grid shrink it to a few px). */
+#modal.ft151-crystal .ft151-extras{min-height:max-content!important;flex-shrink:0}
+#modal.ft151-crystal .ft-dialog-scroll{grid-auto-rows:max-content!important;align-content:start!important}
