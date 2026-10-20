@@ -1,4 +1,4 @@
-/* Objetivos · "Tu ascenso" (v162). The phase target drawn as a climb up the mountain scene:
+/* Objetivos · "Tu ascenso" (v171: desktop altimeter). The phase target drawn as a climb up the mountain scene:
    progress along the path with 25/50/75 % camps (dated when reached), what is left, the pass requirements,
    pace and suggested daily goal, distance to the target vs. to the max-loss floor, and what comes next.
    Uses only the account's own trades and rules (FTRules). Hidden for group mode and accounts without a target. */
@@ -103,6 +103,7 @@
     box.innerHTML = '<div class="jfa-hero"><div class="jfa-scene">' + SCENE + '<div class="jfa-marks"></div><div class="jfa-ttl"><small>' + esc(head) + '</small><h2>' + T('Tu ascenso', 'Your climb', 'Sua subida') + '</h2></div></div>' +
       '<div class="jfa-side"><div class="jfa-alt"><div class="jfa-row"><b>' + P + '%</b>' + (m.funded ? '' : '<span>' + T('faltan', 'to go', 'faltam') + '<b>' + money(m.left) + '</b></span>') + '</div><p>' + sub + '</p></div>' +
       '<div class="jfa-reqs" style="--n:' + m.req.length + '">' + req + '</div></div></div>' + eta + tug + next;
+    box.insertAdjacentHTML('afterbegin', desk(m, head, sub, P));
     // Camps, the summit flag and "you are here", placed along the trail.
     const svg = box.querySelector('.jfa-svg'), trail = box.querySelector('.jfa-trail'), marks = box.querySelector('.jfa-marks');
     const pos = f => { const L = trail.getTotalLength(), q = trail.getPointAtLength(L * f); return 'left:' + (q.x / 390 * 100) + '%;top:' + (q.y / 450 * 100) + '%'; };
@@ -112,6 +113,32 @@
     marks.innerHTML = html;
     box.querySelectorAll('.jfa-done').forEach(el => { el.style.setProperty('--p', Math.max(.5, m.frac * 100)); });
     svg.classList.remove('go'); void svg.getBoundingClientRect(); svg.classList.add('go');
+  }
+
+  /* ---------- desktop: altimeter beside the panorama (option F) ---------- */
+  function desk(m, head, sub, P) {
+    const top = 14, bot = 226, y = f => bot - Math.max(0, Math.min(1, f)) * (bot - top), x = 52;
+    const summit = m.funded ? T('Cima alcanzada', 'Summit reached', 'Cume alcançado') : (m.phase < m.count ? T('Cima · Fase ', 'Summit · Phase ', 'Cume · Fase ') + (m.phase + 1) : T('Cima · Financiada', 'Summit · Funded', 'Cume · Financiada'));
+    const rows = [[1, summit, m.funded ? '' : money(m.target), 'jfa-a-top']].concat(m.camps.slice().reverse().map(c => [c.f, pct(c.f * 100), c.at ? short(c.at) : '', c.done ? 'jfa-a-done' : ''])).concat([[0, T('Campo base', 'Base camp', 'Acampamento base'), '$0', 'jfa-a-base']]);
+    let g = '<defs><linearGradient id="jfaAlt" x1="0" y1="1" x2="0" y2="0"><stop stop-color="#8b5cf6"/><stop offset="1" stop-color="#5ef0b6"/></linearGradient></defs>' +
+      '<rect x="' + (x - 9) + '" y="' + top + '" width="18" height="' + (bot - top) + '" rx="9" class="jfa-a-rail"/>' +
+      (m.frac > 0 ? '<rect class="jfa-a-fill" x="' + (x - 9) + '" y="' + y(m.frac) + '" width="18" height="' + (bot - y(m.frac)) + '" rx="9" fill="url(#jfaAlt)"/>' : '');
+    for (let i = 0; i <= 12; i++) g += '<line x1="' + (x + 14) + '" x2="' + (x + (i % 3 ? 21 : 29)) + '" y1="' + y(i / 12) + '" y2="' + y(i / 12) + '" class="jfa-a-tick"/>';
+    rows.forEach(([f, a, b, c]) => { g += '<text x="' + (x + 40) + '" y="' + (y(f) + 4) + '" class="' + c + '">' + esc(a) + (b ? ' <tspan>' + esc(b) + '</tspan>' : '') + '</text>'; });
+    const my = y(Math.max(0, m.frac));
+    g += '<circle cx="' + x + '" cy="' + my + '" r="19" class="jfa-a-halo"/><circle cx="' + x + '" cy="' + my + '" r="10" fill="#fff"/>';
+    const altLabel = T('Vos estás acá: ', 'You are here: ', 'Você está aqui: ') + P + ' %';
+    const pace = m.funded ? '' : m.left <= 0 ? T('Llegaste al objetivo de la fase.', 'You reached the phase target.', 'Você chegou à meta da fase.')
+      : m.daysLeft ? T('A tu ritmo de ', 'At your pace of ', 'No seu ritmo de ') + '<b>' + money(Math.round(m.avg)) + T(' por día', ' per day', ' por dia') + '</b>' + T(', llegás ', ', you get there ', ', você chega ') + '<b>' + T('cerca del ', 'around ', 'perto de ') + short(m.eta) + '</b>.'
+      : T('Todavía no hay un ritmo positivo en esta fase.', 'No positive pace in this phase yet.', 'Ainda não há ritmo positivo nesta fase.');
+    const reqs = m.req.map(r => '<div class="' + (r.ok ? 'jfa-ok' : 'jfa-pd') + '"><b aria-hidden="true">' + (r.ok ? '✓' : esc(r.top || '•')) + '</b><span>' + esc(r.name) + '<small>' + esc(r.sub) + '</small></span><i class="jfa-sr">' + (r.ok ? T(' · cumplido', ' · done', ' · cumprido') : T(' · pendiente', ' · pending', ' · pendente')) + '</i></div>').join('');
+    const big = m.funded ? T('Financiada', 'Funded', 'Financiada') : signed(m.have);
+    return '<div class="jfa-desk"><div class="jfa-d-left"><div class="jfa-ttl"><small>' + esc(head) + '</small><h2>' + T('Tu ascenso', 'Your climb', 'Sua subida') + '</h2></div>' +
+      '<svg class="jfa-alt-svg" viewBox="0 0 280 240" role="img" aria-label="' + esc(altLabel) + '">' + g + '<text x="' + (x - 22) + '" y="' + (my + 5) + '" class="jfa-a-me">' + P + '%</text></svg></div>' +
+      '<div class="jfa-d-right"><div class="jfa-d-copy"><small>' + (m.funded ? T('Estado', 'Status', 'Status') : T('Altura actual', 'Current height', 'Altura atual')) + '</small>' +
+      '<b class="' + (m.have < 0 && !m.funded ? 'jfa-red' : '') + '">' + esc(big) + '</b>' +
+      '<p class="jfa-d-of">' + (m.funded ? sub : T('de ', 'of ', 'de ') + '<b>' + money(m.target) + '</b>' + (m.left > 0 ? T(' · faltan ', ' · ', ' · faltam ') + '<b class="jfa-grn">' + money(m.left) + '</b>' + T(' para la cima', ' to the summit', ' para o cume') : '')) + '</p>' +
+      (pace ? '<p class="jfa-d-pace">' + pace + '</p>' : '') + '</div><div class="jfa-d-reqs">' + reqs + '</div></div></div>';
   }
 
   box.addEventListener('click', e => {

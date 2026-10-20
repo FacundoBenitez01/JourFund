@@ -1,4 +1,4 @@
-/* Objetivos · "Tu ascenso" (v162) */
+/* Objetivos · "Tu ascenso" (v171) */
 #ftPageObjectives.jfa-on>.ft-page-head,#ftPageObjectives.jfa-on #ft61GoalMetrics,#ftPageObjectives.jfa-on #ft61Path{display:none!important}
 .jfa{display:grid;gap:12px;min-width:0;grid-column:1/-1;color:var(--text,#eef0f6)}
 .jfa[hidden]{display:none!important}
@@ -61,13 +61,32 @@
  @keyframes jfaPop{from{opacity:0;transform:translate(-50%,-50%) scale(.4)}}
  @keyframes jfaFade{from{opacity:0}}
 }
+/* Desktop (v171): altimeter beside the panorama instead of the tall mobile scene */
+.jfa-desk{display:none}
 @media (min-width:900px){
- .jfa-hero{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);align-items:end}
- .jfa-scene{max-height:none}
- .jfa-svg{-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent);mask-image:linear-gradient(90deg,#000 78%,transparent)}
- .jfa-side{margin:0;padding:28px 28px 28px 8px;align-self:center}
- .jfa-reqs{grid-template-columns:repeat(auto-fit,minmax(96px,1fr))}
- .jfa-eta,.jfa-tug{grid-column:auto}
- .jfa{grid-template-columns:1fr 1fr}.jfa-hero,.jfa-next{grid-column:1/-1}
+ .jfa{grid-template-columns:1fr 1fr}.jfa-desk,.jfa-next{grid-column:1/-1}
+ /* accounts-v2.css also uses .jfa/.jfa-hero class names with !important; scope to this section. */
+ #jfAscent .jfa-hero{display:none!important}
+ #jfAscent .jfa-desk{display:grid;grid-template-columns:minmax(260px,300px) minmax(0,1fr);min-height:360px;border-radius:24px;overflow:hidden;border:1px solid color-mix(in srgb,var(--accent2,#a78bfa) 26%,var(--border,#252a3d));background:#0d0f1c}
+ .jfa-d-left{position:relative;display:flex;flex-direction:column;gap:14px;padding:24px 18px 20px 26px;background:linear-gradient(180deg,#14112e,#0d0f1c)}
+ .jfa-d-left .jfa-ttl{position:static;right:auto}
+ .jfa-alt-svg{width:100%;max-width:290px;height:auto;margin-top:auto;overflow:visible;font-family:inherit}
+ .jfa-a-rail{fill:rgba(255,255,255,.07)}.jfa-a-tick{stroke:rgba(255,255,255,.35);stroke-width:1.5}
+ .jfa-alt-svg text{font-size:12.5px;font-weight:800;fill:#9da4b2}.jfa-alt-svg tspan{font-weight:600;fill:#9da4b2}
+ .jfa-alt-svg .jfa-a-done{fill:#c4b5fd}.jfa-alt-svg .jfa-a-top{fill:#5ef0b6}
+ .jfa-a-halo{fill:none;stroke:rgba(255,255,255,.25);stroke-width:7}
+ .jfa-alt-svg .jfa-a-me{font-size:15px;font-weight:900;fill:#fff;text-anchor:end}
+ .jfa-d-right{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:20px;padding:28px 28px 22px 34px;background:linear-gradient(90deg,#0d0f1c 0,rgba(13,15,28,.6) 30%,rgba(13,15,28,0) 60%),url(./objectives-scene.webp) right 20%/cover no-repeat}
+ .jfa-d-copy{max-width:440px;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+ .jfa-d-copy>small{font-size:14px;color:var(--muted,#9da4b2)}
+ .jfa-d-copy>b{display:block;font-size:clamp(48px,5vw,72px);font-weight:800;letter-spacing:-.05em;line-height:1.02;color:#fff}
+ .jfa-d-of{margin:6px 0 0;font-size:18px;color:#c9cdd8}.jfa-d-of b{color:#fff}.jfa-d-of .jfa-grn{color:var(--green,#35d39a)}
+ .jfa-d-pace{margin:14px 0 0;font-size:14px;line-height:1.5;color:#c9cdd8}.jfa-d-pace b{color:#fff}
+ .jfa-d-reqs{display:flex;flex-wrap:wrap;gap:10px}
+ .jfa-d-reqs>div{display:flex;align-items:center;gap:10px;padding:9px 14px 9px 10px;border-radius:14px;background:rgba(9,13,22,.72);border:1px solid #252a3d;font-size:13px;backdrop-filter:blur(6px)}
+ .jfa-d-reqs b{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:50%;font-size:11px}
+ .jfa-d-reqs .jfa-ok b{background:rgba(53,211,154,.16);color:var(--green,#35d39a);font-size:13px}
+ .jfa-d-reqs .jfa-pd b{background:rgba(139,92,246,.2);color:#c4b5fd;border:1.5px solid #a78bfa}
+ .jfa-d-reqs span{font-weight:700;color:var(--text,#eef0f6)}.jfa-d-reqs small{display:block;font-weight:500;font-size:12px;color:var(--muted,#9da4b2)}
 }
 @media (max-width:360px){.jfa-reqs{grid-template-columns:repeat(2,1fr)}.jfa-me .jfa-tag{left:auto;right:30px}}
