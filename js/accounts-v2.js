@@ -114,6 +114,13 @@ dlg.addEventListener('click',e=>{if(e.target===dlg){const r=dlg.getBoundingClien
 
 const prev=window.render;if(typeof prev==='function')window.render=function(){const out=prev.apply(this,arguments);try{render();}catch(e){console.warn(e);}return out;};
 window.addEventListener('jfLanguageChanged',()=>{render();if(dlg.open)paintAdd();});
+// Other modules repaint "Mis cuentas" on their own (sign-in finishing, sync, page switches) without calling
+// window.render, and the app can become ready after the last render. Re-apply this view whenever that happens.
+let queued=false;const soon=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;try{render();}catch(e){console.warn(e);}});};
+new MutationObserver(soon).observe(document.body,{attributes:true,attributeFilter:['class']});
+const pageEl=document.getElementById('ftPageAccounts');if(pageEl)new MutationObserver(()=>{if(pageEl.classList.contains('active'))soon();}).observe(pageEl,{attributes:true,attributeFilter:['class']});
+new MutationObserver(()=>{if(!host.contains(view)||!host.classList.contains('jfa-on'))soon();}).observe(host,{childList:true,attributes:true,attributeFilter:['class']});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')soon();});
 window.JourFundAccountsV2={render,openAdd};
 render();
 })();
