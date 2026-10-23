@@ -33,7 +33,7 @@
         good: 'Terminaste en verde y con calma.',
         pressure: 'Semana pesada: llegaste al {pct} de tu límite diario.',
         sun: 'No fue tu semana, pero viene una nueva.',
-        flat: 'Semana en equilibrio. Dejala ser.'
+        flat: 'Semana en equilibrio. Paciencia: la próxima se define.'
       }
     },
     en: {
@@ -59,7 +59,7 @@
         good: 'You finished green and calm.',
         pressure: 'A heavy week: you reached {pct} of your daily limit.',
         sun: 'Not your week, but a new one is coming.',
-        flat: 'A balanced week. Let it be.'
+        flat: 'A balanced week. Patience: the next one decides.'
       }
     },
     'pt-BR': {
@@ -85,15 +85,22 @@
         good: 'Você terminou no verde e com calma.',
         pressure: 'Semana pesada: você chegou a {pct} do seu limite diário.',
         sun: 'Não foi sua semana, mas vem uma nova.',
-        flat: 'Semana equilibrada. Deixe estar.'
+        flat: 'Semana equilibrada. Paciência: a próxima decide.'
       }
     }
   };
   const t = (key, vars = {}) => { let s = key.split('.').reduce((o, k) => o?.[k], S[lang()]) ?? key.split('.').reduce((o, k) => o?.[k], S.es) ?? key; return typeof s === 'string' ? s.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? '') : s; };
+  // Several songs per mood; the week number rotates through the list (offset per account), so the same mood doesn't repeat a song until the list runs out.
   const SONGS = {
-    comeback: ["Don't Stop Me Now", 'Queen'], tiger: ['Eye of the Tiger', 'Survivor'], safe: ["Stayin' Alive", 'Bee Gees'],
-    good: ['Feeling Good', 'Nina Simone'], pressure: ['Under Pressure', 'Queen & David Bowie'], sun: ['Here Comes the Sun', 'The Beatles'], flat: ['Let It Be', 'The Beatles']
+    comeback: [["Don't Stop Me Now", 'Queen'], ['Remember the Name', 'Fort Minor'], ['Lose Yourself', 'Eminem'], ['Stronger', 'Kanye West'], ['Hall of Fame', 'The Script'], ['Titanium', 'David Guetta & Sia'], ["It's My Life", 'Bon Jovi'], ['Resistiré', 'Dúo Dinámico']],
+    tiger: [['Eye of the Tiger', 'Survivor'], ['We Are the Champions', 'Queen'], ['Thunderstruck', 'AC/DC'], ["Can't Hold Us", 'Macklemore & Ryan Lewis'], ['Believer', 'Imagine Dragons'], ["Till I Collapse", 'Eminem'], ['Power', 'Kanye West'], ['Seven Nation Army', 'The White Stripes']],
+    safe: [["Stayin' Alive", 'Bee Gees'], ['Three Little Birds', 'Bob Marley'], ["Don't Worry, Be Happy", 'Bobby McFerrin'], ['Lovely Day', 'Bill Withers'], ['Easy', 'Commodores'], ['(Sittin\' On) The Dock of the Bay', 'Otis Redding'], ['Sunday Morning', 'Maroon 5']],
+    good: [['Feeling Good', 'Nina Simone'], ['Happy', 'Pharrell Williams'], ['Vivir mi vida', 'Marc Anthony'], ['Walking on Sunshine', 'Katrina & The Waves'], ['Uptown Funk', 'Mark Ronson & Bruno Mars'], ['September', 'Earth, Wind & Fire'], ['Celebration', 'Kool & The Gang'], ['La vida es un carnaval', 'Celia Cruz']],
+    pressure: [['Under Pressure', 'Queen & David Bowie'], ['Stressed Out', 'Twenty One Pilots'], ['Breathe', 'Pink Floyd'], ['Calma', 'Pedro Capó'], ['Take It Easy', 'Eagles'], ['Numb', 'Linkin Park']],
+    sun: [['Here Comes the Sun', 'The Beatles'], ['Better Days', 'OneRepublic'], ['Fix You', 'Coldplay'], ['Lean on Me', 'Bill Withers'], ['Keep Your Head Up', 'Andy Grammer'], ['Rise Up', 'Andra Day'], ['Brand New Day', 'Sting']],
+    flat: [['Let It Be', 'The Beatles'], ['Patience', "Guns N' Roses"], ['The Middle', 'Jimmy Eat World'], ['Waiting on the World to Change', 'John Mayer'], ['Hold On', 'Wilson Phillips'], ['Viva la Vida', 'Coldplay']]
   };
+  const pickSong = (mood, account, start) => { const list = SONGS[mood] || SONGS.flat; let h = 0; for (const ch of String(account)) h = (h * 31 + ch.charCodeAt(0)) >>> 0; const week = Math.floor(Date.parse(start + 'T00:00:00Z') / 604800000) || 0; return list[(h + week) % list.length]; };
 
   /* ---------- numbers and dates ---------- */
   const num = (n, d = 0) => new Intl.NumberFormat(loc(), { minimumFractionDigits: d, maximumFractionDigits: d }).format(n);
@@ -163,7 +170,7 @@
       star: star ? { ...star, share: gross > 0 ? star.pnl / gross * 100 : 0, wr: star.w + star.l ? star.w / (star.w + star.l) * 100 : null } : null,
       usage, alerts, measured, seq, moods: moodList.length >= 2 ? moodList.sort((x, y) => y.wr - x.wr) : null, goal,
       accountPct: Number(a.capital) > 0 ? pnl / Number(a.capital) * 100 : 0,
-      mood, song: SONGS[mood], later: { g: later.filter(d => d.pnl > 0).length, n: later.length }
+      mood, song: pickSong(mood, a.id, start), later: { g: later.filter(d => d.pnl > 0).length, n: later.length }
     };
   }
   const seenKey = w => 'jourfund_wrapped_' + (window.ftCloudSession?.user?.id || 'x') + '_' + w.account.id + '_' + w.start;
