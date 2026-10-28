@@ -5,6 +5,8 @@
 const $=id=>document.getElementById(id),F=window.FT73,pnl=$('pnlInput');if(!F||!pnl||$('jfTradeFees'))return;
 const lang=()=>window.JourFundI18n?.language||'es',T=(es,en,pt)=>lang()==='en'?en:lang()==='pt-BR'?pt:es;
 const loc=()=>window.jfLocale?.()||'es-PY',money=n=>new Intl.NumberFormat(loc(),{style:'currency',currency:'USD',minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+// Phones in Spanish/Portuguese show a comma as the decimal key: accept it in the amount and risk fields.
+for(const id of ['pnlInput','risk']){const el=$(id);if(!el)continue;el.addEventListener('input',()=>{const v=el.value,c=v.replace(/,/g,'.').replace(/[^0-9.\-−]/g,'').replace('−','-');if(c!==v){const pos=el.selectionStart;el.value=c;try{el.setSelectionRange(pos,pos);}catch{}}});}
 const field=document.createElement('div');field.className='field full jf-fees';field.setAttribute('data-i18n-ignore','');
 field.innerHTML='<label for="jfTradeFees"></label><input id="jfTradeFees" inputmode="decimal" autocomplete="off" maxlength="14" placeholder="-2.10"><p class="jf-fees-hint" id="jfFeesHint"></p>';
 const input=field.querySelector('input'),hint=field.querySelector('#jfFeesHint');
