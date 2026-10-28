@@ -22,3 +22,8 @@ body:has(#modal.ft151-crystal.show) #ft67Toast{visibility:hidden;pointer-events:
 /* The fields area scrolls; never let it squash the "Nota y capturas" section (overflow:hidden lets grid shrink it to a few px). */
 #modal.ft151-crystal .ft151-extras{min-height:max-content!important;flex-shrink:0}
 #modal.ft151-crystal .ft-dialog-scroll{grid-auto-rows:max-content!important;align-content:start!important}
+/* Comisión y swap (js/trade-fees.js) */
+#modal .jf-fees{grid-column:1/-1}
+#modal .jf-fees-hint{margin:6px 2px 0;font-size:12px;color:#9aa6cc;line-height:1.4}
+#modal .jf-fees-hint.on{color:#c4b5fd;font-weight:600}
+#modal .jf-fees-hint.err{color:#f87171}
