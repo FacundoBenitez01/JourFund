@@ -20,7 +20,7 @@ function state(a,now=Date.now()){
 }
 function reasonText(x){
  if(x.reason==='daily')return T('Perdiste ','You lost ','Você perdeu ')+money(x.lost)+T(', tu tope del día es ',', your cap for today is ',', seu teto do dia é ')+money(x.cap)+' ('+x.settings.dailyPct+'% '+T('del límite diario de la firma','of the firm\'s daily limit','do limite diário da empresa')+').';
- if(x.reason==='streak')return x.streak+' '+T('pérdidas seguidas. Tu regla es frenar en ','losses in a row. Your rule is to stop at ','perdas seguidas. Sua regra é parar em ')+x.settings.losses+'.';
+ if(x.reason==='streak')return x.streak+' '+(x.streak===1?T('pérdida seguida. Tu regla es frenar en ','loss in a row. Your rule is to stop at ','perda seguida. Sua regra é parar em '):T('pérdidas seguidas. Tu regla es frenar en ','losses in a row. Your rule is to stop at ','perdas seguidas. Sua regra é parar em '))+x.settings.losses+'.';
  if(x.reason==='cooldown')return T('Pausa después de una pérdida, hasta las ','Break after a loss, until ','Pausa depois de uma perda, até ')+clock(x.until)+'.';
  return '';
 }
