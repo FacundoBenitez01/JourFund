@@ -18,6 +18,12 @@ const initials=f=>{const s=String(f||'').trim(),caps=s.replace(/[^A-Z]/g,'');if(
 const logo=(f,cls='')=>'<span class="jfa-logo jfa-'+color(f)+' '+cls+'" aria-hidden="true">'+E(initials(f))+'</span>';
 const programName=a=>{const p=String(a.nickname||a.program||'').trim(),cut=p.replace(/\s*[$€]?\s?\d[\d.,]*\s?[kK]?\s*$/,'').trim();return cut.length>=3?cut:p||a.firm;};
 const firms=()=>[...new Set(R.defs.map(d=>d.firm))];
+// New workspaces start with five example accounts (template ids). Once the user has a real one, offer to remove the
+// untouched examples, and remove them automatically when an account is added from this screen.
+const TEMPLATE=new Set(['fn6','fn15','fn25','fn50','fp5']);
+const pristine=a=>TEMPLATE.has(a.id)&&(a.phases||[]).every(p=>!(p.trades||[]).length)&&!(a.pa?.trades||[]).length&&!(a.pa?.withdrawals||[]).length&&!(a.costs||[]).length;
+function dropExamples(){const C=window.ftProtectionCloud,P=window.FTProtection;if(!C||!P)return false;const st=C.snapshot(),keep=st.accounts.filter(a=>!pristine(a));if(keep.length===st.accounts.length||!keep.length)return false;
+ const list=P.clone(keep);C.commit(list,st);if(!list.some(a=>a.id===activeId)){activeId=list[0].id;}save();window.render();return true;}
 let filter='all';try{filter=localStorage.getItem('jf_acc_filter')||'all';}catch{}
 
 function kind(a){if(personal(a))return 'personal';if(a.status==='Failed')return 'lost';if(a.status==='Funded')return 'funded';if(a.status==='Completed')return 'done';return 'live';}
@@ -35,6 +41,7 @@ function render(){
  const counts={all:list.length,live:0,funded:0,lost:0,personal:0};for(const a of list){const k=kind(a);if(counts[k]!=null)counts[k]++;}
  if(filter!=='all'&&!counts[filter])filter='all';
  let html='<div class="jfa-hdr"><h3>'+E(T('Mis cuentas','My accounts','Minhas contas'))+'</h3><button type="button" class="jfa-plus" data-jfa="add" aria-label="'+E(T('Agregar cuenta','Add account','Adicionar conta'))+'">+</button></div>';
+ const examples=list.filter(pristine);if(examples.length&&list.some(a=>!pristine(a)))html+='<div class="jfa-examples"><span>'+E(T('Tenés ','You have ','Você tem '))+examples.length+E(T(' cuentas de ejemplo que vienen con la app.',' example accounts that come with the app.',' contas de exemplo que vêm com o app.'))+'</span><button type="button" data-jfa="drop-examples">'+E(T('Quitar ejemplos','Remove examples','Remover exemplos'))+'</button></div>';
  if(current&&!current.multiGroup){const p=progress(current),v=snap(current);
   html+='<div class="jfa-hero"><span class="jfa-kick">'+E(T('En uso','In use','Em uso'))+'</span><div class="jfa-hrow">'+logo(personal(current)?'Capital':current.firm)+'<div><h4>'+E(programName(current))+' · '+E(money(current.capital,0))+'</h4><p>'+E((personal(current)?'':current.firm+' · ')+stageText(current))+'</p></div></div>'+
    (p?'<div class="jfa-bar"><i style="width:'+p.pct.toFixed(1)+'%"></i></div><div class="jfa-pline"><span>'+E(T('Objetivo de fase','Phase target','Meta da fase'))+'</span><span><b class="'+(p.pnl<0?'neg':'pos')+'">'+E(signed(p.pnl))+'</b> '+E(T('de','of','de'))+' '+E(money(p.target))+'</span></div>'
@@ -48,7 +55,7 @@ function render(){
   html+='<section class="jfa-firm"><div class="jfa-fhead">'+logo(isP?'Capital':key,'sm')+'<b>'+E(isP?T('Capital propio','Own capital','Capital próprio'):key)+'</b><small>'+items.length+' '+E(items.length===1?T('cuenta','account','conta'):T('cuentas','accounts','contas'))+(inUse?' · '+E(T('1 en uso','1 in use','1 em uso')):'')+'</small></div>'+
    items.map(a=>{const v=snap(a),p=progress(a),k=kind(a),use=a.id===current?.id;
     const meta=p?E(stageText(a))+' · '+Math.round(p.pct)+'% '+E(T('del objetivo','of target','da meta')):'<span class="jfa-dot jfa-d-'+k+'"></span><span class="jfa-st-'+k+'">'+E(stageText(a))+'</span>';
-    return '<div class="jfa-row'+(use?' use':'')+'"><button type="button" class="jfa-pick" data-jfa-use="'+E(a.id)+'" aria-label="'+E(T('Usar ','Use ','Usar ')+programName(a))+'"><span class="jfa-t"><b>'+E(programName(a))+' · '+E(short(a.capital))+'</b>'+(use?'<em>'+E(T('En uso','In use','Em uso'))+'</em>':'')+'</span><span class="jfa-r '+(v.pnl<0?'neg':v.pnl>0?'pos':'')+'">'+E(signed(v.pnl))+'</span><span class="jfa-meta">'+meta+'</span>'+(p?'<span class="jfa-mini"><i style="width:'+p.pct.toFixed(1)+'%"></i></span>':'')+'</button><button type="button" class="jfa-more" data-jfa-more="'+E(a.id)+'" aria-label="'+E(T('Ver datos de la cuenta','Account details','Dados da conta'))+'">⋯</button></div>';}).join('')+'</section>';}
+    return '<div class="jfa-row'+(use?' use':'')+'"><button type="button" class="jfa-pick" data-jfa-use="'+E(a.id)+'" aria-label="'+E(T('Usar ','Use ','Usar ')+programName(a))+'"><span class="jfa-t"><b>'+E(programName(a))+' · '+E(short(a.capital))+'</b>'+(use?'<em>'+E(T('En uso','In use','Em uso'))+'</em>':'')+(pristine(a)?'<em class="jfa-ex">'+E(T('Ejemplo','Example','Exemplo'))+'</em>':'')+'</span><span class="jfa-r '+(v.pnl<0?'neg':v.pnl>0?'pos':'')+'">'+E(signed(v.pnl))+'</span><span class="jfa-meta">'+meta+'</span>'+(p?'<span class="jfa-mini"><i style="width:'+p.pct.toFixed(1)+'%"></i></span>':'')+'</button><button type="button" class="jfa-more" data-jfa-more="'+E(a.id)+'" aria-label="'+E(T('Ver datos de la cuenta','Account details','Dados da conta'))+'">⋯</button></div>';}).join('')+'</section>';}
  if(!shown.length)html+='<p class="jfa-empty-text">'+E(T('No hay cuentas con este filtro.','No accounts with this filter.','Nenhuma conta com este filtro.'))+'</p>';
  const groups=M?.groups?.()||[];
  if(groups.length&&filter==='all')html+='<section class="jfa-firm"><div class="jfa-fhead"><span class="jfa-logo jfa-other sm">⇄</span><b>'+E(T('Multicuentas','Account groups','Multicontas'))+'</b><small>'+groups.length+'</small></div>'+groups.map(g=>'<div class="jfa-row"><button type="button" class="jfa-pick" data-jfa-group="'+E(g.id)+'"><span class="jfa-t"><b>'+E(g.name)+'</b></span><span class="jfa-r">'+E(money(g.accounts.reduce((s,a)=>s+snap(a).balance,0)))+'</span><span class="jfa-meta">'+g.accounts.length+' '+E(T('cuentas','accounts','contas'))+'</span></button></div>').join('')+'</section>';
@@ -58,6 +65,7 @@ function render(){
 }
 view.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
  if(b.dataset.jfa==='add')return openAdd();
+ if(b.dataset.jfa==='drop-examples'){if(dropExamples())window.ft67Toast?.(T('Ejemplos quitados','Examples removed','Exemplos removidos'),'','saved');return;}
  if(b.dataset.jfaFilter){filter=b.dataset.jfaFilter;try{localStorage.setItem('jf_acc_filter',filter);}catch{}return render();}
  if(b.dataset.jfaUse){if(b.dataset.jfaUse!==activeId){activeId=b.dataset.jfaUse;save();window.render();}return;}
  if(b.dataset.jfaMore)return window.JFAccounts?.details?.(b.dataset.jfaMore);
@@ -98,7 +106,7 @@ function create(){const d=R.defs.find(x=>x.id===model);if(!d||!(d.sizes||[]).len
  const before=(typeof accounts!=='undefined'?accounts:[]).length;window.ftOpenRuleAccount(model);const sel=$('ftPresetSize');if(sel){sel.value=String(size);sel.dispatchEvent(new Event('change',{bubbles:true}));}
  const ok=$('ftPresetConfirm');if(ok)ok.checked=true;$('accountForm').requestSubmit();
  if(($('accountModal')?.classList.contains('show'))||(typeof accounts!=='undefined'?accounts:[]).length===before){dlg.close();return;} // the full form stays open showing what is missing
- dlg.close();window.ft67Toast?.(T('Cuenta agregada','Account added','Conta adicionada'),firm+' · '+money(size,0),'saved');}
+ dlg.close();dropExamples();window.ft67Toast?.(T('Cuenta agregada','Account added','Conta adicionada'),firm+' · '+money(size,0),'saved');}
 dlg.addEventListener('change',e=>{if(e.target.id==='jfAddConfirm'){confirmed=e.target.checked;const c=dlg.querySelector('[data-jfa-create]');if(c)c.disabled=!confirmed;}});
 dlg.addEventListener('click',e=>{if(e.target===dlg){const r=dlg.getBoundingClientRect();if(e.clientX<r.x||e.clientX>r.right||e.clientY<r.y||e.clientY>r.bottom)dlg.close();return;}
  const b=e.target.closest('button');if(!b)return;
